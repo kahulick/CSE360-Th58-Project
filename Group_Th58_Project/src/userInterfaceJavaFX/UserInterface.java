@@ -1,7 +1,7 @@
-package UserInterfaceJavaFX;
+package userInterfaceJavaFX;
 
 import prototypes.*; // be able to call our prototype classes
-import prototypes.Prototype1.Prototype1UI;
+import prototypes.Prototype1.Prototype1UI;	// I plan on having multiple classes 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class userInterface extends Application {
+public class UserInterface extends Application {
 	
 //	private static 
 	
