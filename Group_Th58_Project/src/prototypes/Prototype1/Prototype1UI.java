@@ -3,6 +3,7 @@ package prototypes.Prototype1;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import userInterfaceJavaFX.UserInterface;
 
@@ -21,7 +23,9 @@ public class Prototype1UI extends Application{
 		System.out.println("PROTO 1!!!");
 		
 		Button back = new Button("Back");
-//		back.setAlignment(Pos.TOP_RIGHT);
+		Font font_back = new Font(25);
+		back.setPrefSize(100, 75);
+		back.setFont(font_back);
 		back.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 System.out.println("BACK");
@@ -35,9 +39,11 @@ public class Prototype1UI extends Application{
             }
         });
 		
-		Button btn = new Button();
-        btn.setText("Display: 'Kaelyn Hulick says: Hello World!'");
-//        btn.setAlignment(Pos.CENTER);
+		Button btn = new Button("Display: 'Kaelyn Hulick says: Hello World!'");
+		Font font = new Font(25);
+		btn.setPrefSize(500, 75);
+		btn.setFont(font);
+ 
         btn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 System.out.println("Kaelyn Hulick: Hello World!");
@@ -50,19 +56,14 @@ public class Prototype1UI extends Application{
         VBox buttons = new VBox(topButtons, midButtons);
         topButtons.setAlignment(Pos.TOP_LEFT);
         midButtons.setAlignment(Pos.CENTER);
-		
-
+        buttons.setSpacing(300);
+        buttons.setPadding(new Insets(50, 50, 50, 50));
         
 		Scene scene = new Scene(buttons);
 		primaryStage.setScene(scene);
 		primaryStage.setFullScreen(true);
 		primaryStage.show();
 		
-		
-//        StackPane root = new StackPane();
-//        root.getChildren().addAll(back, btn);
-//        primaryStage.setScene(new Scene(root, 300.0, 250.0));
-//        primaryStage.show();
     }
 
 }
