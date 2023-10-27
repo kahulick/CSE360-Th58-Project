@@ -39,7 +39,7 @@ public class userInterface extends Application {
 		
 		Scene scene = new Scene(btns);
 		primaryStage.setScene(scene);
-//		primaryStage.setFullScreen(true);
+		primaryStage.setFullScreen(true);
 		primaryStage.show();
 
 		btn1.setOnAction(new EventHandler<>() {
