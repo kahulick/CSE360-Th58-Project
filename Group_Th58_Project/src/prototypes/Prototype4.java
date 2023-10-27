@@ -3,6 +3,7 @@ package prototypes;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -37,6 +38,7 @@ public class Prototype4 extends Application{
 		
         StackPane root = new StackPane();
         root.getChildren().add(back);
+        root.setAlignment(Pos.TOP_LEFT);
         primaryStage.setScene(new Scene(root, 300.0, 250.0));
         primaryStage.setFullScreen(true);
         primaryStage.show();

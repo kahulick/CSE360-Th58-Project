@@ -37,6 +37,7 @@ public class Prototype2 extends Application{
 		
         StackPane root = new StackPane();
         root.getChildren().add(back);
+        root.setAlignment(Pos.TOP_LEFT);
         primaryStage.setScene(new Scene(root, 300.0, 250.0));
         primaryStage.setFullScreen(true);
         primaryStage.show();

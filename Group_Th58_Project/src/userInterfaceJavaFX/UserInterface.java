@@ -36,8 +36,6 @@ public class UserInterface extends Application {
 		VBox btns = new VBox(btn1, btn2, btn3, btn4, btn5);
 		btns.setAlignment(Pos.CENTER);
 		btns.setSpacing(10);
-
-		
 		
 		Scene scene = new Scene(btns);
 		primaryStage.setScene(scene);
