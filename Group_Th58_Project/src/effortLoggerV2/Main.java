@@ -1,4 +1,4 @@
-package userInterfaceJavaFX;
+package effortLoggerV2;
 
 import javafx.application.Application;
 //import javafx.event.ActionEvent;
@@ -15,12 +15,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+
 public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("LandingUI.fxml")); //LandingUI.fxml : initial landing page for prototypes
+			Parent root = FXMLLoader.load(getClass().getResource("EffortLoggerConsoleUI.fxml")); //LandingUI.fxml : initial landing page for prototypes
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();

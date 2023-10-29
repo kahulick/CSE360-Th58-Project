@@ -1,4 +1,4 @@
-package prototypes.Prototype1;
+package prototypes;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import userInterfaceJavaFX.UserInterface;
 @SuppressWarnings("unused")
 
-public class Prototype1UI extends Application{
+public class Prototype1 extends Application{
 
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
