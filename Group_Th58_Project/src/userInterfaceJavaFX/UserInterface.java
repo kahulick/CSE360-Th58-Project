@@ -18,10 +18,10 @@ import javafx.stage.Stage;
 public class UserInterface extends Application {
 	
 //	private static 
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+//	
+//	public static void main(String[] args) {
+//		launch(args);
+//	}
 	
 	public void start(Stage primaryStage) {
 		System.out.println("Tesing 123");
