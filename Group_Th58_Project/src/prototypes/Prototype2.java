@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import userInterfaceJavaFX.UserInterface;
+@SuppressWarnings("unused")
 
 public class Prototype2 extends Application{
 
@@ -20,37 +21,37 @@ public class Prototype2 extends Application{
 
 		System.out.println("Test test");
 
-
-
-
-
-
-
-		
-		Button back = new Button("Back");
-		Font font_back = new Font(25);
-		back.setPrefSize(100, 75);
-		back.setFont(font_back);
-		back.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                System.out.println("BACK");
-                UserInterface home = new UserInterface();
-				try {
-					home.start(primaryStage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-            }
-        });
-		
-        StackPane root = new StackPane();
-        root.getChildren().add(back);
-        root.setAlignment(Pos.TOP_LEFT);
-        primaryStage.setScene(new Scene(root, 300.0, 250.0));
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
-		
+//
+//
+//
+//
+//
+//
+//		
+//		Button back = new Button("Back");
+//		Font font_back = new Font(25);
+//		back.setPrefSize(100, 75);
+//		back.setFont(font_back);
+//		back.setOnAction(new EventHandler<ActionEvent>() {
+//            public void handle(ActionEvent event) {
+//                System.out.println("BACK");
+//                UserInterface home = new UserInterface();
+//				try {
+//					home.start(primaryStage);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//            }
+//        });
+//		
+//        StackPane root = new StackPane();
+//        root.getChildren().add(back);
+//        root.setAlignment(Pos.TOP_LEFT);
+//        primaryStage.setScene(new Scene(root, 300.0, 250.0));
+//        primaryStage.setFullScreen(true);
+//        primaryStage.show();
+//		
 	}
 
 }
