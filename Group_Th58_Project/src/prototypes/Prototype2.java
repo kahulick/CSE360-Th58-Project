@@ -16,7 +16,16 @@ public class Prototype2 extends Application{
 
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("PROTO 2!!!");
+		System.out.println("PROTO 2!!!\nProper Anonymization For Employees");
+
+		System.out.println("Test test");
+
+
+
+
+
+
+
 		
 		Button back = new Button("Back");
 		Font font_back = new Font(25);
