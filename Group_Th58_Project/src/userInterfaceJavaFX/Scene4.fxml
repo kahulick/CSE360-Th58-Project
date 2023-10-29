@@ -5,17 +5,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="userInterfaceJavaFX.SceneController">
    <children>
-      <Label layoutX="209.0" layoutY="23.0" text="SCENE 2">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Label>
-      <Button layoutX="259.0" layoutY="143.0" mnemonicParsing="false" onAction="#switchToScene1" text="BACK">
+      <Button layoutX="266.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchToScene1" text="BACK">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="216.0" layoutY="25.0" text="SCENE 4">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
