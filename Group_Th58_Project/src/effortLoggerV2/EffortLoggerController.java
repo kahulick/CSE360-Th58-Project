@@ -2,11 +2,15 @@ package effortLoggerV2;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
 @SuppressWarnings("unused")
 
 public class EffortLoggerController {
@@ -14,53 +18,49 @@ public class EffortLoggerController {
 	private Scene scene;
 	private Parent root;
 	
+	// This is ugly I'll fix it
 	
-	public void loadEffortConsole(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); //initial landing page
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
+	@FXML
+	private Tab effortConsoleTab = new Tab();
+	@FXML
+	private Tab logEditorTab = new Tab();
+	@FXML
+	private Tab defectConsoleTab = new Tab();
+	@FXML
+	private Tab logsTab = new Tab();
+	@FXML
+	private Tab definitionsTab = new Tab();
+	@FXML
+	private Tab managerTab = new Tab();
 	
-	public void loadEffortLogEditor(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("EffortLogEditorUI.fxml")); 
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
 	
-	public void loadDefectConsole(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml")); 
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
+	@FXML
+	public void change(Event event) throws IOException {
+		if (effortConsoleTab.isSelected()) {
+			System.out.println("EFFORT CONSOLE");
+		}
 	
-	public void loadLogs(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("LogsUI.fxml")); 
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void loadDefinitions(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("DefinitionsUI.fxml")); 
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void loadLogManager(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("LogManagerUI.fxml")); 
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		if (logEditorTab.isSelected()) {
+			System.out.println("EDIT");
+		}
+		
+		if (defectConsoleTab.isSelected()) {
+			System.out.println("DEFECT");
+		}
+		
+		if (logsTab.isSelected()) {
+			System.out.println("LOGS");
+		}
+		
+		if (definitionsTab.isSelected()) {
+			System.out.println("DEF");
+		}
+		
+		if (managerTab.isSelected()) {
+			System.out.println("MANAGE");
+		}
+		
+		
 	}
 
 	

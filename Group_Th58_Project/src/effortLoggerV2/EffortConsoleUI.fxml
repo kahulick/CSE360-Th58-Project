@@ -1,38 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.EffortLoggerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="effortLoggerV2.EffortLoggerController">
    <children>
-      <TabPane layoutY="353.0" prefHeight="47.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="400.0" prefWidth="600.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab onSelectionChanged="#loadEffortConsole" text="EffortConsole" />
-          <Tab onSelectionChanged="#loadEffortLogEditor" text="EffortLogEditor">
+          <Tab fx:id="effortConsoleTab" onSelectionChanged="#change" text="EffortConsole">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="264.0" layoutY="131.0" text="EFFORT CONSOLE" />
+                     </children>
+                  </AnchorPane>
             </content>
           </Tab>
-            <Tab onSelectionChanged="#loadDefectConsole" text="DefectConsole">
+            <Tab fx:id="logEditorTab" onSelectionChanged="#change" text="EffortLogEditor">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="233.0" layoutY="145.0" text="EDITOR" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
-            <Tab onSelectionChanged="#loadLogs" text="Logs">
+            <Tab fx:id="defectConsoleTab" onSelectionChanged="#change" text="DefectConsole">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="300.0" layoutY="161.0" text="DEFECT" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
-            <Tab onSelectionChanged="#loadDefinitions" text="Definitions">
+            <Tab fx:id="logsTab" onSelectionChanged="#change" text="Logs">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="248.0" layoutY="177.0" text="LOGS" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
-            <Tab onSelectionChanged="#loadLogManager" text="LogManager">
+            <Tab fx:id="definitionsTab" onSelectionChanged="#change" text="Definitions">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="232.0" layoutY="177.0" text="DEFINITIONS" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="managerTab" onSelectionChanged="#change" text="LogManager">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="272.0" layoutY="177.0" text="MANAGER" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
         </tabs>
