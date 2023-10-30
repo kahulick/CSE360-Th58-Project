@@ -75,14 +75,6 @@ public class Prototype1 extends Application{
 		// TODO Auto-generated method stub
 		System.out.println("PROTO 1!!!");
 		
-//		Log log1 = new Log("testProject", 1, "10/29/23", "10.25.03", "Planning", "buisiness", "need to make UI");
-//		Log log2 = new Log("testProject", 2, "10/24/23", "12.36.03", "Planning2", "buisiness", "need to make UI");
-//		
-//		String time1 = log1.getDeltaTime();
-//		String time2 = log2.getDeltaTime();
-//		
-//		System.out.println(time1);
-//		System.out.println(time2);
     }
 
 }
