@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
+import prototypes.Prototype1;
+
 @SuppressWarnings("unused")
 
 public class EffortLoggerController {
@@ -36,8 +38,11 @@ public class EffortLoggerController {
 	
 	@FXML
 	public void change(Event event) throws IOException {
+		
 		if (effortConsoleTab.isSelected()) {
 			System.out.println("EFFORT CONSOLE");
+			Prototype1 proto = new Prototype1();
+			proto.testingAgain();
 		}
 	
 		if (logEditorTab.isSelected()) {
