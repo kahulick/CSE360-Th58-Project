@@ -1,5 +1,6 @@
 package prototypes;
 
+import EffortLogger.Log;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,12 +37,52 @@ public class Prototype1 extends Application{
 	
 	public void testingAgain() {
 		System.out.println("Prototype1: Generated Story Points Verification - Kaelyn Hulick");
+		
+		Log log1 = new Log("testProject", 1, "10/29/23", "10.25.03", "Planning", "buisiness", "need to make UI");
+		Log log2 = new Log("testProject", 2, "10/24/23", "12.36.03", "Planning2", "buisiness", "need to make UI");
+		
+		String time1 = log1.getDeltaTime();
+		String time2 = log2.getDeltaTime();
+		
+		System.out.println("Time for effortLog task for project1: " + time1);
+		System.out.println("Time for effortLog task for project2: " + time2);
+		
+		
+		int averageHours = (10 + 12) / 2;
+		int averageMins = (25 + 36) / 2;
+		int averageSeconds = (03 + 03) / 2;
+		
+		System.out.println(averageHours + "." + averageMins + "." + averageSeconds + ".");
+		
+		
+		double storyPointsHigh = 12.0/8.0;	// each story point = 8 hrs 
+		double storyPointsLow =  10.0/8.0;
+		
+		System.out.printf("%.2f\n", storyPointsHigh);
+		System.out.printf("%.2f\n", storyPointsLow);
+		
+		double actualAverage = (double) storyPointsHigh / storyPointsLow;
+		
+		System.out.printf("%.2f\n", actualAverage);
+		
+		if (actualAverage <= storyPointsLow || actualAverage >= storyPointsHigh) {
+			System.out.println("ERROR: STORYPOINTS OUT OF BOUNDS");
+		}
+		
 	}
 
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("PROTO 1!!!");
-
+		
+//		Log log1 = new Log("testProject", 1, "10/29/23", "10.25.03", "Planning", "buisiness", "need to make UI");
+//		Log log2 = new Log("testProject", 2, "10/24/23", "12.36.03", "Planning2", "buisiness", "need to make UI");
+//		
+//		String time1 = log1.getDeltaTime();
+//		String time2 = log2.getDeltaTime();
+//		
+//		System.out.println(time1);
+//		System.out.println(time2);
     }
 
 }

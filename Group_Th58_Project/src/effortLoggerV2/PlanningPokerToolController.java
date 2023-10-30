@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import prototypes.Prototype1;
+import prototypes.Prototype2;
 import effortLoggerV2.EffortLoggerController;
 import EffortLogger.*;
 import javafx.collections.FXCollections;
@@ -76,6 +77,8 @@ public class PlanningPokerToolController implements Initializable {
 	
 	public void calculateStoryPoints(ActionEvent event) throws IOException {
 		System.out.println("STORY POINTS???");
+		Prototype1 proto1 = new Prototype1();
+		proto1.testingAgain();
 	}
 
 	@SuppressWarnings("null")
