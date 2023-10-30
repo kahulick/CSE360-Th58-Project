@@ -42,8 +42,6 @@ public class EffortLoggerController {
 		
 		if (effortConsoleTab.isSelected()) {
 			System.out.println("EFFORT CONSOLE");
-			Prototype1 proto1 = new Prototype1();
-			proto1.testingAgain();
 		}
 	
 		if (logEditorTab.isSelected()) {

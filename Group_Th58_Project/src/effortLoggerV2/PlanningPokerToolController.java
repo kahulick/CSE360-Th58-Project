@@ -27,11 +27,11 @@ public class PlanningPokerToolController {
 	
 	public void launching() {
 		System.out.println("PLANNING");
+		Prototype1 proto1 = new Prototype1();
+		proto1.testingAgain();
 	}
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
-//		PlanningPokerToolController newSession = new PlanningPokerToolController();
-//		newSession.launching();
 		System.out.println("leaving.");
 		Parent root = FXMLLoader.load(getClass().getResource("EffortLoggerUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
