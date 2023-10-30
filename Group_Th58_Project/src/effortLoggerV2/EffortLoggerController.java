@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import prototypes.Prototype1;
+import prototypes.*;
 import effortLoggerV2.PlanningPokerToolController;
 
 @SuppressWarnings("unused")
@@ -76,6 +77,12 @@ public class EffortLoggerController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	public void prototype2(ActionEvent event) throws IOException {
+		Prototype2 proto2 = new Prototype2();
+		proto2.launch();
+//		System.out.println("LAUNCH");
 	}
 
 	

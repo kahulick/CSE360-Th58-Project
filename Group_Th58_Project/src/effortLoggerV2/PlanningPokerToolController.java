@@ -58,6 +58,7 @@ public class PlanningPokerToolController implements Initializable {
 	@FXML
 	private TableColumn<Log, String> deliverableColumn;
 	
+	
 	public void launching() {
 		System.out.println("PLANNING POKER TOOL");
 		Prototype1 proto1 = new Prototype1();
