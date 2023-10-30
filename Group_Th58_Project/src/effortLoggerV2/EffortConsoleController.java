@@ -23,3 +23,4 @@ public class EffortConsoleController {
 		stage.show();
 	}
 }
+

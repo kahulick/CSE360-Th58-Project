@@ -17,6 +17,10 @@ import userInterfaceJavaFX.UserInterface;
 @SuppressWarnings("unused")
 
 public class Prototype1 extends Application{
+	
+	public void testingAgain() {
+		System.out.println("Prototype1");
+	}
 
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
