@@ -16,6 +16,22 @@ import javafx.stage.Stage;
 import userInterfaceJavaFX.UserInterface;
 @SuppressWarnings("unused")
 
+// Prototype 1 : Generated Story Points Verification
+// Kaelyn Hulick 
+
+// 7.6.1 Generated Story Points Verification
+
+// 7.6.1.1 One risk associated with this application is miscalculating the estimated number of story
+// points based on relevant historical data from previous projects. If our application fails to generate
+// an accurate calculation for estimated story points, the user may make their decision based on
+// inaccurate data, causing either too little or too many story points for the success of the project.
+
+// 7.6.1.2 This Risk-Reduction Prototype will fall under the responsibility of Kaelyn Hulick. This
+// prototype will consist of verifying that the program's calculated estimate falls within an
+// acceptable margin of accuracy before being displayed to the user. This prototype will mitigate
+// the risk of generating inaccurate numbers of estimated story points by ensuring the program is
+// producing accurate data based on margins reflecting historical data.
+
 public class Prototype1 extends Application{
 	
 	public void testingAgain() {
