@@ -39,7 +39,7 @@
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Button>
-      <TableView layoutX="25.0" layoutY="131.0" prefHeight="200.0" prefWidth="544.0">
+      <TableView layoutX="25.0" layoutY="131.0" prefHeight="54.0" prefWidth="544.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Project" />
           <TableColumn prefWidth="75.0" text="Number" />
@@ -50,5 +50,15 @@
             <TableColumn prefWidth="75.0" text="Deliverable" />
         </columns>
       </TableView>
+      <Label layoutX="25.0" layoutY="194.0" text="TestData1: testProject&quot;, 1, &quot;10/29/23&quot;, &quot;10.25.03&quot;, &quot;Planning&quot;, &quot;buisiness&quot;, &quot;create server for client&quot;">
+         <font>
+            <Font name="Verdana Bold" size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="194.0" prefHeight="46.0" prefWidth="578.0" text="TestData2: testProject2&quot;, 2, &quot;10/24/23&quot;, &quot;12.06.301&quot;, &quot;Verifying&quot;, &quot;development&quot;, &quot;Payment Plan Widget&quot;">
+         <font>
+            <Font name="Verdana Bold" size="9.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
