@@ -6,8 +6,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.DefectConsoleController">
    <children>
       <Label layoutX="225.0" layoutY="4.0" text="Defect Console">
          <font>
@@ -20,7 +19,7 @@
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Label>
-      <Button layoutX="365.0" layoutY="351.0" mnemonicParsing="false" onAction="#launchEffortLogEditor" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Proceed to the Effort Log Console">
+      <Button layoutX="365.0" layoutY="351.0" mnemonicParsing="false" onAction="#launchEffortConsole" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Proceed to the Effort Log Console">
          <font>
             <Font name="Verdana" size="12.0" />
          </font>
