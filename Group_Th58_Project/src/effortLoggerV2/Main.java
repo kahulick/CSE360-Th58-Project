@@ -20,7 +20,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("EffortLoggerUI.fxml")); // EFFORT CONSOLE FXML = MESSED UP
+//			Parent root = FXMLLoader.load(getClass().getResource("EffortLoggerUI.fxml")); // EFFORT CONSOLE FXML = MESSED UP
+			Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); // EFFORT CONSOLE FXML = MESSED UP
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
