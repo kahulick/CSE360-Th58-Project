@@ -17,8 +17,6 @@ public class EffortConsoleController {
 	private EffortLogEditorController effortLogEditor;
 	
 	public void launchEffortLogEditor(ActionEvent event) throws IOException {
-		// effortLogEditor.launchEffortConsole(event);
-		
 		Parent root = FXMLLoader.load(getClass().getResource("EffortLogEditorUI.fxml")); //initial landing page
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -26,25 +24,13 @@ public class EffortConsoleController {
 		stage.show();
 	}
 	
-//	public void launchPlanningPokerTool(ActionEvent event) throws IOException {
-//		PlanningPokerToolController newSession = new PlanningPokerToolController();
-//		newSession.calculateStoryPoints(event);
-//		newSession.launching();
-//		
-//		Parent root = FXMLLoader.load(getClass().getResource("PlanningPokerToolUI.fxml")); 
-//		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//		scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.show();
-//	}
-	
-	
-	public void switchToLanding(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("LandingUI.fxml")); //initial landing page
+	public void launchDefectConsole(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml")); //initial landing page
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
+
 }
 
