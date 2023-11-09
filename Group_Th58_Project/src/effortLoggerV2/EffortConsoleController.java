@@ -24,13 +24,13 @@ public class EffortConsoleController {
 	@FXML
 	private ComboBox<String> projectItems = new ComboBox<String>();
 	@FXML
-	private ComboBox<String> lifeCycleItems = new ComboBox<String>(); // dependent on the project type selected rip
+	private ComboBox<String> lifeCycleItems = new ComboBox<String>(); 
 	
 	
 	// screen size 1200x 800y
 	
 	public void launchEffortLogEditor(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("EffortLogEditorUI.fxml")); //initial landing page
+		Parent root = FXMLLoader.load(getClass().getResource("EffortLogEditorUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -38,7 +38,7 @@ public class EffortConsoleController {
 	}
 	
 	public void launchDefectConsole(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml")); //initial landing page
+		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -46,7 +46,7 @@ public class EffortConsoleController {
 	}
 	
 	public void launchLogs(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("LogsUI.fxml")); //initial landing page
+		Parent root = FXMLLoader.load(getClass().getResource("LogsUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -65,26 +65,30 @@ public class EffortConsoleController {
 		start = false;
 	}
 	
+	@FXML
+	public void initialize() {
+		initializeProjectItems();
+		initializeLifeCycleItems();
+
+	}
+	
 	
 	@FXML
 	public void initializeProjectItems() {
 		if (projectItems.getValue() == null) {
-			//projectItems.getItems().addAll("Option1", "Option2");
 			projectItems.setItems(definitions.options1a);
 		}
 		System.out.println(projectItems.getValue());
-		
-		//projectItems.
 	}
 	
 	@FXML
 	public void initializeLifeCycleItems() {
-		if (lifeCycleItems.getValue() == null) {
-			if (projectItems.getValue() == "Business Project") {
-				lifeCycleItems.setItems(definitions.options1a1);
-			} else {
-				lifeCycleItems.setItems(definitions.options1a2);
-			}
+		lifeCycleItems.getItems().removeAll();
+		if (projectItems.getValue() == "Business Project") {
+			lifeCycleItems.setItems(definitions.options1a1);
+		} 
+		if (projectItems.getValue() == "Development Project") {
+			lifeCycleItems.setItems(definitions.options1a2);
 		}
 	}
 	
