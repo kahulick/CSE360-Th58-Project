@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
+import EffortLogger.Definitions;
 @SuppressWarnings("unused")
 
 public class EffortConsoleController {
@@ -17,10 +18,13 @@ public class EffortConsoleController {
 	private Scene scene;
 	private Parent root;
 	private EffortLogEditorController effortLogEditor;
+	private Definitions definitions = new Definitions();
 	private boolean start = false;
 	
 	@FXML
 	private ComboBox<String> projectItems = new ComboBox<String>();
+	@FXML
+	private ComboBox<String> lifeCycleItems = new ComboBox<String>(); // dependent on the project type selected rip
 	
 	
 	// screen size 1200x 800y
@@ -63,8 +67,25 @@ public class EffortConsoleController {
 	
 	
 	@FXML
-	public void initialize() {
-		projectItems.getItems().addAll("Option1", "Option2");
+	public void initializeProjectItems() {
+		if (projectItems.getValue() == null) {
+			//projectItems.getItems().addAll("Option1", "Option2");
+			projectItems.setItems(definitions.options1a);
+		}
+		System.out.println(projectItems.getValue());
+		
+		//projectItems.
+	}
+	
+	@FXML
+	public void initializeLifeCycleItems() {
+		if (lifeCycleItems.getValue() == null) {
+			if (projectItems.getValue() == "Business Project") {
+				lifeCycleItems.setItems(definitions.options1a1);
+			} else {
+				lifeCycleItems.setItems(definitions.options1a2);
+			}
+		}
 	}
 	
 	

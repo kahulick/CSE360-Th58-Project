@@ -30,17 +30,17 @@
             <Font name="Verdana Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="67.0" layoutY="250.0" text="Project: ">
+      <Label layoutX="82.0" layoutY="241.0" text="Project: ">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="492.0" layoutY="250.0" text="Life Cycle Step: ">
+      <Label layoutX="492.0" layoutY="241.0" text="Life Cycle Step: ">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="67.0" layoutY="314.0" text="Effort Category:">
+      <Label layoutX="82.0" layoutY="316.0" text="Effort Category:">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font>
@@ -80,6 +80,6 @@
             <Font name="Verdana" size="16.0" />
          </font>
       </Button>
-      <ComboBox fx:id="projectItems" layoutX="153.0" layoutY="246.0" onAction="#initialize" prefWidth="150.0" />
+      <ComboBox fx:id="projectItems" editable="true" layoutX="84.0" layoutY="268.0" onAction="#initialize" prefWidth="375.0" />
    </children>
 </AnchorPane>
