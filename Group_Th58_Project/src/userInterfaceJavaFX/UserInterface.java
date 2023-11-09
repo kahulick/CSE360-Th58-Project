@@ -1,7 +1,6 @@
 package userInterfaceJavaFX;
 
-import prototypes.*; 
-import prototypes.Prototype1.Prototype1UI;	
+import prototypes.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

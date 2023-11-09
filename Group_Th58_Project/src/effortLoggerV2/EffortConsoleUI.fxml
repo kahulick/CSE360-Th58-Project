@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.EffortConsoleController">
+   <children>
+      <Label layoutX="304.0" layoutY="14.0" text="Effort Logger Console">
+         <font>
+            <Font name="Verdana Bold" size="24.0" />
+         </font>
+      </Label>
+      <Line endX="686.0" endY="-27.599971771240234" layoutX="214.0" layoutY="82.0" startX="-214.0" startY="-27.599971771240234" strokeWidth="2.0" />
+      <Label layoutX="51.0" layoutY="121.0" text="1. When you start a new activity, press the &quot;Start an Activity&quot; button.">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="71.0" style="-fx-background-color: red;" text="                                   Clock is Stopped                                   " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="196.0" text="2. Select the project, life cycle step, effort category, and deliverable from the following lists:">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="250.0" text="Project: ">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="250.0" text="Life Cycle Step: ">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="314.0" text="Effort Category:">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="390.0" text="3. Press the &quot;Stop this Activity&quot; to generate an effort log entry using the attributes above.">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="468.0" text="4. Unless you are done for the day, it is best to perform steps 1 and 2 before resuming work.">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="82.0" layoutY="511.0" mnemonicParsing="false" onAction="#launchEffortLogEditor" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Effort Log Editor">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="304.0" layoutY="511.0" mnemonicParsing="false" onAction="#launchDefectConsole" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Defect Log Console">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="555.0" layoutY="511.0" mnemonicParsing="false" onAction="#launchLogs" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Effort and Defect Logs">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="82.0" layoutY="150.0" mnemonicParsing="false" onAction="#startAnActivity" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Start an Activity">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="82.0" layoutY="417.0" mnemonicParsing="false" onAction="#stopActivity" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Stop this Activity">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="projectItems" layoutX="153.0" layoutY="246.0" onAction="#initialize" prefWidth="150.0" />
+   </children>
+</AnchorPane>

@@ -15,13 +15,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-
-public class Main extends Application {
+public class MainNO extends Application {
 
 	@Override
 	public void start(Stage stage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("LandingUI.fxml")); //initial landing page
+			Parent root = FXMLLoader.load(getClass().getResource("LandingUI.fxml")); //LandingUI.fxml : initial landing page for prototypes
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();

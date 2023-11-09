@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.DefectConsoleController">
+   <children>
+      <Label layoutX="349.0" layoutY="14.0" text="Defect Console">
+         <font>
+            <Font name="Verdana Bold" size="24.0" />
+         </font>
+      </Label>
+      <Line endX="765.0" endY="-28.999996185302734" layoutX="135.0" layoutY="89.0" startX="-135.0" startY="-28.999996185302734" strokeWidth="2.0" />
+      <Label layoutX="53.0" layoutY="495.0" text="4. Press the &quot;Update the Current Defect&quot; button to save the changes made above.">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="551.0" layoutY="533.0" mnemonicParsing="false" onAction="#launchEffortConsole" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Proceed to the Effort Log Console">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
