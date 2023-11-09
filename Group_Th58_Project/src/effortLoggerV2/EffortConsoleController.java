@@ -16,6 +16,8 @@ public class EffortConsoleController {
 	private Parent root;
 	private EffortLogEditorController effortLogEditor;
 	
+	// screen size 1200x 800y
+	
 	public void launchEffortLogEditor(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortLogEditorUI.fxml")); //initial landing page
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

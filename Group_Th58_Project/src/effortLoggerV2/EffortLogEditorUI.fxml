@@ -6,22 +6,22 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.EffortLogEditorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.EffortLogEditorController">
    <children>
-      <Label layoutX="217.0" layoutY="4.0" text="Effort Log Editor">
+      <Label layoutX="339.0" layoutY="14.0" text="Effort Log Editor">
          <font>
-            <Font name="Verdana Bold" size="18.0" />
+            <Font name="Verdana Bold" size="24.0" />
          </font>
       </Label>
-      <Line endX="410.0" endY="-9.799999237060547" layoutX="190.0" layoutY="45.0" startX="-190.0" startY="-9.799999237060547" />
-      <Label layoutX="344.0" layoutY="331.0" text="4. Proceed to the Effort Log Console">
+      <Line endX="710.0" endY="15.800006866455078" layoutX="190.0" layoutY="45.0" startX="-190.0" startY="15.800006866455078" strokeWidth="2.0" />
+      <Label layoutX="561.0" layoutY="511.0" text="4. Proceed to the Effort Log Console">
          <font>
-            <Font name="Verdana Bold" size="10.0" />
+            <Font name="Verdana Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="353.0" layoutY="351.0" mnemonicParsing="false" onAction="#launchEffortConsole" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Proceed to the Effort Log Console">
+      <Button layoutX="561.0" layoutY="540.0" mnemonicParsing="false" onAction="#launchEffortConsole" style="-fx-background-radius: 0; -fx-border-color: grey;" text="Proceed to the Effort Log Console">
          <font>
-            <Font name="Verdana" size="10.0" />
+            <Font name="Verdana" size="16.0" />
          </font>
       </Button>
    </children>
