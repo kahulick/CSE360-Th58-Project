@@ -15,6 +15,7 @@ public class EffortConsoleController {
 	private Scene scene;
 	private Parent root;
 	private EffortLogEditorController effortLogEditor;
+	private boolean start = false;
 	
 	// screen size 1200x 800y
 	
@@ -40,6 +41,18 @@ public class EffortConsoleController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	public void startAnActivity(ActionEvent event) {
+		start = true;
+		System.out.println("Clock Started");
+	}
+	
+	public void stopActivity(ActionEvent event) {
+		if (start == true) {
+			System.out.println("Clock stopped");
+		}
+		start = false;
 	}
 
 }
