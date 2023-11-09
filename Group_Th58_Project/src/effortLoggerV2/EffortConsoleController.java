@@ -2,10 +2,12 @@ package effortLoggerV2;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
 @SuppressWarnings("unused")
@@ -16,6 +18,10 @@ public class EffortConsoleController {
 	private Parent root;
 	private EffortLogEditorController effortLogEditor;
 	private boolean start = false;
+	
+	@FXML
+	private ComboBox<String> projectItems = new ComboBox<String>();
+	
 	
 	// screen size 1200x 800y
 	
@@ -54,6 +60,14 @@ public class EffortConsoleController {
 		}
 		start = false;
 	}
+	
+	
+	@FXML
+	public void initialize() {
+		projectItems.getItems().addAll("Option1", "Option2");
+	}
+	
+	
 
 }
 
