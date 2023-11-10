@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
 import EffortLogger.Definitions;
@@ -25,6 +26,12 @@ public class EffortConsoleController {
 	private ComboBox<String> projectItems = new ComboBox<String>();
 	@FXML
 	private ComboBox<String> lifeCycleItems = new ComboBox<String>(); 
+	@FXML
+	private ComboBox<String> effortCategories = new ComboBox<String>();
+	@FXML
+	private ComboBox<String> effortCategoryItems = new ComboBox<String>();
+	@FXML
+	private Label effortCategoryLabel = new Label();
 	
 	
 	// screen size 1200x 800y
@@ -69,16 +76,15 @@ public class EffortConsoleController {
 	public void initialize() {
 		initializeProjectItems();
 		initializeLifeCycleItems();
-
+		initializeEffortCategory();
+		initializeEffortCategoryItems();
 	}
-	
 	
 	@FXML
 	public void initializeProjectItems() {
 		if (projectItems.getValue() == null) {
 			projectItems.setItems(definitions.options1a);
 		}
-		System.out.println(projectItems.getValue());
 	}
 	
 	@FXML
@@ -91,6 +97,41 @@ public class EffortConsoleController {
 			lifeCycleItems.setItems(definitions.options1a2);
 		}
 	}
+	
+	@FXML
+	public void initializeEffortCategory() {
+		if (effortCategories.getValue() == null) {
+			effortCategories.setItems(definitions.options3);
+		}
+	}
+	
+	@FXML
+	public void initializeEffortCategoryItems() {
+		effortCategoryItems.getItems().removeAll();
+		if (effortCategories.getValue() == "Plans") {
+			effortCategoryItems.setItems(definitions.options3a);
+		}
+		if (effortCategories.getValue() == "Deliverables") {
+			effortCategoryItems.setItems(definitions.options3b);
+		}
+		if (effortCategories.getValue() == "Interruptions") {
+			effortCategoryItems.setItems(definitions.options3c);
+		}
+		if (effortCategories.getValue() == "Defects") {
+			effortCategoryItems.setItems(definitions.options3d);
+		}
+		if (effortCategories.getValue() == "Others") {
+			effortCategoryItems.setItems(definitions.options3e); // empty "" in array list
+		}
+		effortCategoryLabel.setText(effortCategories.getValue());
+	}
+	
+	
+//	Caused by: java.lang.NullPointerException: Cannot invoke "javafx.collections.ObservableList.removeAll(Object[])" 
+//	because the return value of "javafx.scene.control.ComboBox.getItems()" is null
+//			at effortLoggerV2.EffortConsoleController.initializeEffortCategoryItems(EffortConsoleController.java:108)
+//			at effortLoggerV2.EffortConsoleController.initialize(EffortConsoleController.java:77)
+	
 	
 	
 
