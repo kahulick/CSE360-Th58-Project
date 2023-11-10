@@ -21,7 +21,7 @@
             <Font name="Verdana Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="52.0" layoutY="71.0" style="-fx-background-color: red;" text="                                   Clock is Stopped                                   " textFill="WHITE">
+      <Label fx:id="clockLabel" alignment="CENTER" layoutX="8.0" layoutY="73.0" prefHeight="30.0" prefWidth="884.0" style="-fx-background-color: red;" text="Clock is Stopped" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="24.0" />
          </font>

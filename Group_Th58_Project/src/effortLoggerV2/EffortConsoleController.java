@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+//import javafx.scene.control.Label.setBackground;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
@@ -37,6 +38,8 @@ public class EffortConsoleController {
 	private Label otherDetailsLabel = new Label();
 	@FXML
 	private TextField otherDetails = new TextField();
+	@FXML
+	private Label clockLabel = new Label();
 
 	
 	
@@ -69,11 +72,17 @@ public class EffortConsoleController {
 	public void startAnActivity(ActionEvent event) {	// placeholder
 		start = true;
 		System.out.println("Clock Started");
+		clockLabel.setText("Clock is Running");
+		// clockLabel.setBackground("green");
+		clockLabel.setStyle("-fx-background-color: green;");
+		
 	}
 	
 	public void stopActivity(ActionEvent event) {	// placeholder
 		if (start == true) {
 			System.out.println("Clock stopped");
+			clockLabel.setText("Clock is Stopped");
+			clockLabel.setStyle("-fx-background-color: red;");
 		}
 		start = false;
 	}
