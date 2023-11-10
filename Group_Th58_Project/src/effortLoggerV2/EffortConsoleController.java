@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
 import EffortLogger.Definitions;
@@ -32,6 +33,11 @@ public class EffortConsoleController {
 	private ComboBox<String> effortCategoryItems = new ComboBox<String>();
 	@FXML
 	private Label effortCategoryLabel = new Label();
+	@FXML
+	private Label otherDetailsLabel = new Label();
+	@FXML
+	private TextField otherDetails = new TextField();
+
 	
 	
 	// screen size 1200x 800y
@@ -60,12 +66,12 @@ public class EffortConsoleController {
 		stage.show();
 	}
 	
-	public void startAnActivity(ActionEvent event) {
+	public void startAnActivity(ActionEvent event) {	// placeholder
 		start = true;
 		System.out.println("Clock Started");
 	}
 	
-	public void stopActivity(ActionEvent event) {
+	public void stopActivity(ActionEvent event) {	// placeholder
 		if (start == true) {
 			System.out.println("Clock stopped");
 		}
@@ -122,6 +128,8 @@ public class EffortConsoleController {
 		}
 		if (effortCategories.getValue() == "Others") {
 			effortCategoryItems.setItems(definitions.options3e); // empty "" in array list
+			otherDetailsLabel.setVisible(true);
+			otherDetails.setVisible(true);
 		}
 		effortCategoryLabel.setText(effortCategories.getValue());
 	}
