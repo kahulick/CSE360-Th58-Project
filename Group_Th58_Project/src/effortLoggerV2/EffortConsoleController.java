@@ -94,8 +94,8 @@ public class EffortConsoleController {
 			clockLabel.setText("Clock is Stopped");
 			clockLabel.setStyle("-fx-background-color: red;");
 			stopTime = LocalTime.now().withNano(0);
+			logEffort();
 		}
-
 		start = false;
 	}
 	
@@ -154,6 +154,26 @@ public class EffortConsoleController {
 		}
 		effortCategoryLabel.setText(effortCategories.getValue());
 	}
+	
+	@FXML
+	public void logEffort() {
+		System.out.println("Date: " + date);
+		System.out.println("Start: " + startTime);
+		System.out.println("Stop: " + stopTime);
+		System.out.println("Delta: " + Duration.between(stopTime, startTime).abs());
+		System.out.println("Project Type: " + projectItems.getValue());
+		System.out.println("Life Cycle Step: " + lifeCycleItems.getValue());
+		System.out.println("Effort Category: " + effortCategories.getValue());
+		System.out.println("Effort Item: " + effortCategoryItems.getValue()); // if "other" -> comes from txt field
+	}
+	
+//	private LocalDate date;
+//	private LocalTime startTime;
+//	private LocalTime stopTime;
+//	private String deltaTime;
+//	private String lifeCycleStep;
+//	private String effortCategory;
+//	private String effortCategoryItem;
 	
 
 	

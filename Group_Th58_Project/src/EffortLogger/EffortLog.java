@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.util.Calendar;
 @SuppressWarnings("unused")
 
-public class EffortLog {	// gonna have to map multiple Effort Logs to a project
+public class EffortLog {	// gonna have to map multiple Effort Logs to a project & utilize the update log 
 	
 	private LocalDate date;
 	private LocalTime startTime;
@@ -23,6 +23,9 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project
 		this.startTime = startTime;
 		this.stopTime = stopTime;
 		this.deltaTime = calculateDeltaTime(startTime, stopTime);
+		this.lifeCycleStep = lifeCycleStep;
+		this.effortCategory = effortCategory;
+		this.effortCategoryItem = effortCategoryItem;
 	}
 	
 	public String calculateDeltaTime(LocalTime start, LocalTime stop) {
@@ -33,9 +36,5 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project
 	}
 	
 	
-	
-	
-	
-	//public EffortLog(String date)
 
 }
