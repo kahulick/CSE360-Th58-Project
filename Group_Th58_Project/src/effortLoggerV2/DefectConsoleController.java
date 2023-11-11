@@ -1,6 +1,7 @@
 package effortLoggerV2;
 
 import java.io.IOException;
+import EffortLogger.Definitions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ public class DefectConsoleController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private Definitions definitions = new Definitions();
 	
 	public void launchEffortConsole(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
