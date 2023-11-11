@@ -25,6 +25,9 @@ public class EffortConsoleController {
 	private Parent root;
 	private EffortLogEditorController effortLogEditor;
 	private Definitions definitions = new Definitions();
+	private String date; 
+	private String startTime;
+	private String stopTime;
 	private boolean start = false;
 	
 	@FXML
@@ -76,17 +79,15 @@ public class EffortConsoleController {
 		start = true;
 		clockLabel.setText("Clock is Running");
 		clockLabel.setStyle("-fx-background-color: green;");
-		String startTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		System.out.println(startTime);
-		
+		startTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		date = startTime.substring(0,8);
 	}
 	
 	public void stopActivity(ActionEvent event) {	// calculate delta time within the Log class
 		if (start == true) {
 			clockLabel.setText("Clock is Stopped");
 			clockLabel.setStyle("-fx-background-color: red;");
-			String startTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-			System.out.println(startTime);
+			stopTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		}
 		start = false;
 	}
@@ -140,20 +141,14 @@ public class EffortConsoleController {
 			effortCategoryItems.setItems(definitions.options3d);
 		}
 		if (effortCategories.getValue() == "Others") {
-			effortCategoryItems.setItems(definitions.options3e); // empty "" in array list
+			effortCategoryItems.setItems(definitions.options3e);  // empty "" in array list
 			otherDetailsLabel.setVisible(true);
 			otherDetails.setVisible(true);
 		}
 		effortCategoryLabel.setText(effortCategories.getValue());
 	}
 	
-	
-//	Caused by: java.lang.NullPointerException: Cannot invoke "javafx.collections.ObservableList.removeAll(Object[])" 
-//	because the return value of "javafx.scene.control.ComboBox.getItems()" is null
-//			at effortLoggerV2.EffortConsoleController.initializeEffortCategoryItems(EffortConsoleController.java:108)
-//			at effortLoggerV2.EffortConsoleController.initialize(EffortConsoleController.java:77)
-	
-	
+
 	
 
 }
