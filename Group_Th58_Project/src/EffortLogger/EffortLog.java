@@ -18,6 +18,7 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project 
 	private String lifeCycleStep;
 	private String effortCategory;
 	private String effortCategoryItem;
+	private int number = 1;
 	
 	public EffortLog(String projectType, LocalDate date, LocalTime startTime, LocalTime stopTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
 		this.projectType = projectType;
@@ -83,6 +84,10 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project 
 
 	public String getDeltaTime() {
 		return deltaTime;
+	}
+	
+	public int getNumber() {
+		return 1;
 	}
 	
 	

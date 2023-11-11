@@ -18,7 +18,7 @@
       </Label>
       <TabPane layoutY="23.0" prefHeight="577.0" prefWidth="900.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Effort Logs">
+          <Tab fx:id="effortLogs" onSelectionChanged="#initialize" text="Effort Logs">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="536.0" prefWidth="900.0">
                      <children>
@@ -47,7 +47,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="effortLogsTable" layoutX="17.0" layoutY="44.0" prefHeight="200.0" prefWidth="877.0">
+                        <TableView fx:id="effortLogsTable" editable="true" layoutX="17.0" layoutY="44.0" prefHeight="200.0" prefWidth="877.0">
                           <columns>
                             <TableColumn fx:id="numberCol" prefWidth="63.0" text="Number" />
                             <TableColumn fx:id="dateCol" prefWidth="86.0" text="Date" />
@@ -63,7 +63,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="numberDefectLogs" text="Defect Logs">
+          <Tab fx:id="defectLogs" text="Defect Logs">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -87,7 +87,7 @@
                               <Font name="Verdana Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="567.0" layoutY="5.0" text="0">
+                        <Label fx:id="numberDefectLogs" layoutX="567.0" layoutY="5.0" text="0">
                            <font>
                               <Font size="14.0" />
                            </font>

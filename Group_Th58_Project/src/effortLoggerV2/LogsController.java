@@ -14,10 +14,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortConsoleController;
 import EffortLogger.Definitions;
 import EffortLogger.EffortLog;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 @SuppressWarnings("unused")
 
 public class LogsController {	// eventually make an observable list for effort logs to add into it
@@ -54,7 +57,11 @@ public class LogsController {	// eventually make an observable list for effort l
 	@FXML
 	private TableColumn<EffortLog, String> effortItemCol = new TableColumn<EffortLog, String>();
 	
-	private EffortLog testLog;
+	public EffortLog testLog;
+	
+	private ObservableList<EffortLog> logs = FXCollections.observableArrayList();
+	
+	private ObservableList<TableColumn<EffortLog, ?>> columns = FXCollections.observableArrayList();
 	
 	public void launchEffortConsole(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
@@ -66,8 +73,41 @@ public class LogsController {	// eventually make an observable list for effort l
 	
 	public void enterLog(EffortLog effortLog) {
 		this.testLog = effortLog;
+		EffortLog testingAgain = new EffortLog(effortLog.getProjectType(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
+		logs.addAll(testLog, testingAgain);
+		initialize();
+		effortLogsTable.setVisible(true);
+		effortLogsTable.setEditable(true);
+		effortLogsTable.getItems().add(testLog);
+		effortLogsTable.getItems().add(testingAgain);
+//		
+
+		
+		// set cell factory value for each column
+//		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("effortCategory"));
+//		effortLogsTable.setItems(logs);
+//		effortLogsTable.getItems().add(testLog);
+		// effortLogsTable.getColumns().add(effortCategoryCol);
 		// System.out.println(testLog.getDeltaTime());
 		// effortLogsTable.getColumns().addAll(numberCol);
+	}
+	
+	@FXML
+	public void initialize() {
+		numberCol.setCellValueFactory(new PropertyValueFactory<EffortLog, Integer>("number"));
+		dateCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalDate>("date"));
+		startCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("startTime"));
+		stopCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("stopTime"));
+		deltaCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("deltaTime"));
+		lifeCycleCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("lifeCycleStep"));
+		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("effortCategory"));
+		effortItemCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("effortCategoryItem"));
+		effortLogsTable.setItems(logs);
+		effortLogsTable.setVisible(true);
+		effortLogsTable.setEditable(true);
+		effortLogsTable.getItems().add(testLog);
+		System.out.println("ADDED");
+		// System.out.println(effortLogsTable.getColumns());
 	}
 	
 	
