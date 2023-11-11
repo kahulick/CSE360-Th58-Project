@@ -37,6 +37,55 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project 
 		return deltaTime;
 	}
 	
+	public String getProjectType() {
+		return projectType;
+	}
+
+	public void setProjectType(String projectType) {
+		this.projectType = projectType;
+	}
+
+	public String getLifeCycleStep() {
+		return lifeCycleStep;
+	}
+
+	public void setLifeCycleStep(String lifeCycleStep) {
+		this.lifeCycleStep = lifeCycleStep;
+	}
+
+	public String getEffortCategory() {
+		return effortCategory;
+	}
+
+	public void setEffortCategory(String effortCategory) {
+		this.effortCategory = effortCategory;
+	}
+
+	public String getEffortCategoryItem() {
+		return effortCategoryItem;
+	}
+
+	public void setEffortCategoryItem(String effortCategoryItem) {
+		this.effortCategoryItem = effortCategoryItem;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public LocalTime getStartTime() {
+		return startTime;
+	}
+
+	public LocalTime getStopTime() {
+		return stopTime;
+	}
+
+	public String getDeltaTime() {
+		return deltaTime;
+	}
+	
+	
 	
 
 }

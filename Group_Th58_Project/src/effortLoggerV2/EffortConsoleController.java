@@ -166,31 +166,16 @@ public class EffortConsoleController {
 		}
 		
 		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
-		// System.out.println(effortLog);
-//		System.out.println("Date: " + date);
-//		System.out.println("Start: " + startTime);
-//		System.out.println("Stop: " + stopTime);
-//		System.out.println("Delta: " + Duration.between(stopTime, startTime).abs());
-//		System.out.println("Project Type: " + projectItems.getValue());
-//		System.out.println("Life Cycle Step: " + lifeCycleItems.getValue());
-//		System.out.println("Effort Category: " + effortCategories.getValue());
-//		if (otherDetails.isVisible() == true) {
-//			System.out.println("Effort Item: " + otherDetails.getText());
-//		} else {
-//			System.out.println("Effort Item: " + effortCategoryItems.getValue()); // if "other" -> comes from txt field
-//		}
-	}
-	
-//	private LocalDate date;
-//	private LocalTime startTime;
-//	private LocalTime stopTime;
-//	private String deltaTime;
-//	private String lifeCycleStep;
-//	private String effortCategory;
-//	private String effortCategoryItem;
-	
-
-	
+		
+		System.out.println("Date: " + effortLog.getDate());
+		System.out.println("Start: " + effortLog.getStartTime());
+		System.out.println("Stop: " + effortLog.getStopTime());
+		System.out.println("Delta: " + effortLog.getDeltaTime());
+		System.out.println("Project Type: " + effortLog.getProjectType());
+		System.out.println("Life Cycle Step: " + effortLog.getLifeCycleStep());
+		System.out.println("Effort Category: " + effortLog.getEffortCategory());
+		System.out.println("Effort Category: " + effortLog.getEffortCategoryItem());
+	}	
 
 }
 
