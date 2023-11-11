@@ -94,13 +94,17 @@ public class LogsController {	// eventually make an observable list for effort l
 	public void setEffortLog(EffortLog effortLog) {
 		this.effortLog = effortLog;
 		System.out.println(effortLog == null);
+		logs.add(effortLog);
+		addToTable();
+		effortLogsTable.refresh();
 		// addToTable();
 	}
 	
 	public void enterLog(EffortLog effortLog) {
 		this.effortLog = effortLog;
-		EffortLog testingAgain = new EffortLog(effortLog.getProjectType(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
-		logs.addAll(effortLog, testingAgain);
+		
+		// EffortLog testingAgain = new EffortLog(effortLog.getProjectType(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
+		//logs.addAll(effortLog, testingAgain);
 		// effortLogsTable.getItems().addAll(logs);
 		
 		//		logs.addAll(testLog, testingAgain);
@@ -123,17 +127,26 @@ public class LogsController {	// eventually make an observable list for effort l
 	
 	@FXML
 	public void initialize() {
-		numberCol.setCellValueFactory(new PropertyValueFactory<EffortLog, Integer>("Number"));
-		dateCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalDate>("Date"));
-		startCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("StartTime"));
-		stopCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("StopTime"));
-		deltaCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("DeltaTime"));
-		lifeCycleCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("LifeCycleStep"));
-		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("EffortCategory"));
-		effortItemCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("EffortCategoryItem"));
+//		numberCol.setCellValueFactory(new PropertyValueFactory<EffortLog, Integer>("Number"));
+//		dateCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalDate>("Date"));
+//		startCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("StartTime"));
+//		stopCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("StopTime"));
+//		deltaCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("DeltaTime"));
+//		lifeCycleCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("LifeCycleStep"));
+//		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("EffortCategory"));
+//		effortItemCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("EffortCategoryItem"));
+		
+		numberCol.setCellValueFactory(new PropertyValueFactory<>("number"));
+		dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+		startCol.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+		stopCol.setCellValueFactory(new PropertyValueFactory<>("stopTime"));
+		deltaCol.setCellValueFactory(new PropertyValueFactory<>("deltaTime"));
+		lifeCycleCol.setCellValueFactory(new PropertyValueFactory<>("lifeCycleStep"));
+		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<>("effortCategory"));
+		effortItemCol.setCellValueFactory(new PropertyValueFactory<>("effortCategoryItem"));
 		// numberCol.getCellData();
 		// this.effortLog = effortLog;
-//		effortLogsTable.setItems(logs);
+		effortLogsTable.setItems(logs);
 //		effortLogsTable.getItems().addAll(logs);
 //		effortLogsTable.getItems().add(effortLog);
 //		addToTable();
@@ -142,7 +155,7 @@ public class LogsController {	// eventually make an observable list for effort l
 ////		effortLogsTable.setEditable(true);
 //		effortLogsTable.getItems().add(effortLog);
 //		System.out.println("ADDED");
-//		System.out.println(effortLogsTable.getColumns());
+//		System.out.println(effortLogsTable.getColumns().toArray());
 //		System.out.println(effortLogsTable.getItems());
 //		Platform.runLater(() -> {
 //			logs.add(effortLog);
@@ -154,7 +167,12 @@ public class LogsController {	// eventually make an observable list for effort l
 		if (effortLog != null) {
 			effortLogsTable.getItems().add(effortLog);
 		}
+		effortLogsTable.refresh();
 		System.out.println(effortLogsTable.getItems());
+		ObservableList<EffortLog> returnedLogs = effortLogsTable.getItems();
+		for (EffortLog log : returnedLogs) {
+			System.out.println(log.getEffortCategory());	// ITS GETTING THE OBJECT
+		}
 	}
 	
 	
