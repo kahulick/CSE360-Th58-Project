@@ -2,7 +2,13 @@ package effortLoggerV2;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,19 +18,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-//import javafx.scene.control.Label.setBackground;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
 import EffortLogger.Definitions;
+import EffortLogger.EffortLog;
 @SuppressWarnings("unused")
 
 public class EffortConsoleController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-	private EffortLogEditorController effortLogEditor;
+	private EffortLog effortLog;
 	private Definitions definitions = new Definitions();
+	private LocalDate date; 
+	private LocalTime startTime;
+	private LocalTime stopTime;
+	
 	private boolean start = false;
 	
 	@FXML
@@ -72,21 +82,20 @@ public class EffortConsoleController {
 		stage.show();
 	}
 	
-	public void startAnActivity(ActionEvent event) { // calculate delta time within the Log class
+	public void startAnActivity(ActionEvent event) { 
 		start = true;
 		clockLabel.setText("Clock is Running");
 		clockLabel.setStyle("-fx-background-color: green;");
-		String startTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		System.out.println(startTime);
-		
+		startTime = LocalTime.now().withNano(0);
+		date = LocalDate.now();
 	}
 	
 	public void stopActivity(ActionEvent event) {	// calculate delta time within the Log class
 		if (start == true) {
 			clockLabel.setText("Clock is Stopped");
 			clockLabel.setStyle("-fx-background-color: red;");
-			String startTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-			System.out.println(startTime);
+			stopTime = LocalTime.now().withNano(0);
+			logEffort();
 		}
 		start = false;
 	}
@@ -140,21 +149,33 @@ public class EffortConsoleController {
 			effortCategoryItems.setItems(definitions.options3d);
 		}
 		if (effortCategories.getValue() == "Others") {
-			effortCategoryItems.setItems(definitions.options3e); // empty "" in array list
+			effortCategoryItems.setItems(definitions.options3e);  // empty "" in array list
 			otherDetailsLabel.setVisible(true);
 			otherDetails.setVisible(true);
 		}
 		effortCategoryLabel.setText(effortCategories.getValue());
 	}
 	
-	
-//	Caused by: java.lang.NullPointerException: Cannot invoke "javafx.collections.ObservableList.removeAll(Object[])" 
-//	because the return value of "javafx.scene.control.ComboBox.getItems()" is null
-//			at effortLoggerV2.EffortConsoleController.initializeEffortCategoryItems(EffortConsoleController.java:108)
-//			at effortLoggerV2.EffortConsoleController.initialize(EffortConsoleController.java:77)
-	
-	
-	
+	@FXML
+	public void logEffort() {
+		String effortDetails;
+		if (otherDetails.isVisible() == true) {
+			effortDetails = otherDetails.getText();
+		} else {
+			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from txt field
+		}
+		
+		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
+		
+		System.out.println("Date: " + effortLog.getDate());
+		System.out.println("Start: " + effortLog.getStartTime());
+		System.out.println("Stop: " + effortLog.getStopTime());
+		System.out.println("Delta: " + effortLog.getDeltaTime());
+		System.out.println("Project Type: " + effortLog.getProjectType());
+		System.out.println("Life Cycle Step: " + effortLog.getLifeCycleStep());
+		System.out.println("Effort Category: " + effortLog.getEffortCategory());
+		System.out.println("Effort Category: " + effortLog.getEffortCategoryItem());
+	}	
 
 }
 
