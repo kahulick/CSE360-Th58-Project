@@ -22,13 +22,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
 import EffortLogger.Definitions;
+import EffortLogger.EffortLog;
 @SuppressWarnings("unused")
 
 public class EffortConsoleController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-	private EffortLogEditorController effortLogEditor;
+	private EffortLog effortLog;
 	private Definitions definitions = new Definitions();
 	private LocalDate date; 
 	private LocalTime startTime;
@@ -157,18 +158,27 @@ public class EffortConsoleController {
 	
 	@FXML
 	public void logEffort() {
-		System.out.println("Date: " + date);
-		System.out.println("Start: " + startTime);
-		System.out.println("Stop: " + stopTime);
-		System.out.println("Delta: " + Duration.between(stopTime, startTime).abs());
-		System.out.println("Project Type: " + projectItems.getValue());
-		System.out.println("Life Cycle Step: " + lifeCycleItems.getValue());
-		System.out.println("Effort Category: " + effortCategories.getValue());
+		String effortDetails;
 		if (otherDetails.isVisible() == true) {
-			System.out.println("Effort Item: " + otherDetails.getText());
+			effortDetails = otherDetails.getText();
 		} else {
-			System.out.println("Effort Item: " + effortCategoryItems.getValue()); // if "other" -> comes from txt field
+			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from txt field
 		}
+		
+		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
+		// System.out.println(effortLog);
+//		System.out.println("Date: " + date);
+//		System.out.println("Start: " + startTime);
+//		System.out.println("Stop: " + stopTime);
+//		System.out.println("Delta: " + Duration.between(stopTime, startTime).abs());
+//		System.out.println("Project Type: " + projectItems.getValue());
+//		System.out.println("Life Cycle Step: " + lifeCycleItems.getValue());
+//		System.out.println("Effort Category: " + effortCategories.getValue());
+//		if (otherDetails.isVisible() == true) {
+//			System.out.println("Effort Item: " + otherDetails.getText());
+//		} else {
+//			System.out.println("Effort Item: " + effortCategoryItems.getValue()); // if "other" -> comes from txt field
+//		}
 	}
 	
 //	private LocalDate date;

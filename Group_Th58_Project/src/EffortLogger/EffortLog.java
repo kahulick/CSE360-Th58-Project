@@ -10,6 +10,7 @@ import java.util.Calendar;
 
 public class EffortLog {	// gonna have to map multiple Effort Logs to a project & utilize the update log 
 	
+	private String projectType;
 	private LocalDate date;
 	private LocalTime startTime;
 	private LocalTime stopTime;
@@ -18,7 +19,8 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project 
 	private String effortCategory;
 	private String effortCategoryItem;
 	
-	EffortLog(LocalDate date, LocalTime startTime, LocalTime stopTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
+	public EffortLog(String projectType, LocalDate date, LocalTime startTime, LocalTime stopTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
+		this.projectType = projectType;
 		this.date = date;
 		this.startTime = startTime;
 		this.stopTime = stopTime;
