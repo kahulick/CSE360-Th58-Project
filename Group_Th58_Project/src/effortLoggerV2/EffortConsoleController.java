@@ -1,6 +1,9 @@
 package effortLoggerV2;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,20 +72,21 @@ public class EffortConsoleController {
 		stage.show();
 	}
 	
-	public void startAnActivity(ActionEvent event) {	// placeholder
+	public void startAnActivity(ActionEvent event) { // calculate delta time within the Log class
 		start = true;
-		System.out.println("Clock Started");
 		clockLabel.setText("Clock is Running");
-		// clockLabel.setBackground("green");
 		clockLabel.setStyle("-fx-background-color: green;");
+		String startTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		System.out.println(startTime);
 		
 	}
 	
-	public void stopActivity(ActionEvent event) {	// placeholder
+	public void stopActivity(ActionEvent event) {	// calculate delta time within the Log class
 		if (start == true) {
-			System.out.println("Clock stopped");
 			clockLabel.setText("Clock is Stopped");
 			clockLabel.setStyle("-fx-background-color: red;");
+			String startTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+			System.out.println(startTime);
 		}
 		start = false;
 	}
