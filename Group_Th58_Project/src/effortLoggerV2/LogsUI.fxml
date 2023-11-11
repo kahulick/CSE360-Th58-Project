@@ -18,7 +18,7 @@
       </Label>
       <TabPane layoutY="23.0" prefHeight="577.0" prefWidth="900.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="effortLogs" onSelectionChanged="#initialize" text="Effort Logs">
+          <Tab fx:id="effortLogs" text="Effort Logs">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="536.0" prefWidth="900.0">
                      <children>
