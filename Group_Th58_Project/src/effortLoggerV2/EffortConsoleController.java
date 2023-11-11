@@ -3,6 +3,7 @@ package effortLoggerV2;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -29,12 +30,9 @@ public class EffortConsoleController {
 	private Parent root;
 	private EffortLogEditorController effortLogEditor;
 	private Definitions definitions = new Definitions();
-	private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	private String date; 
-	private String startTime;
-	private String stopTime;
-	private LocalTime startTest;
-	private LocalTime stopTest;
+	private LocalDate date; 
+	private LocalTime startTime;
+	private LocalTime stopTime;
 	
 	private boolean start = false;
 	
@@ -83,30 +81,21 @@ public class EffortConsoleController {
 		stage.show();
 	}
 	
-	public void startAnActivity(ActionEvent event) { // calculate delta time within the Log class
+	public void startAnActivity(ActionEvent event) { 
 		start = true;
 		clockLabel.setText("Clock is Running");
 		clockLabel.setStyle("-fx-background-color: green;");
-		startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-		date = startTime.substring(0,10);
-		startTest = LocalTime.now();
+		startTime = LocalTime.now().withNano(0);
+		date = LocalDate.now();
 	}
 	
 	public void stopActivity(ActionEvent event) {	// calculate delta time within the Log class
 		if (start == true) {
 			clockLabel.setText("Clock is Stopped");
 			clockLabel.setStyle("-fx-background-color: red;");
-			stopTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-			stopTest = LocalTime.now();
-			Duration duration = Duration.between(stopTest, startTest);
-			//long diff = Duration.between(stopTime, startTime);
-			// Date test = new Date();
-//			LocalDateTime now = LocalDateTime.now();
-//			now.
-			// LocalDateTime now = LocalDateTime.parse(stopTime, timeFormatter);
-			System.out.println("TEST " + duration);
-			
+			stopTime = LocalTime.now().withNano(0);
 		}
+
 		start = false;
 	}
 	
