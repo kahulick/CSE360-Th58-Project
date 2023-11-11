@@ -164,7 +164,11 @@ public class EffortConsoleController {
 		System.out.println("Project Type: " + projectItems.getValue());
 		System.out.println("Life Cycle Step: " + lifeCycleItems.getValue());
 		System.out.println("Effort Category: " + effortCategories.getValue());
-		System.out.println("Effort Item: " + effortCategoryItems.getValue()); // if "other" -> comes from txt field
+		if (otherDetails.isVisible() == true) {
+			System.out.println("Effort Item: " + otherDetails.getText());
+		} else {
+			System.out.println("Effort Item: " + effortCategoryItems.getValue()); // if "other" -> comes from txt field
+		}
 	}
 	
 //	private LocalDate date;
