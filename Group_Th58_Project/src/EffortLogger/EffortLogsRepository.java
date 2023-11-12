@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import effortLoggerV2.EffortConsoleController;
@@ -22,6 +24,8 @@ import EffortLogger.EffortLog;
 @SuppressWarnings("unused")
 
 public class EffortLogsRepository {
+	
+	private int effortLogAmt = 0;
 	
 	public void CreateEF(EffortLog effortLog) {
 		
@@ -44,40 +48,39 @@ public class EffortLogsRepository {
 	        //Oh, no! Failed to create PrintWriter'
 	    	System.out.println("Could not create PrintWriter");
 	    }
-
-	    //After successful creation of PrintWriter
-	    // out.println("Data data data");
 	    
 	    //changing effort log localDate into a string named 'date' by day
-	    final DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+	    DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
         String date = makeDate.format(effortLog.getDate());
         
         //change startTime to string
-        final DateTimeFormatter makeTime = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
+        DateTimeFormatter makeTime = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
         String startTime = makeTime.format(effortLog.getStartTime());
         String stopTime = makeTime.format(effortLog.getStopTime());
 	    
         //writes the effort log object as a string to the effort_logs.txt file, each log is seperated by a newline
 	    out.println(
 	    		
-	    		effortLog.getProjectType() + " " +
-	    		date + " " +
-	    		startTime + " " + 
-	    		stopTime + " " +
-	    		effortLog.getLifeCycleStep() + " " +
-	    		effortLog.getEffortCategory() + " " +
+	    		effortLog.getProjectType() + "," +
+	    		date + "," +
+	    		startTime + "," + 
+	    		stopTime + "," +
+	    		effortLog.getLifeCycleStep() + "," +
+	    		effortLog.getEffortCategory() + "," +
 	    		effortLog.getEffortCategoryItem()
 	    );
 
 	    //After done writing, remember to close!
 	    out.close();
 	    System.out.println("Log created...");
+	    
+	    //indicate that a new log has been added
+	    effortLogAmt++;
 	}
 	
-	public void retrieveTxtData() throws FileNotFoundException {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
+	//place holder test class
+	public void retrieveTxtData() throws FileNotFoundException {	
 		
-		//System.out.println("YAY DATA");  // placeholder so I can like it to the button lol 
-		// CreateEF();
 		File file = new File("effort_logs.txt");
 	    Scanner sc = new Scanner(file);
 	    while (sc.hasNextLine()) {
@@ -86,7 +89,55 @@ public class EffortLogsRepository {
 	    
 	    sc.close();
 	            
+	}
+	
+	public EffortLog[] getEffortRepo() throws FileNotFoundException {
 		
+		EffortLog[] effortRepo = new EffortLog[effortLogAmt];
+		
+		File file = new File("effort_logs.txt");
+		Scanner sc = new Scanner(file);
+		
+		//parameters for EffortLog objects
+		//String projectType, LocalDate date, LocalTime startTime, LocalTime stopTime, String lifeCycleStep, String effortCategory, String effortCategoryItem
+		
+		String projType;
+		LocalDate dt;
+		LocalTime startT;
+		LocalTime stopT;
+		String LCS;
+		String effortCat;
+		String ECItem;
+		
+		String[] effortLogData = new String[6];
+		
+		//for formatting the string in the txt file to LocalDate object
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		formatter = formatter.withLocale(Locale.ENGLISH); 
+
+		//for formatting the string in the txt file to LocalTime object
+		DateTimeFormatter parser = DateTimeFormatter.ofPattern("HH:mm:ss");
+		parser = parser.withLocale(Locale.ENGLISH);
+		
+		for(int i = 0; i < effortLogAmt; i++) {
+			 
+			effortLogData = sc.nextLine().split(",");
+			
+			projType = effortLogData[0];
+			dt = LocalDate.parse(effortLogData[1], formatter);
+			startT = LocalTime.parse(effortLogData[2], parser);
+			stopT = LocalTime.parse(effortLogData[3], parser);
+			LCS = effortLogData[4];
+			effortCat = effortLogData[5];
+			ECItem = effortLogData[6];
+			
+			effortRepo[i] = new EffortLog(projType, dt, startT, stopT, LCS, effortCat, ECItem);
+			
+		}
+		
+		sc.close();
+		
+		return effortRepo;
 	}
 
 }
