@@ -1,6 +1,5 @@
 package effortLoggerV2;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -23,6 +22,21 @@ import effortLoggerV2.EffortLogEditorController;
 import effortLoggerV2.LogsController;
 import EffortLogger.Definitions;
 import EffortLogger.EffortLog;
+
+//added imports for txt file reading
+//not all are needed, will prob trim later
+import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
 @SuppressWarnings("unused")
 
 public class EffortConsoleController {
@@ -191,6 +205,35 @@ public class EffortConsoleController {
 		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
 		// STORE THIS ^^^^ EFFORT LOG OBJECT INTO A TXT FILE WITHIN THE PROJ. FILES
 		return effortLog;
+	}
+	
+	public void CreateEF() {
+		
+		//code pulled from stackoverflow to create a PrintWriter
+		//other methods would not allow for appending data and only overwrite current data
+		
+		PrintWriter out = null;
+	    BufferedWriter bufWriter;
+
+	    try{
+	        bufWriter =
+	            Files.newBufferedWriter(
+	                Paths.get("effort_logs.txt"),
+	                Charset.forName("UTF8"),
+	                StandardOpenOption.WRITE, 
+	                StandardOpenOption.APPEND,
+	                StandardOpenOption.CREATE);
+	        out = new PrintWriter(bufWriter, true);
+	    }catch(IOException e){
+	        //Oh, no! Failed to create PrintWriter'
+	    	System.out.println("Could not create PrintWriter");
+	    }
+
+	    //After successful creation of PrintWriter
+	    out.println("Data data data");
+
+	    //After done writing, remember to close!
+	    out.close();
 	}
 
 }

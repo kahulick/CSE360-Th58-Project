@@ -1,6 +1,11 @@
 package effortLoggerV2;
 
+//used for reading file
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,7 +15,7 @@ import javafx.stage.Stage;
 import effortLoggerV2.EffortConsoleController;
 @SuppressWarnings("unused")
 
-public class EffortLogEditorController {
+public class EffortLogEditorController extends EffortConsoleController{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -23,7 +28,18 @@ public class EffortLogEditorController {
 		stage.show();
 	}
 	
-	public void retireveTxtData() {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
-		System.out.println("YAY DATA");  // placeholder so I can like it to the button lol 
+	public void retireveTxtData() throws FileNotFoundException {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
+		
+		//System.out.println("YAY DATA");  // placeholder so I can like it to the button lol 
+		CreateEF();
+		
+		File file = new File(
+	            "effort_logs.txt");
+	        Scanner sc = new Scanner(file);
+	 
+	        while (sc.hasNextLine())
+	            System.out.println(sc.nextLine());
+		
+		
 	}
 }
