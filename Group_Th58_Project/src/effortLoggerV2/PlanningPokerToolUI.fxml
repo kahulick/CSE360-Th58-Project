@@ -7,39 +7,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.PlanningPokerToolController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="effortLoggerV2.PlanningPokerToolController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exitPlanningPokerTool" text="BACK">
+      <Button layoutX="113.0" layoutY="96.0" mnemonicParsing="false" onAction="#exitPlanningPokerTool" text="BACK">
          <font>
             <Font name="Verdana Bold" size="11.0" />
          </font>
       </Button>
-      <Label layoutX="124.0" layoutY="11.0" text="PLANNING POKER REPOSITORY ACCESS TOOL">
+      <Label layoutX="276.0" layoutY="94.0" text="PLANNING POKER REPOSITORY ACCESS TOOL">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="126.0" layoutY="57.0" text="Key Words:">
+      <Label layoutX="214.0" layoutY="171.0" text="Key Words:">
          <font>
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="353.0" layoutY="49.0" text="Project Specifications:">
+      <Label layoutX="589.0" layoutY="163.0" text="Project Specifications:">
          <font>
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="126.0" layoutY="101.0" text="                      LOG HISTORY                       " underline="true">
+      <Label layoutX="298.0" layoutY="216.0" text="                      LOG HISTORY                       " underline="true">
          <font>
             <Font name="Verdana Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="195.0" layoutY="347.0" mnemonicParsing="false" onAction="#calculateStoryPoints" text="GENERATE STORY POINTS">
+      <Button layoutX="393.0" layoutY="495.0" mnemonicParsing="false" onAction="#calculateStoryPoints" text="GENERATE STORY POINTS">
          <font>
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Button>
-      <TableView layoutX="25.0" layoutY="131.0" prefHeight="54.0" prefWidth="544.0">
+      <TableView layoutX="178.0" layoutY="264.0" prefHeight="54.0" prefWidth="544.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Project" />
           <TableColumn prefWidth="75.0" text="Number" />
@@ -50,12 +50,12 @@
             <TableColumn prefWidth="75.0" text="Deliverable" />
         </columns>
       </TableView>
-      <Label layoutX="25.0" layoutY="194.0" text="TestData1: testProject&quot;, 1, &quot;10/29/23&quot;, &quot;10.25.03&quot;, &quot;Planning&quot;, &quot;buisiness&quot;, &quot;create server for client&quot;">
+      <Label layoutX="168.0" layoutY="345.0" text="TestData1: testProject&quot;, 1, &quot;10/29/23&quot;, &quot;10.25.03&quot;, &quot;Planning&quot;, &quot;buisiness&quot;, &quot;create server for client&quot;">
          <font>
             <Font name="Verdana Bold" size="9.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="194.0" prefHeight="46.0" prefWidth="578.0" text="TestData2: testProject2&quot;, 2, &quot;10/24/23&quot;, &quot;12.06.301&quot;, &quot;Verifying&quot;, &quot;development&quot;, &quot;Payment Plan Widget&quot;">
+      <Label layoutX="161.0" layoutY="380.0" prefHeight="46.0" prefWidth="578.0" text="TestData2: testProject2&quot;, 2, &quot;10/24/23&quot;, &quot;12.06.301&quot;, &quot;Verifying&quot;, &quot;development&quot;, &quot;Payment Plan Widget&quot;">
          <font>
             <Font name="Verdana Bold" size="9.0" />
          </font>

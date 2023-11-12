@@ -68,7 +68,7 @@ public class PlanningPokerToolController implements Initializable {
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
 		System.out.println("leaving.");
-		Parent root = FXMLLoader.load(getClass().getResource("EffortLoggerUI.fxml")); 
+		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

@@ -96,5 +96,10 @@
          </font>
       </Label>
       <TextField fx:id="otherDetails" layoutX="80.0" layoutY="372.0" prefHeight="26.0" prefWidth="753.0" visible="false" />
+      <Button layoutX="672.0" layoutY="17.0" mnemonicParsing="false" onAction="#launchPlanningPokerTool" text="Launch Planning Poker Tool">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
