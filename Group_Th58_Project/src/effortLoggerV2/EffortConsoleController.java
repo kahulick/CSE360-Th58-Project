@@ -22,6 +22,7 @@ import effortLoggerV2.EffortLogEditorController;
 import effortLoggerV2.LogsController;
 import EffortLogger.Definitions;
 import EffortLogger.EffortLog;
+import EffortLogger.EffortLogsRepository;
 
 //added imports for txt file reading
 //not all are needed, will prob trim later
@@ -47,6 +48,7 @@ public class EffortConsoleController {
 	private Definitions definitions = new Definitions();
 	private LogsController logsController = new LogsController();
 	private PlanningPokerToolController planningPokerToolController = new PlanningPokerToolController();
+	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	private LocalDate date; 
 	private LocalTime startTime;
 	private LocalTime stopTime;
@@ -204,36 +206,8 @@ public class EffortConsoleController {
 		}
 		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
 		// STORE THIS ^^^^ EFFORT LOG OBJECT INTO A TXT FILE WITHIN THE PROJ. FILES
+		effortLogsRepository.CreateEF(effortLog);
 		return effortLog;
-	}
-	
-	public void CreateEF() {
-		
-		//code pulled from stackoverflow to create a PrintWriter
-		//other methods would not allow for appending data and only overwrite current data
-		
-		PrintWriter out = null;
-	    BufferedWriter bufWriter;
-
-	    try{
-	        bufWriter =
-	            Files.newBufferedWriter(
-	                Paths.get("effort_logs.txt"),
-	                Charset.forName("UTF8"),
-	                StandardOpenOption.WRITE, 
-	                StandardOpenOption.APPEND,
-	                StandardOpenOption.CREATE);
-	        out = new PrintWriter(bufWriter, true);
-	    }catch(IOException e){
-	        //Oh, no! Failed to create PrintWriter'
-	    	System.out.println("Could not create PrintWriter");
-	    }
-
-	    //After successful creation of PrintWriter
-	    out.println("Data data data");
-
-	    //After done writing, remember to close!
-	    out.close();
 	}
 
 }

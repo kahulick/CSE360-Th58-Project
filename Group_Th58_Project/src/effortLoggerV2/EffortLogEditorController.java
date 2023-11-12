@@ -13,12 +13,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortConsoleController;
+import EffortLogger.EffortLogsRepository;
 @SuppressWarnings("unused")
 
-public class EffortLogEditorController extends EffortConsoleController{
+public class EffortLogEditorController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	
 	public void launchEffortConsole(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
@@ -28,18 +30,8 @@ public class EffortLogEditorController extends EffortConsoleController{
 		stage.show();
 	}
 	
-	public void retireveTxtData() throws FileNotFoundException {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
-		
-		//System.out.println("YAY DATA");  // placeholder so I can like it to the button lol 
-		CreateEF();
-		
-		File file = new File(
-	            "effort_logs.txt");
-	        Scanner sc = new Scanner(file);
-	 
-	        while (sc.hasNextLine())
-	            System.out.println(sc.nextLine());
-		
-		
+	public void retireveTxtData() throws FileNotFoundException {
+		effortLogsRepository.retireveTxtData();
 	}
+	
 }
