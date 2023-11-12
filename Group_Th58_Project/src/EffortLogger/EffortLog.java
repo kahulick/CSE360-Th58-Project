@@ -18,6 +18,19 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project 
 	private String lifeCycleStep;
 	private String effortCategory;
 	private String effortCategoryItem;
+	private int number = 1;
+	
+	// Effort Log object used to map into the table (no projectType & has a set deltaTime attribute)
+	public EffortLog(int number, LocalDate date, LocalTime startTime, LocalTime stopTime, String deltaTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
+		this.number = number;
+		this.date = date;
+		this.startTime = startTime;
+		this.stopTime = stopTime;
+		this.deltaTime = deltaTime;
+		this.lifeCycleStep = lifeCycleStep;
+		this.effortCategory = effortCategory;
+		this.effortCategoryItem = effortCategoryItem;
+	}
 	
 	public EffortLog(String projectType, LocalDate date, LocalTime startTime, LocalTime stopTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
 		this.projectType = projectType;
@@ -83,6 +96,10 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project 
 
 	public String getDeltaTime() {
 		return deltaTime;
+	}
+	
+	public int getNumber() {
+		return 1;
 	}
 	
 	

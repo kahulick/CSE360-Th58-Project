@@ -9,7 +9,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortLogEditorController;
+import effortLoggerV2.LogsController;
 import EffortLogger.Definitions;
 import EffortLogger.EffortLog;
 @SuppressWarnings("unused")
@@ -31,6 +31,7 @@ public class EffortConsoleController {
 	private Parent root;
 	private EffortLog effortLog;
 	private Definitions definitions = new Definitions();
+	private LogsController logsController = new LogsController();
 	private LocalDate date; 
 	private LocalTime startTime;
 	private LocalTime stopTime;
@@ -75,11 +76,27 @@ public class EffortConsoleController {
 	}
 	
 	public void launchLogs(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("LogsUI.fxml")); 
+		
+		Parent root = FXMLLoader.load(getClass().getResource("LogsUI.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogsUI.fxml"));
+		// Parent root = (Parent)loader.load();
+		loader.setController(logsController);
+		logsController = loader.<LogsController>getController();
+		
+		
+		logsController.setEffortLog(effortLog);
+		// logsController = new LogsController();
+		// logsController.enterLog(effortLog);;
+		// Parent root = loader.load(); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		// stage.setUserData(effortLog);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+//		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//		scene = new Scene(root);
+//		stage.setScene(scene);
+//		stage.show();
 	}
 	
 	public void startAnActivity(ActionEvent event) { 
@@ -156,26 +173,30 @@ public class EffortConsoleController {
 		effortCategoryLabel.setText(effortCategories.getValue());
 	}
 	
+//	@FXML
+//	public void logEffort() {
+//		String effortDetails;
+//		if (otherDetails.isVisible() == true) {
+//			effortDetails = otherDetails.getText();
+//		} else {
+//			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from txt field
+//		}
+//		
+//		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
+//		// logsController.enterLog(effortLog);
+//	}	
+	
 	@FXML
-	public void logEffort() {
+	public EffortLog logEffort() {
 		String effortDetails;
 		if (otherDetails.isVisible() == true) {
 			effortDetails = otherDetails.getText();
 		} else {
 			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from txt field
 		}
-		
 		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
-		
-		System.out.println("Date: " + effortLog.getDate());
-		System.out.println("Start: " + effortLog.getStartTime());
-		System.out.println("Stop: " + effortLog.getStopTime());
-		System.out.println("Delta: " + effortLog.getDeltaTime());
-		System.out.println("Project Type: " + effortLog.getProjectType());
-		System.out.println("Life Cycle Step: " + effortLog.getLifeCycleStep());
-		System.out.println("Effort Category: " + effortLog.getEffortCategory());
-		System.out.println("Effort Category: " + effortLog.getEffortCategoryItem());
-	}	
+		return effortLog;
+	}
 
 }
 
