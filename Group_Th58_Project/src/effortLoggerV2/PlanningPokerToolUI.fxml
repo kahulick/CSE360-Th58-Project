@@ -29,11 +29,6 @@
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="storyPointsButton" layoutX="358.0" layoutY="399.0" mnemonicParsing="false" onAction="#calculateStoryPoints" text="GENERATE STORY POINTS" visible="false">
-         <font>
-            <Font name="Verdana Bold" size="13.0" />
-         </font>
-      </Button>
       <Label layoutX="703.0" layoutY="17.0" text="Round # :">
          <font>
             <Font name="Verdana Bold" size="12.0" />

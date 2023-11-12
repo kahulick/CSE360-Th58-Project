@@ -68,9 +68,14 @@ public class PlanningPokerToolController {
 		stage.show();
 	}
 	
-	public void loadRelevantLogs(ActionEvent event) {
+	public void loadRelevantLogs(ActionEvent event) throws IOException {
 		System.out.println("Here are your logs");
-		storyPointsButton.setVisible(true);
+		Parent root = FXMLLoader.load(getClass().getResource("PlanningPokerToolRound1UI.fxml")); 
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		// storyPointsButton.setVisible(true);
 	}
 	
 	public void endPlanningPokerRound (ActionEvent event) {
