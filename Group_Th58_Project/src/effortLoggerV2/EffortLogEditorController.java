@@ -31,7 +31,7 @@ public class EffortLogEditorController {
 	}
 	
 	public void retireveTxtData() throws FileNotFoundException {
-		effortLogsRepository.retireveTxtData();
+		effortLogsRepository.retrieveTxtData();
 	}
 	
 }

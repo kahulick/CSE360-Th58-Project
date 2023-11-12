@@ -3,6 +3,7 @@ package EffortLogger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
@@ -11,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.format.DateTimeFormatter;
+
 import effortLoggerV2.EffortConsoleController;
 import effortLoggerV2.LogsController;
 import effortLoggerV2.EffortLogEditorController;
@@ -44,15 +47,34 @@ public class EffortLogsRepository {
 
 	    //After successful creation of PrintWriter
 	    // out.println("Data data data");
-	    out.println("you made it!");
-	    out.println(effortLog.getLifeCycleStep());
+	    
+	    //changing effort log localDate into a string named 'date' by day
+	    final DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+        String date = makeDate.format(effortLog.getDate());
+        
+        //change startTime to string
+        final DateTimeFormatter makeTime = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
+        String startTime = makeTime.format(effortLog.getStartTime());
+        String stopTime = makeTime.format(effortLog.getStopTime());
+	    
+        //writes the effort log object as a string to the effort_logs.txt file, each log is seperated by a newline
+	    out.println(
+	    		
+	    		effortLog.getProjectType() + " " +
+	    		date + " " +
+	    		startTime + " " + 
+	    		stopTime + " " +
+	    		effortLog.getLifeCycleStep() + " " +
+	    		effortLog.getEffortCategory() + " " +
+	    		effortLog.getEffortCategoryItem()
+	    );
 
 	    //After done writing, remember to close!
 	    out.close();
-	    System.out.println(effortLog.getLifeCycleStep());
+	    System.out.println("Log created...");
 	}
 	
-	public void retireveTxtData() throws FileNotFoundException {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
+	public void retrieveTxtData() throws FileNotFoundException {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
 		
 		//System.out.println("YAY DATA");  // placeholder so I can like it to the button lol 
 		// CreateEF();
