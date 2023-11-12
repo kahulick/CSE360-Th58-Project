@@ -28,18 +28,14 @@ public class EffortLogEditorController extends EffortConsoleController{
 		stage.show();
 	}
 	
-	public void retireveTxtData() throws FileNotFoundException {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
-		
-		//System.out.println("YAY DATA");  // placeholder so I can like it to the button lol 
+	public void retireveTxtData() throws FileNotFoundException {	//  called by button in
 		CreateEF();
-		
-		File file = new File(
-	            "effort_logs.txt");
-	        Scanner sc = new Scanner(file);
-	 
-	        while (sc.hasNextLine())
-	            System.out.println(sc.nextLine());
-		
-		
+		File file = new File("effort_logs.txt");
+	    Scanner sc = new Scanner(file);
+	    
+	    while (sc.hasNextLine()) {
+	    	System.out.println(sc.nextLine());
+	    }
+	    sc.close();
 	}
 }

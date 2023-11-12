@@ -189,7 +189,7 @@ public class EffortConsoleController {
 		if (effortCategories.getValue() == "Others") {
 			effortCategoryItems.setItems(definitions.options3e);  // empty "" in array list
 			otherDetailsLabel.setVisible(true);
-			otherDetails.setVisible(true);
+			otherDetails.setVisible(true);	// hide the text if Other is not selected
 		}
 		effortCategoryLabel.setText(effortCategories.getValue());
 	}
