@@ -165,7 +165,9 @@ public class LogsController {	// eventually make an observable list for effort l
 	
 	public void addToTable() {
 		if (effortLog != null) {
-			effortLogsTable.getItems().add(effortLog);
+			EffortLog effortLogRow = new EffortLog(effortLog.getNumber(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getDeltaTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
+			logs.add(effortLogRow);
+			effortLogsTable.getItems().add(effortLogRow);
 		}
 		effortLogsTable.refresh();
 		System.out.println(effortLogsTable.getItems());
