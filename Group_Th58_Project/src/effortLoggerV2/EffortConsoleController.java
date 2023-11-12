@@ -189,6 +189,7 @@ public class EffortConsoleController {
 			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from txt field
 		}
 		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
+		// STORE THIS ^^^^ EFFORT LOG OBJECT INTO A TXT FILE WITHIN THE PROJ. FILES
 		return effortLog;
 	}
 

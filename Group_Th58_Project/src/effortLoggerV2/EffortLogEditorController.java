@@ -22,4 +22,8 @@ public class EffortLogEditorController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	public void retireveTxtData() {	//  PLACEHOLDER -> MANIPULATE AS NEEDED
+		System.out.println("YAY DATA");  // placeholder so I can like it to the button lol 
+	}
 }

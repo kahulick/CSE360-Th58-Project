@@ -24,5 +24,10 @@
             <Font name="Verdana" size="16.0" />
          </font>
       </Button>
+      <Button layoutX="275.0" layoutY="208.0" mnemonicParsing="false" onAction="#retireveTxtData" text="GET DATA FROM FILE">
+         <font>
+            <Font name="Verdana Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
