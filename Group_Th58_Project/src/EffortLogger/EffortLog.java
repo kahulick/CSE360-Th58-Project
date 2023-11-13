@@ -100,9 +100,6 @@ public class EffortLog {	// gonna have to map multiple Effort Logs to a project 
 	
 	public int getNumber() {
 		return 1;
-	}
-	
-	
-	
+	}	
 
 }
