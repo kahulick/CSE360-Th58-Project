@@ -58,6 +58,7 @@ public class PlanningPokerToolController {
 	
 	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList();
 	private ObservableList<String> displayedData = FXCollections.observableArrayList();
+	private ObservableList<String> refinedData;
 	
 	@FXML
 	Label roundLabel = new Label();
@@ -134,24 +135,25 @@ public class PlanningPokerToolController {
 		logHistoryLabel.setVisible(true);
 		storyPointsButton.setVisible(true);
 		updateSearchButton.setVisible(true);
-		
 	}
 	
 	
 	public void updateInput(ActionEvent event) throws IOException {
 		submit.setVisible(true);
-		keyWordsInput.setLayoutY(64);
+		keyWordsInput.setLayoutY(60);
 		keyWordsInput.setVisible(true);
 	}
 	
 	public void submitUpdates(ActionEvent event) throws IOException {
 		keyWords = keyWordsInput.getText();
-		currentKeyWords.setText("Key Words: " + keyWords);
+//		refineData(keyWords);
 		currentKeyWords.setText("Key Words: " + keyWords);
 		projectTypeLabel.setText("Project Type: " + projectType);
 		projectNameLabel.setText("Project Name: " + projectName);
 		submit.setVisible(false);
 		keyWordsInput.setVisible(false);
+		refineData(keyWords);
+		userEffortLogs.setItems(refinedData);
 	}
 	
 	
@@ -182,6 +184,25 @@ public class PlanningPokerToolController {
 	    		log.getEffortCategory() + "," +
 	    		log.getEffortCategoryItem());
         // adds EffortLog objects as strings to the array
+	}
+	
+	public void refineData(String keywords) {
+		refinedData = FXCollections.observableArrayList();
+		System.out.println("MADE IT..");
+		keyWords = keyWords.replaceAll("\s","");
+		keyWords = keyWords.toLowerCase();
+		String[] kw = keywords.split("[, ]", 0);
+		for (String log: displayedData) {
+			log = log.toLowerCase();
+			for (String keyWord: kw) {
+				if (keyWord.equals("") == false && log.contains(keyWord) && refinedData.contains(log) == false) {
+					refinedData.add(log);
+				}
+			}
+		}
+		
+		
+		
 	}
 
 
