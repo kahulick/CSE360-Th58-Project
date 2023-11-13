@@ -29,6 +29,8 @@ import javafx.scene.control.TextField;
 import prototypes.Prototype1;
 import prototypes.Prototype2;
 import effortLoggerV2.EffortLoggerController;
+import EffortLogger.EffortLog;
+import EffortLogger.PlanningPokerCalculator;
 import EffortLogger.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
