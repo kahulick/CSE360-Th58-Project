@@ -82,5 +82,11 @@
          </font>
       </Button>
       <ListView fx:id="userEffortLogs" editable="true" layoutX="76.0" layoutY="148.0" prefHeight="410.0" prefWidth="746.0" visible="false" />
+      <Label fx:id="estStoryPoints" layoutX="408.0" layoutY="491.0" text=" ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="adjustWeight" layoutX="728.0" layoutY="119.0" mnemonicParsing="false" onAction="#weightedStoryPoints" text="Adjust Story Point Weight" />
    </children>
 </AnchorPane>

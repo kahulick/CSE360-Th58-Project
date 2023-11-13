@@ -55,6 +55,7 @@ public class PlanningPokerToolController {
 	public String keyWords;
 	
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
+	private PlanningPokerCalculator planningPokerCalculator = new PlanningPokerCalculator();
 	
 	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList();
 	private ObservableList<String> displayedData = FXCollections.observableArrayList();
@@ -72,6 +73,8 @@ public class PlanningPokerToolController {
 	Label promptLabel;
 	@FXML
 	Button loadHistory;
+	@FXML
+	Label estStoryPoints = new Label();
 	
 	
 	@FXML
@@ -88,6 +91,8 @@ public class PlanningPokerToolController {
 	Label logHistoryLabel;
 	@FXML
 	Button submit = new Button();
+	@FXML
+	Button adjustWeight = new Button();
 	
 	@FXML
 	private ListView<String> userEffortLogs;
@@ -164,6 +169,10 @@ public class PlanningPokerToolController {
 	
 	public void calculateStoryPoints(ActionEvent event) {
 		System.out.println("STORY POINTS???");
+		double storyPts = planningPokerCalculator.calculateStoryPoints(historicalData);
+		estStoryPoints.setText("Estimated Story Points: " + String.format("%.2f", storyPts));
+		estStoryPoints.setVisible(true);
+		adjustWeight.setVisible(true);
 	}
 	
 	public void mapToString(EffortLog log) {	// refactored from Kevin's repository class
@@ -202,8 +211,12 @@ public class PlanningPokerToolController {
 		}
 		
 		
-		
 	}
+	
+	public void weightedStoryPoints(ActionEvent event) {
+		System.out.println("Insert Weighted StoryPoints");
+	}
+	
 
 
 }
