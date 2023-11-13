@@ -2,3 +2,7 @@ Development Project,12/11/2023,18:11:12,18:11:21,Conceptual Design Plan,Delivera
 Development Project,12/11/2023,18:12:01,18:12:14,Detailed Design Review,Plans,Risk Management Plan
 Development Project,12/11/2023,18:43:48,18:43:54,Conceptual Design Plan,Interruptions,Teammate
 Business Project,12/11/2023,18:43:58,18:44:04,Information Understanding,Interruptions,Phone
+Business Project,12/11/2023,19:02:43,19:02:50,Information Gathering,Interruptions,Teammate
+Development Project,12/11/2023,19:02:59,19:03:09,Requirements,Deliverables,Test Cases
+Development Project,12/11/2023,20:04:19,20:04:30,Conceptual Design Plan,Interruptions,Teammate
+Business Project,12/11/2023,20:13:11,20:13:26,Verifying,Others,hey!!

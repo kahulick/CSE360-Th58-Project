@@ -6,8 +6,10 @@ import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -22,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,6 +34,7 @@ import prototypes.Prototype2;
 import effortLoggerV2.EffortLoggerController;
 import EffortLogger.EffortLog;
 import EffortLogger.PlanningPokerCalculator;
+import EffortLogger.EffortLogsRepository;
 import EffortLogger.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,6 +53,11 @@ public class PlanningPokerToolController {
 	public String projectType;
 	public String projectName;
 	public String keyWords;
+	
+	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
+	
+	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList();
+	private ObservableList<String> displayedData = FXCollections.observableArrayList();
 	
 	@FXML
 	Label roundLabel = new Label();
@@ -78,8 +87,9 @@ public class PlanningPokerToolController {
 	Label logHistoryLabel;
 	@FXML
 	Button submit = new Button();
-
-
+	
+	@FXML
+	private ListView<String> userEffortLogs;
 	
 	public void launching() {
 		System.out.println("PLANNING POKER TOOL");
@@ -96,6 +106,16 @@ public class PlanningPokerToolController {
 	
 	@FXML
 	public void loadRelevantLogs(ActionEvent event) throws IOException {
+		int count = effortLogsRepository.getEffortLogs();
+		System.out.println("Count: " + effortLogsRepository.getEffortLogs());
+		EffortLog[] effortLogs = effortLogsRepository.getEffortRepo(count);
+		for (EffortLog log : effortLogs) {
+			historicalData.add(log);	// updates array of logs
+			mapToString(log);			// updates array of strings (that represent logs)
+		}
+		userEffortLogs.setItems(displayedData);
+		userEffortLogs.setVisible(true);
+		
 		projectType = projectTypeInput.getText();
 		projectName = projectNameInput.getText();
 		keyWords = keyWordsInput.getText();
@@ -114,6 +134,7 @@ public class PlanningPokerToolController {
 		logHistoryLabel.setVisible(true);
 		storyPointsButton.setVisible(true);
 		updateSearchButton.setVisible(true);
+		
 	}
 	
 	
@@ -141,6 +162,26 @@ public class PlanningPokerToolController {
 	
 	public void calculateStoryPoints(ActionEvent event) {
 		System.out.println("STORY POINTS???");
+	}
+	
+	public void mapToString(EffortLog log) {	// refactored from Kevin's repository class
+		//DateTimeFormatter 
+	    DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+        String date = makeDate.format(log.getDate());
+        
+        //change startTime to string
+        DateTimeFormatter makeTime = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
+        String startTime = makeTime.format(log.getStartTime());
+        String stopTime = makeTime.format(log.getStopTime());
+        
+        displayedData.add(log.getProjectType() + "," +
+	    		date + "," +
+	    		startTime + "," + 
+	    		stopTime + "," +
+	    		log.getLifeCycleStep() + "," +
+	    		log.getEffortCategory() + "," +
+	    		log.getEffortCategoryItem());
+        // adds EffortLog objects as strings to the array
 	}
 
 

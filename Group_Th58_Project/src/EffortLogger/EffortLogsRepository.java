@@ -3,7 +3,10 @@ package EffortLogger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
@@ -95,52 +98,36 @@ public class EffortLogsRepository {
 	    }
 	    
 	    sc.close();
-	    
-	    /*
-	    //purely for testing down here
-	    System.out.print("\nPrinting out effort log repository...\n");
-	    
-	    //changing effort log localDate into a string named 'date' by day
-	    DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
-        
-        //change startTime to string
-        DateTimeFormatter makeTime = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
-        
-        String date;
-        String startTime;
-        String stopTime;
-        EffortLog[] repo = getEffortRepo();
-        
-	    //should print out the logs as string data in the terminal, confirming that String data was able to be 
-        //turned into an EffortLog object and reproducing the original string data derived from the initial 
-        //EffortLog object
-	    for(int i = 0; i < repo.length; i++) {
-	    	
-	    	//turning localDate/Time data into string data
-	    	date = makeDate.format(repo[i].getDate());
-	    	startTime = makeTime.format(repo[i].getStartTime());
-	        stopTime = makeTime.format(repo[i].getStopTime());
-	    	
-	        //printing out the effort log as string data
-	    	System.out.println(
-	    			
-	    			repo[i].getProjectType() + ", " +
-		    		date + ", " +
-		    		startTime + ", " + 
-		    		stopTime + ", " +
-		    		repo[i].getLifeCycleStep() + ", " +
-		    		repo[i].getEffortCategory() + ", " +
-		    		repo[i].getEffortCategoryItem()
-		    );
-	    	
-	    }
-	    */
 	            
 	}
 	
-	public EffortLog[] getEffortRepo() throws FileNotFoundException {
+	public int getEffortLogs() throws IOException {
+		int effortLogCount = 0;
+		File file = new File("effort_logs.txt");
+	    Scanner sc = new Scanner(file);
+	    while (sc.hasNextLine()) {
+	    	System.out.println(sc.nextLine());
+	    	effortLogCount++;
+	    }
+	    sc.close();
+	    return effortLogCount;
+	}
+	
+	public List<String> getEffortLogStrings() throws IOException, NoSuchElementException {
+		List<String> logStrings = new ArrayList<String>();
+		File file = new File("effort_logs.txt");
+	    Scanner sc = new Scanner(file);
+	    while (sc.hasNextLine()) {
+	    	System.out.println(sc.nextLine());
+	    	logStrings.add(sc.nextLine());
+	    }
+	    sc.close();
+	    return logStrings;
+	}
+	
+	public EffortLog[] getEffortRepo(int numLogs) throws FileNotFoundException {	// take count input from PPT
 		
-		EffortLog[] effortRepo = new EffortLog[effortLogAmt];
+		EffortLog[] effortRepo = new EffortLog[numLogs];
 		
 		File file = new File("effort_logs.txt");
 		Scanner sc = new Scanner(file);
@@ -166,7 +153,7 @@ public class EffortLogsRepository {
 		DateTimeFormatter parser = DateTimeFormatter.ofPattern("HH:mm:ss");
 		parser = parser.withLocale(Locale.ENGLISH);
 		
-		for(int i = 0; i < effortLogAmt; i++) {
+		for(int i = 0; i < numLogs; i++) {
 			 
 			//making effortLogData equal to the txt file line by line, thereby making sure only one effort log
 			//is parsed at a time
