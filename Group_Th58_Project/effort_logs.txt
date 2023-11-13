@@ -6,3 +6,10 @@ Business Project,12/11/2023,19:02:43,19:02:50,Information Gathering,Interruption
 Development Project,12/11/2023,19:02:59,19:03:09,Requirements,Deliverables,Test Cases
 Development Project,12/11/2023,20:04:19,20:04:30,Conceptual Design Plan,Interruptions,Teammate
 Business Project,12/11/2023,20:13:11,20:13:26,Verifying,Others,hey!!
+Business Project,12/11/2023,20:38:58,20:39:10,Coach Meeting,Others,TESTING
+Business Project,12/11/2023,20:46:52,20:47:03,Verifying,Plans,Detailed Design Plan
+Development Project,12/11/2023,20:47:16,20:48:12,Requirements,Others,Figuring out what my boss wants me to do 
+Development Project,12/11/2023,21:23:53,21:24:06,Conceptual Design,Interruptions,Teammate
+Business Project,12/11/2023,21:27:25,21:27:32,Verifying,Interruptions,Visitor
+Business Project,12/11/2023,21:27:33,21:27:42,Team Meeting,Defects,50 Interface
+Business Project,12/11/2023,21:30:16,21:31:31,Verifying,Others,make sure search engine returns back within 1ns
