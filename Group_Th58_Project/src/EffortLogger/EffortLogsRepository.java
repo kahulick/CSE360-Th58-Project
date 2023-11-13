@@ -27,7 +27,8 @@ public class EffortLogsRepository {
 	
 	//need to save to txt file somehow so that count stay accurate;
 	//anything having to do with effortLogAmt is only works if txt file starts empty and only for current session
-	private int effortLogAmt = 0;
+	//WILL ONLY
+	private static int effortLogAmt = 0;
 	
 	public void CreateEF(EffortLog effortLog) {
 		
@@ -93,9 +94,45 @@ public class EffortLogsRepository {
 	    	System.out.println(sc.nextLine());
 	    }
 	    
-	    System.out.print(getEffortRepo());
-	    
 	    sc.close();
+	    
+	    //purely for testing down here
+	    System.out.print("\nPrinting out effort log repository...\n");
+	    
+	    //changing effort log localDate into a string named 'date' by day
+	    DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+        
+        //change startTime to string
+        DateTimeFormatter makeTime = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
+        
+        String date;
+        String startTime;
+        String stopTime;
+        EffortLog[] repo = getEffortRepo();
+        
+	    //should print out the logs as string data in the terminal, confirming that String data was able to be 
+        //turned into an EffortLog object and reproducing the original string data derived from the initial 
+        //EffortLog object
+	    for(int i = 0; i < repo.length; i++) {
+	    	
+	    	//turning localDate/Time data into string data
+	    	date = makeDate.format(repo[i].getDate());
+	    	startTime = makeTime.format(repo[i].getStartTime());
+	        stopTime = makeTime.format(repo[i].getStopTime());
+	    	
+	        //printing out the effort log as string data
+	    	System.out.println(
+	    			
+	    			repo[i].getProjectType() + ", " +
+		    		date + ", " +
+		    		startTime + ", " + 
+		    		stopTime + ", " +
+		    		repo[i].getLifeCycleStep() + ", " +
+		    		repo[i].getEffortCategory() + ", " +
+		    		repo[i].getEffortCategoryItem()
+		    );
+	    	
+	    }
 	            
 	}
 	
@@ -129,6 +166,8 @@ public class EffortLogsRepository {
 		
 		for(int i = 0; i < effortLogAmt; i++) {
 			 
+			//making effortLogData equal to the txt file line by line, thereby making sure only one effort log
+			//is parsed at a time
 			effortLogData = sc.nextLine().split(",");
 			
 			projType = effortLogData[0];
