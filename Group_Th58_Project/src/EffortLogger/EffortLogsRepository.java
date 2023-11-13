@@ -25,6 +25,8 @@ import EffortLogger.EffortLog;
 
 public class EffortLogsRepository {
 	
+	//need to save to txt file somehow so that count stay accurate;
+	//anything having to do with effortLogAmt is only works if txt file starts empty and only for current session
 	private int effortLogAmt = 0;
 	
 	public void CreateEF(EffortLog effortLog) {
@@ -58,7 +60,7 @@ public class EffortLogsRepository {
         String startTime = makeTime.format(effortLog.getStartTime());
         String stopTime = makeTime.format(effortLog.getStopTime());
 	    
-        //writes the effort log object as a string to the effort_logs.txt file, each log is seperated by a newline
+        //writes the effort log object as a string to the effort_logs.txt file, each log is separated by a newline
 	    out.println(
 	    		
 	    		effortLog.getProjectType() + "," +
@@ -72,10 +74,14 @@ public class EffortLogsRepository {
 
 	    //After done writing, remember to close!
 	    out.close();
-	    System.out.println("Log created...");
 	    
 	    //indicate that a new log has been added
 	    effortLogAmt++;
+	    System.out.println("Log created...");
+	    
+	    //not functional, used for testing logs created in current session ONLY
+	    System.out.println("Current logs: " + effortLogAmt);
+	    
 	}
 	
 	//place holder test class
@@ -86,6 +92,8 @@ public class EffortLogsRepository {
 	    while (sc.hasNextLine()) {
 	    	System.out.println(sc.nextLine());
 	    }
+	    
+	    System.out.print(getEffortRepo());
 	    
 	    sc.close();
 	            
