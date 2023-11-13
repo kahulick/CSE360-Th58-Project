@@ -19,16 +19,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="172.0" layoutY="145.0" text="Project Type :">
-         <font>
-            <Font name="Verdana Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="169.0" layoutY="200.0" text="Project Name :">
-         <font>
-            <Font name="Verdana Bold" size="13.0" />
-         </font>
-      </Label>
       <Label layoutX="703.0" layoutY="17.0" text="Round # :">
          <font>
             <Font name="Verdana Bold" size="12.0" />
@@ -45,22 +35,49 @@
          </font>
       </Label>
       <Line endX="692.0" endY="-53.19999313354492" layoutX="208.0" layoutY="102.0" startX="-208.0" startY="-53.19999313354492" strokeWidth="2.0" />
-      <Label layoutX="223.0" layoutY="70.0" text="Please input project information for this Planning Poker Session: ">
+      <Label fx:id="promptLabel" layoutX="209.0" layoutY="194.0" text="Please input project information for this Planning Poker Session: ">
          <font>
             <Font name="Verdana Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="193.0" layoutY="250.0" text="Keywords :">
+      <TextField fx:id="projectNameInput" layoutX="253.0" layoutY="287.0" prefHeight="26.0" prefWidth="378.0" promptText="Project Name" />
+      <TextField fx:id="projectTypeInput" layoutX="253.0" layoutY="238.0" prefHeight="26.0" prefWidth="378.0" promptText="Project Type" />
+      <TextField fx:id="keyWordsInput" layoutX="253.0" layoutY="340.0" prefHeight="26.0" prefWidth="378.0" promptText="Key Words" />
+      <Button fx:id="loadHistory" layoutX="331.0" layoutY="385.0" mnemonicParsing="false" onAction="#loadRelevantLogs" text="Load Relevant Historical Logs">
          <font>
             <Font name="Verdana Bold" size="13.0" />
          </font>
-      </Label>
-      <TextField fx:id="projectNameInput" layoutX="295.0" layoutY="195.0" prefHeight="26.0" prefWidth="378.0" />
-      <TextField fx:id="projectTypeInput" layoutX="295.0" layoutY="140.0" prefHeight="26.0" prefWidth="378.0" />
-      <TextField fx:id="keyWordsInput" layoutX="295.0" layoutY="245.0" prefHeight="26.0" prefWidth="378.0" />
-      <Button layoutX="345.0" layoutY="309.0" mnemonicParsing="false" onAction="#loadRelevantLogs" text="Load Relevant Historical Logs">
+      </Button>
+      <Label fx:id="projectTypeLabel" layoutX="14.0" layoutY="50.0" prefHeight="18.0" prefWidth="319.0" text=" ">
          <font>
-            <Font name="Verdana Bold" size="13.0" />
+            <Font name="Verdana Bold" size="10.0" />
+         </font></Label>
+      <Label fx:id="projectNameLabel" layoutX="14.0" layoutY="68.0" prefHeight="18.0" prefWidth="308.0" text=" ">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font></Label>
+      <Label fx:id="currentKeyWords" layoutX="14.0" layoutY="86.0" prefHeight="18.0" prefWidth="514.0" text=" ">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font></Label>
+      <Button fx:id="storyPointsButton" layoutX="709.0" layoutY="57.0" mnemonicParsing="false" onAction="#calculateStoryPoints" text="GENERATE STORY POINTS" visible="false">
+         <font>
+            <Font name="Verdana Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="updateSearchButton" layoutX="777.0" layoutY="84.0" mnemonicParsing="false" onAction="#updateInput" text="Update Search" visible="false">
+         <font>
+            <Font name="Verdana Bold" size="11.0" />
+         </font>
+      </Button>
+      <Label fx:id="logHistoryLabel" layoutX="379.0" layoutY="104.0" text="Log History" visible="false">
+         <font>
+            <Font name="Verdana Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="submit" layoutX="539.0" layoutY="109.0" mnemonicParsing="false" onAction="#submitUpdates" text="Submit" visible="false">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
    </children>

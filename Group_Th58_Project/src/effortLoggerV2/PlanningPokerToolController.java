@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -40,6 +42,12 @@ public class PlanningPokerToolController {
 	private Scene scene;
 	private Parent root;
 	
+	// public ObservableList<String> keyWords = FXCollections.observableArrayList();  // relevant later
+	// public List<String> keyWords = new ArrayList<String>();
+	public String projectType;
+	public String projectName;
+	public String keyWords;
+	
 	@FXML
 	Label roundLabel = new Label();
 	@FXML
@@ -49,14 +57,30 @@ public class PlanningPokerToolController {
 	@FXML
 	TextField keyWordsInput = new TextField();
 	@FXML
+	Label promptLabel;
+	@FXML
+	Button loadHistory;
+	
+	
+	@FXML
 	Button storyPointsButton = new Button();
-	
-	
+	@FXML
+	Button updateSearchButton = new Button();
+	@FXML
+	Label currentKeyWords;
+	@FXML
+	Label projectTypeLabel;
+	@FXML
+	Label projectNameLabel;
+	@FXML
+	Label logHistoryLabel;
+	@FXML
+	Button submit = new Button();
+
+
 	
 	public void launching() {
 		System.out.println("PLANNING POKER TOOL");
-//		Prototype1 proto1 = new Prototype1();
-//		proto1.testingAgain();
 	}
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
@@ -68,15 +92,46 @@ public class PlanningPokerToolController {
 		stage.show();
 	}
 	
+	@FXML
 	public void loadRelevantLogs(ActionEvent event) throws IOException {
-		System.out.println("Here are your logs");
-		Parent root = FXMLLoader.load(getClass().getResource("PlanningPokerToolRound1UI.fxml")); 
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		// storyPointsButton.setVisible(true);
+		projectType = projectTypeInput.getText();
+		projectName = projectNameInput.getText();
+		keyWords = keyWordsInput.getText();
+		System.out.println("Current Project: " + projectType + ": " + projectName);
+		System.out.println("Here are your logs for: " + keyWords);
+		currentKeyWords.setText("Key Words: " + keyWords);
+		projectTypeLabel.setText("Project Type: " + projectType);
+		projectNameLabel.setText("Project Name: " + projectName);
+		
+		projectTypeInput.setVisible(false);
+		projectNameInput.setVisible(false);
+		keyWordsInput.setVisible(false);
+		promptLabel.setVisible(false);
+		loadHistory.setVisible(false);
+		
+		logHistoryLabel.setVisible(true);
+		storyPointsButton.setVisible(true);
+		updateSearchButton.setVisible(true);
 	}
+	
+	
+	public void updateInput(ActionEvent event) throws IOException {
+		submit.setVisible(true);
+		keyWordsInput.setLayoutY(64);
+		keyWordsInput.setVisible(true);
+	}
+	
+	public void submitUpdates(ActionEvent event) throws IOException {
+		keyWords = keyWordsInput.getText();
+		currentKeyWords.setText("Key Words: " + keyWords);
+		currentKeyWords.setText("Key Words: " + keyWords);
+		projectTypeLabel.setText("Project Type: " + projectType);
+		projectNameLabel.setText("Project Name: " + projectName);
+		submit.setVisible(false);
+		keyWordsInput.setVisible(false);
+	}
+	
+	
 	
 	public void endPlanningPokerRound (ActionEvent event) {
 		System.out.println("You've ended this round.");
@@ -85,26 +140,6 @@ public class PlanningPokerToolController {
 	public void calculateStoryPoints(ActionEvent event) {
 		System.out.println("STORY POINTS???");
 	}
-//
-//	@SuppressWarnings("null")
-//	@Override
-//	public void initialize(URL arg0, ResourceBundle arg1) {
-//		ObservableList<Log> Logs = FXCollections.observableArrayList();
-//		// can't figure out adding it yet
-//		// TODO Auto-generated method stub
-//		Log log1 = new Log("testProject", 1, "10/29/23", "10.25.03", "Planning", "buisiness", "need to make UI");
-//		Log log2 = new Log("testProject", 2, "10/24/23", "12.36.03", "Planning2", "buisiness", "need to make UI");
-//		Logs.add(log1);
-//		Logs.addAll(log1, log2);
-//		tableView.setItems(Logs);
-//		
-//	}
-	// (String project, int number, String date, String deltaTime, String lifeCycle, String category, String deliverable) {
-	
-	
-	
-	
-	
-	
+
 
 }
