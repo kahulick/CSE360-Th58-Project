@@ -39,25 +39,6 @@ public class LogsController {	// eventually make an observable list for effort l
 	private Label numberEffortLogs = new Label();
 	@FXML
 	private Label numberDefectLogs = new Label();
-//	@FXML
-//	private TableView<EffortLog> effortLogsTable = new TableView<EffortLog>();
-//	@FXML
-//	private TableColumn<EffortLog, Integer> numberCol = new TableColumn<EffortLog, Integer>();
-//	@FXML
-//	private TableColumn<EffortLog, LocalDate> dateCol = new TableColumn<EffortLog, LocalDate>();
-//	@FXML
-//	private TableColumn<EffortLog, LocalTime> startCol = new TableColumn<EffortLog, LocalTime>();
-//	@FXML
-//	private TableColumn<EffortLog, LocalTime> stopCol = new TableColumn<EffortLog, LocalTime>();
-//	@FXML
-//	private TableColumn<EffortLog, String> deltaCol = new TableColumn<EffortLog, String>();
-//	@FXML
-//	private TableColumn<EffortLog, String> lifeCycleCol = new TableColumn<EffortLog, String>();
-//	@FXML
-//	private TableColumn<EffortLog, String> effortCategoryCol = new TableColumn<EffortLog, String>();
-//	@FXML
-//	private TableColumn<EffortLog, String> effortItemCol = new TableColumn<EffortLog, String>();
-	
 	@FXML
 	private TableView<EffortLog> effortLogsTable = new TableView<>();
 	@FXML
@@ -102,39 +83,10 @@ public class LogsController {	// eventually make an observable list for effort l
 	
 	public void enterLog(EffortLog effortLog) {
 		this.effortLog = effortLog;
-		
-		// EffortLog testingAgain = new EffortLog(effortLog.getProjectType(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
-		//logs.addAll(effortLog, testingAgain);
-		// effortLogsTable.getItems().addAll(logs);
-		
-		//		logs.addAll(testLog, testingAgain);
-//		initialize();
-//		effortLogsTable.setVisible(true);
-//		effortLogsTable.setEditable(true);
-//		effortLogsTable.getItems().add(testLog);
-//		effortLogsTable.getItems().add(testingAgain);
-//		
-
-		
-		// set cell factory value for each column
-//		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("effortCategory"));
-//		effortLogsTable.setItems(logs);
-//		effortLogsTable.getItems().add(testLog);
-		// effortLogsTable.getColumns().add(effortCategoryCol);
-		// System.out.println(testLog.getDeltaTime());
-		// effortLogsTable.getColumns().addAll(numberCol);
 	}
 	
 	@FXML
 	public void initialize() {
-//		numberCol.setCellValueFactory(new PropertyValueFactory<EffortLog, Integer>("Number"));
-//		dateCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalDate>("Date"));
-//		startCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("StartTime"));
-//		stopCol.setCellValueFactory(new PropertyValueFactory<EffortLog, LocalTime>("StopTime"));
-//		deltaCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("DeltaTime"));
-//		lifeCycleCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("LifeCycleStep"));
-//		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("EffortCategory"));
-//		effortItemCol.setCellValueFactory(new PropertyValueFactory<EffortLog, String>("EffortCategoryItem"));
 		
 		numberCol.setCellValueFactory(new PropertyValueFactory<>("number"));
 		dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -147,20 +99,6 @@ public class LogsController {	// eventually make an observable list for effort l
 		// numberCol.getCellData();
 		// this.effortLog = effortLog;
 		effortLogsTable.setItems(logs);
-//		effortLogsTable.getItems().addAll(logs);
-//		effortLogsTable.getItems().add(effortLog);
-//		addToTable();
-//		
-////		effortLogsTable.setVisible(true);
-////		effortLogsTable.setEditable(true);
-//		effortLogsTable.getItems().add(effortLog);
-//		System.out.println("ADDED");
-//		System.out.println(effortLogsTable.getColumns().toArray());
-//		System.out.println(effortLogsTable.getItems());
-//		Platform.runLater(() -> {
-//			logs.add(effortLog);
-//			effortLogsTable.getItems().add(effortLog);
-//		});
 	}
 	
 	public void addToTable() {
