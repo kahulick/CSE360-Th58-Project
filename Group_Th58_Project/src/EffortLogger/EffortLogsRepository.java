@@ -85,7 +85,7 @@ public class EffortLogsRepository {
 	    
 	}
 	
-	//place holder test class
+	//will print out txt file as string data
 	public void retrieveTxtData() throws FileNotFoundException {	
 		
 		File file = new File("effort_logs.txt");
@@ -96,6 +96,7 @@ public class EffortLogsRepository {
 	    
 	    sc.close();
 	    
+	    /*
 	    //purely for testing down here
 	    System.out.print("\nPrinting out effort log repository...\n");
 	    
@@ -133,6 +134,7 @@ public class EffortLogsRepository {
 		    );
 	    	
 	    }
+	    */
 	            
 	}
 	
