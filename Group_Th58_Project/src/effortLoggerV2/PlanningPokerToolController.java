@@ -181,9 +181,10 @@ public class PlanningPokerToolController {
 	
 	public void calculateStoryPoints(ActionEvent event) {
 		System.out.println("STORY POINTS???");
-		double storyPts = planningPokerCalculator.calculateStoryPoints(historicalData);
-		estStoryPoints.setText("Estimated Story Points: " + String.format("%.2f", storyPts));
-		estStoryPoints.setVisible(true);
+		int storyPoints = planningPokerCalculator.calculateStoryPoints(refinedData, historicalData);
+		System.out.println(storyPoints);
+		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
+//		estStoryPoints.setVisible(true);
 		adjustWeight.setVisible(true);
 	}
 	
@@ -201,6 +202,7 @@ public class PlanningPokerToolController {
 	    		date + "," +
 	    		startTime + "," + 
 	    		stopTime + "," +
+	    		log.getDeltaTime() + "," +
 	    		log.getLifeCycleStep() + "," +
 	    		log.getEffortCategory() + "," +
 	    		log.getEffortCategoryItem());

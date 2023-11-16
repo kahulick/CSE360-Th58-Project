@@ -71,6 +71,7 @@ public class EffortLogsRepository {
 	    		date + "," +
 	    		startTime + "," + 
 	    		stopTime + "," +
+	    		effortLog.getDeltaTime() + "," +
 	    		effortLog.getLifeCycleStep() + "," +
 	    		effortLog.getEffortCategory() + "," +
 	    		effortLog.getEffortCategoryItem()

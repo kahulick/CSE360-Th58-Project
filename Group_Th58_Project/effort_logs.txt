@@ -15,3 +15,6 @@ Business Project,12/11/2023,21:27:33,21:27:42,Team Meeting,Defects,50 Interface
 Business Project,12/11/2023,21:30:16,21:31:31,Verifying,Others,make sure search engine returns back within 1ns
 Business Project,12/11/2023,23:54:44,23:55:02,Verifying,Others,SCREEN CAST TEST 5
 Business Project,15/11/2023,18:09:32,18:09:42,Outlining,Others,Cool
+Business Project,16/11/2023,16:25:05,16:25:18,Deliverables,Outlining,Deliverables,Draft
+Business Project,16/11/2023,16:36:24,16:36:31,0:00:07,Outlining,Interruptions,Visitor
+Business Project,16/11/2023,16:41:35,16:41:46,0:00:11,Verifying,Others,yuh?
