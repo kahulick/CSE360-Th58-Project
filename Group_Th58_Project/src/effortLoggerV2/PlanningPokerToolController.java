@@ -1,6 +1,9 @@
 package effortLoggerV2;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableStringValue;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -38,6 +41,8 @@ import EffortLogger.EffortLogsRepository;
 import EffortLogger.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.util.regex.*;
+
 
 @SuppressWarnings("unused")
 
@@ -57,9 +62,9 @@ public class PlanningPokerToolController {
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	private PlanningPokerCalculator planningPokerCalculator = new PlanningPokerCalculator();
 	
-	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList();
-	private ObservableList<String> displayedData = FXCollections.observableArrayList();
-	private ObservableList<String> refinedData;
+	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList(); // holds all Effort Logs from history
+	private ObservableList<String> displayedData = FXCollections.observableArrayList();		// holds all string Logs from history
+	private ObservableList<String> refinedData;	// holds all string Logs from refined search 
 	
 	@FXML
 	Label roundLabel = new Label();
@@ -93,12 +98,21 @@ public class PlanningPokerToolController {
 	Button submit = new Button();
 	@FXML
 	Button adjustWeight = new Button();
-	
 	@FXML
 	private ListView<String> userEffortLogs;
 	
-	public void launching() {
-		System.out.println("PLANNING POKER TOOL");
+
+	
+	
+	@FXML
+	public void initialize() {		// allows program to keep track of the selected log
+		userEffortLogs.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedLog) {
+				System.out.println("Selected: " + selectedLog);
+			
+			}
+		});
 	}
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
@@ -116,8 +130,8 @@ public class PlanningPokerToolController {
 		System.out.println("Count: " + effortLogsRepository.getEffortLogs());
 		EffortLog[] effortLogs = effortLogsRepository.getEffortRepo(count);
 		for (EffortLog log : effortLogs) {
-			historicalData.add(log);	// updates array of logs
-			mapToString(log);			// updates array of strings (that represent logs)
+			historicalData.add(log); 		// updates array of logs
+			mapToString(log);		  		// updates array of strings (that represent logs)
 		}
 		userEffortLogs.setItems(displayedData);
 		userEffortLogs.setVisible(true);
@@ -151,7 +165,6 @@ public class PlanningPokerToolController {
 	
 	public void submitUpdates(ActionEvent event) throws IOException {
 		keyWords = keyWordsInput.getText();
-//		refineData(keyWords);
 		currentKeyWords.setText("Key Words: " + keyWords);
 		projectTypeLabel.setText("Project Type: " + projectType);
 		projectNameLabel.setText("Project Name: " + projectName);
@@ -159,9 +172,8 @@ public class PlanningPokerToolController {
 		keyWordsInput.setVisible(false);
 		refineData(keyWords);
 		userEffortLogs.setItems(refinedData);
+		verificationTest();		// temporary for testing purposes
 	}
-	
-	
 	
 	public void endPlanningPokerRound (ActionEvent event) {
 		System.out.println("You've ended this round.");
@@ -202,20 +214,35 @@ public class PlanningPokerToolController {
 		keyWords = keyWords.toLowerCase();
 		String[] kw = keywords.split("[, ]", 0);
 		for (String log: displayedData) {
-			log = log.toLowerCase();
 			for (String keyWord: kw) {
-				if (keyWord.equals("") == false && log.contains(keyWord) && refinedData.contains(log) == false) {
+				if (keyWord.equals("") == false && log.toLowerCase().contains(keyWord.toLowerCase()) && refinedData.contains(log) == false) {
 					refinedData.add(log);
 				}
 			}
 		}
-		
-		
 	}
 	
 	public void weightedStoryPoints(ActionEvent event) {
 		System.out.println("Insert Weighted StoryPoints");
 	}
+	
+	
+	// test to make sure one object retains the original historical data
+	// and the other object contains the updated logs
+	public void verificationTest() {		
+		
+		System.out.println("LOG HISTORY:");
+		for (String strLog: displayedData) {
+			System.out.println(strLog);
+		}
+		
+		System.out.println("\nREFINED LOGS: ");
+		for (String strLog: refinedData) {
+			System.out.println(strLog);
+		}
+	}
+	
+
 	
 
 

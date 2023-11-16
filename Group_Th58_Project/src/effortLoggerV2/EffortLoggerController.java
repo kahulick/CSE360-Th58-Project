@@ -70,7 +70,7 @@ public class EffortLoggerController {
 	public void launchPlanningPokerTool(ActionEvent event) throws IOException {
 		PlanningPokerToolController newSession = new PlanningPokerToolController();
 //		newSession.calculateStoryPoints(event);
-		newSession.launching();
+		// newSession.launching();
 		
 		Parent root = FXMLLoader.load(getClass().getResource("PlanningPokerToolUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

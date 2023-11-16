@@ -87,6 +87,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="adjustWeight" layoutX="728.0" layoutY="119.0" mnemonicParsing="false" onAction="#weightedStoryPoints" text="Adjust Story Point Weight" />
+      <Button fx:id="adjustWeight" layoutX="728.0" layoutY="119.0" mnemonicParsing="false" onAction="#weightedStoryPoints" text="Adjust Story Point Weight" visible="false" />
    </children>
 </AnchorPane>
