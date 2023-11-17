@@ -164,6 +164,8 @@ public class PlanningPokerToolController {
 		keyWordsInput.setVisible(true);
 	}
 	
+	// TODO if the keywords are null after the initial search, just load the initial history
+	
 	public void submitUpdates(ActionEvent event) throws IOException {
 		refinedLogData = FXCollections.observableArrayList();
 		keyWords = keyWordsInput.getText();
