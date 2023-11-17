@@ -58,6 +58,7 @@ public class PlanningPokerToolController {
 	public String projectType;
 	public String projectName;
 	public String keyWords;
+	public int roundCounter;
 	
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	private PlanningPokerCalculator planningPokerCalculator = new PlanningPokerCalculator();
@@ -118,6 +119,8 @@ public class PlanningPokerToolController {
 			
 			}
 		});
+		roundCounter = 1;
+		roundLabel.setText(Integer.toString(roundCounter));
 	}
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
@@ -186,6 +189,8 @@ public class PlanningPokerToolController {
 	}
 	
 	public void endPlanningPokerRound (ActionEvent event) {
+		roundCounter++;
+		roundLabel.setText(Integer.toString(roundCounter));
 		System.out.println("You've ended this round.");
 	}
 	
