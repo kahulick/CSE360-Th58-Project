@@ -65,6 +65,7 @@ public class PlanningPokerToolController {
 	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList(); // holds all Effort Logs from history
 	private ObservableList<String> displayedData = FXCollections.observableArrayList();		// holds all string Logs from history
 	private ObservableList<String> refinedData;	// holds all string Logs from refined search 
+	private ObservableList<EffortLog> refinedLogData;
 	
 	@FXML
 	Label roundLabel = new Label();
@@ -130,8 +131,8 @@ public class PlanningPokerToolController {
 		System.out.println("Count: " + effortLogsRepository.getEffortLogs());
 		EffortLog[] effortLogs = effortLogsRepository.getEffortRepo(count);
 		for (EffortLog log : effortLogs) {
-			historicalData.add(log); 		// updates array of logs
-			mapToString(log);		  		// updates array of strings (that represent logs)
+			historicalData.add(log); 				// updates array of logs
+			displayedData.add(mapToString(log));	// updates array of strings (that represent logs)
 		}
 		userEffortLogs.setItems(displayedData);
 		userEffortLogs.setVisible(true);
@@ -164,6 +165,7 @@ public class PlanningPokerToolController {
 	}
 	
 	public void submitUpdates(ActionEvent event) throws IOException {
+		refinedLogData = FXCollections.observableArrayList();
 		keyWords = keyWordsInput.getText();
 		currentKeyWords.setText("Key Words: " + keyWords);
 		projectTypeLabel.setText("Project Type: " + projectType);
@@ -172,7 +174,11 @@ public class PlanningPokerToolController {
 		keyWordsInput.setVisible(false);
 		refineData(keyWords);
 		userEffortLogs.setItems(refinedData);
-		verificationTest();		// temporary for testing purposes
+		for (EffortLog log: historicalData) {	// refined list of log objects 
+			if (refinedData.contains(mapToString(log))) {
+				refinedLogData.add(log);
+			}
+		}
 	}
 	
 	public void endPlanningPokerRound (ActionEvent event) {
@@ -181,14 +187,14 @@ public class PlanningPokerToolController {
 	
 	public void calculateStoryPoints(ActionEvent event) {
 		System.out.println("STORY POINTS???");
-		int storyPoints = planningPokerCalculator.calculateStoryPoints(refinedData, historicalData);
+		int storyPoints = planningPokerCalculator.calculateStoryPoints(refinedLogData, historicalData);
 		System.out.println(storyPoints);
 		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
 //		estStoryPoints.setVisible(true);
 		adjustWeight.setVisible(true);
 	}
 	
-	public void mapToString(EffortLog log) {	// refactored from Kevin's repository class
+	public String mapToString(EffortLog log) {	// refactored from Kevin's repository class
 		//DateTimeFormatter 
 	    DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
         String date = makeDate.format(log.getDate());
@@ -198,15 +204,15 @@ public class PlanningPokerToolController {
         String startTime = makeTime.format(log.getStartTime());
         String stopTime = makeTime.format(log.getStopTime());
         
-        displayedData.add(log.getProjectType() + "," +
+        String strLog = log.getProjectType() + "," +
 	    		date + "," +
 	    		startTime + "," + 
 	    		stopTime + "," +
 	    		log.getDeltaTime() + "," +
 	    		log.getLifeCycleStep() + "," +
 	    		log.getEffortCategory() + "," +
-	    		log.getEffortCategoryItem());
-        // adds EffortLog objects as strings to the array
+	    		log.getEffortCategoryItem();
+        return strLog;
 	}
 	
 	public void refineData(String keywords) {

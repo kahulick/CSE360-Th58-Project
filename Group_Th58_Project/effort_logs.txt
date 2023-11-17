@@ -18,3 +18,4 @@ Business Project,15/11/2023,18:09:32,18:09:42,Outlining,Others,Cool
 Business Project,16/11/2023,16:25:05,16:25:18,Deliverables,Outlining,Deliverables,Draft
 Business Project,16/11/2023,16:36:24,16:36:31,0:00:07,Outlining,Interruptions,Visitor
 Business Project,16/11/2023,16:41:35,16:41:46,0:00:11,Verifying,Others,yuh?
+Business Project,16/11/2023,17:15:31,17:15:38,0:00:07,Verifying,Interruptions,Teammate
