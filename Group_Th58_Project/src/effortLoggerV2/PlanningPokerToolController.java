@@ -163,6 +163,8 @@ public class PlanningPokerToolController {
 		submit.setVisible(true);
 		keyWordsInput.setLayoutY(60);
 		keyWordsInput.setVisible(true);
+		individualLogEffort.setVisible(false);
+		estStoryPoints.setVisible(false);
 	}
 	
 	
@@ -189,16 +191,12 @@ public class PlanningPokerToolController {
 	
 	public void calculateStoryPoints(ActionEvent event) {
 		logEstimates = planningPokerCalculator.calculateIndividualEffort(refinedLogData, historicalData);
-//		for (EffortLog log: refinedLogData) {
-//			
-//		}
-//		int storyPoints = planningPokerCalculator.calculateStoryPoints(refinedLogData, historicalData);
-//		System.out.println(storyPoints);
-//		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
-//		estStoryPoints.setVisible(true);
+		double storyPoints = planningPokerCalculator.calculateStoryPoints(logEstimates);
 		adjustWeight.setVisible(true);
 		individualLogEffort.setItems(logEstimates);
 		individualLogEffort.setVisible(true);	// table next to it to hold the individual calculations for each effort log
+		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
+		estStoryPoints.setVisible(true);
 	}
 	
 	public String mapToString(EffortLog log) {	// refactored from Kevin's repository class

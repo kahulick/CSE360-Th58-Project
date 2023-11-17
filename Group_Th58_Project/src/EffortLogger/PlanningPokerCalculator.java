@@ -22,17 +22,19 @@ public class PlanningPokerCalculator {
 //	private String effortCategoryItem;
 //	private int number = 1;
 	
-	public int calculateStoryPoints(ObservableList<EffortLog> refinedData, ObservableList<EffortLog> historicalData) {	// not weighted
-		this.historicalData = historicalData;
-		
-		// for every effortlog item:
-			// get the time val 
-			// add time val to running sum
-		// timeSum/refinedData.size() = avgTimeVal
-		
-		//^^ repeat this for every category & add the averages according to Dom's calculations to get estimate
-		
-		return 1;
+	public double calculateStoryPoints(ObservableList<Double> logEstimates) {	// not weighted
+		int numLogs = logEstimates.size();
+		double sumEstimates = 0.0;
+		for (Double est: logEstimates) {
+			sumEstimates += est;
+		}
+		double estimatedStoryPoints = sumEstimates / numLogs;
+		if (estimatedStoryPoints > 5) {
+			estimatedStoryPoints = Math.floor(estimatedStoryPoints);	// rounds down to 5
+		} else {
+			estimatedStoryPoints = Math.floor(estimatedStoryPoints * 100) / 100; // rounds to 2 decimal places
+		}
+		return estimatedStoryPoints;
 	}
 	
 	public ObservableList<Double> calculateIndividualEffort(ObservableList<EffortLog> refinedData, ObservableList<EffortLog> historicalData) {	// not weighted
