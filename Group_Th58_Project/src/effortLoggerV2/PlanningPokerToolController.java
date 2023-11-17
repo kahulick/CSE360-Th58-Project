@@ -65,7 +65,9 @@ public class PlanningPokerToolController {
 	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList(); // holds all Effort Logs from history
 	private ObservableList<String> displayedData = FXCollections.observableArrayList();		// holds all string Logs from history
 	private ObservableList<String> refinedData;	// holds all string Logs from refined search 
-	private ObservableList<EffortLog> refinedLogData;
+	private ObservableList<EffortLog> refinedLogData; // holds all Effort Logs from refined search
+	
+	private ObservableList<Double> logEstimates;
 	
 	@FXML
 	Label roundLabel = new Label();
@@ -101,6 +103,8 @@ public class PlanningPokerToolController {
 	Button adjustWeight = new Button();
 	@FXML
 	private ListView<String> userEffortLogs;
+	@FXML
+	private ListView<Double> individualLogEffort;
 	
 
 	
@@ -128,7 +132,6 @@ public class PlanningPokerToolController {
 	@FXML
 	public void loadRelevantLogs(ActionEvent event) throws IOException {
 		int count = effortLogsRepository.getEffortLogs();
-		System.out.println("Count: " + effortLogsRepository.getEffortLogs());
 		EffortLog[] effortLogs = effortLogsRepository.getEffortRepo(count);
 		for (EffortLog log : effortLogs) {
 			historicalData.add(log); 				// updates array of logs
@@ -140,8 +143,6 @@ public class PlanningPokerToolController {
 		projectType = projectTypeInput.getText();
 		projectName = projectNameInput.getText();
 		keyWords = keyWordsInput.getText();
-		System.out.println("Current Project: " + projectType + ": " + projectName);
-		System.out.println("Here are your logs for: " + keyWords);
 		currentKeyWords.setText("Key Words: " + keyWords);
 		projectTypeLabel.setText("Project Type: " + projectType);
 		projectNameLabel.setText("Project Name: " + projectName);
@@ -164,7 +165,6 @@ public class PlanningPokerToolController {
 		keyWordsInput.setVisible(true);
 	}
 	
-	// TODO if the keywords are null after the initial search, just load the initial history
 	
 	public void submitUpdates(ActionEvent event) throws IOException {
 		refinedLogData = FXCollections.observableArrayList();
@@ -188,12 +188,17 @@ public class PlanningPokerToolController {
 	}
 	
 	public void calculateStoryPoints(ActionEvent event) {
-		System.out.println("STORY POINTS???");
-		int storyPoints = planningPokerCalculator.calculateStoryPoints(refinedLogData, historicalData);
-		System.out.println(storyPoints);
-		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
+		logEstimates = planningPokerCalculator.calculateIndividualEffort(refinedLogData, historicalData);
+//		for (EffortLog log: refinedLogData) {
+//			
+//		}
+//		int storyPoints = planningPokerCalculator.calculateStoryPoints(refinedLogData, historicalData);
+//		System.out.println(storyPoints);
+//		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
 //		estStoryPoints.setVisible(true);
 		adjustWeight.setVisible(true);
+		individualLogEffort.setItems(logEstimates);
+		individualLogEffort.setVisible(true);	// table next to it to hold the individual calculations for each effort log
 	}
 	
 	public String mapToString(EffortLog log) {	// refactored from Kevin's repository class
@@ -219,15 +224,19 @@ public class PlanningPokerToolController {
 	
 	public void refineData(String keywords) {
 		refinedData = FXCollections.observableArrayList();
-		System.out.println("MADE IT..");
-		keyWords = keyWords.replaceAll("\s","");
-		keyWords = keyWords.toLowerCase();
-		String[] kw = keywords.split("[, ]", 0);
-		for (String log: displayedData) {
-			for (String keyWord: kw) {
-				if (keyWord.equals("") == false && log.toLowerCase().contains(keyWord.toLowerCase()) && refinedData.contains(log) == false) {
-					refinedData.add(log);
+		if (!keyWords.equals("")) {
+			keyWords = keyWords.replaceAll("\s","");
+			String[] kw = keywords.split("[, ]", 0);
+			for (String log: displayedData) {
+				for (String keyWord: kw) {
+					if (keyWord.equals("") == false && log.toLowerCase().contains(keyWord.toLowerCase()) && refinedData.contains(log) == false) {
+						refinedData.add(log);
+					}
 				}
+			}
+		} else {
+			for (String strLog: displayedData) {	// if no keywords given, load all log history
+				refinedData.add(strLog);
 			}
 		}
 	}

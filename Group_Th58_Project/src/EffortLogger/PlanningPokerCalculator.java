@@ -32,10 +32,46 @@ public class PlanningPokerCalculator {
 		
 		//^^ repeat this for every category & add the averages according to Dom's calculations to get estimate
 		
-		
 		return 1;
-		
 	}
+	
+	public ObservableList<Double> calculateIndividualEffort(ObservableList<EffortLog> refinedData, ObservableList<EffortLog> historicalData) {	// not weighted
+		if (refinedData == null) {
+			refinedData = historicalData;	// means user never refined the logs/ updated keywords, so there is no refined data
+		}
+		ObservableList<Double> effortScores = FXCollections.observableArrayList();
+		for (EffortLog log: refinedData) {
+			double timeVal = getTimeVal(log.getDeltaTime());
+			double projectVal = getProjectVal(log.getProjectType());
+			double effortCategoryVal = getEffortCategoryVal(log.getEffortCategory());
+			double subCategoryVal = 0.0;
+			switch(log.getEffortCategory().toLowerCase()) {
+			case "plans":
+				subCategoryVal = getPlansVal(log.getEffortCategoryItem());
+				break;
+			case "deliverables":
+				subCategoryVal = getDeliverablesVal(log.getEffortCategoryItem());
+				break;
+			case "interruptions":
+				subCategoryVal = getInterruptionVal(log.getEffortCategoryItem());
+				break;
+			case "defects":
+				subCategoryVal = getDefectsVal(log.getEffortCategoryItem());
+				break;
+			case "others":
+				subCategoryVal = 1.0;	// no "others" sub category in formula 
+				break;
+			default:
+				subCategoryVal = 0.0;
+			}
+			double rating = (timeVal + projectVal + effortCategoryVal + subCategoryVal);
+			effortScores.add(rating);
+		}
+		
+		return effortScores;
+	}
+	
+	
 	
 	public double getTimeVal(String deltaTime) {
 		double timeVal = 0.0;
@@ -116,7 +152,7 @@ public class PlanningPokerCalculator {
 		return subCategoryVal;
 	}
 	
-	public double getDeliverablesValue(String effortCategoryItem) {
+	public double getDeliverablesVal(String effortCategoryItem) {
 		double subCategoryVal = 0.0;
 		effortCategoryItem = effortCategoryItem.toLowerCase();
 		
