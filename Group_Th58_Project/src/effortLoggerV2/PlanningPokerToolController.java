@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javafx.util.Pair;
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -69,6 +71,7 @@ public class PlanningPokerToolController {
 	private ObservableList<EffortLog> refinedLogData; // holds all Effort Logs from refined search
 	
 	private ObservableList<Double> logEstimates;
+	private ObservableList<Integer> logWeights;
 	
 	@FXML
 	Label roundLabel = new Label();
@@ -106,6 +109,8 @@ public class PlanningPokerToolController {
 	private ListView<String> userEffortLogs;
 	@FXML
 	private ListView<Double> individualLogEffort;
+	@FXML
+	private ListView<Integer> individualLogWeight;
 	
 
 	
@@ -120,14 +125,14 @@ public class PlanningPokerToolController {
 				if (individualLogEffort.isVisible() == true) {
 					individualLogEffort.getSelectionModel().select(userEffortLogs.getSelectionModel().getSelectedIndex());
 				}
+				if (individualLogWeight.isVisible() == true) {
+					individualLogWeight.getSelectionModel().select(userEffortLogs.getSelectionModel().getSelectedIndex());
+				}
 			
 			}
 		});
 		roundCounter = 1;
 		roundLabel.setText(Integer.toString(roundCounter));
-//		if (individualLogEffort.isVisible() == true) {
-//			
-//		}
 	}
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
@@ -174,7 +179,9 @@ public class PlanningPokerToolController {
 		keyWordsInput.setLayoutY(60);
 		keyWordsInput.setVisible(true);
 		individualLogEffort.setVisible(false);
+		individualLogWeight.setVisible(false);
 		estStoryPoints.setVisible(false);
+		adjustWeight.setVisible(false);
 	}
 	
 	
@@ -255,8 +262,21 @@ public class PlanningPokerToolController {
 	}
 	
 	public void weightedStoryPoints(ActionEvent event) {
+		logWeights = FXCollections.observableArrayList();
 		userEffortLogs.setLayoutX(23); //-> 39 or 23
-		individualLogEffort.setLayoutX(786);
+		individualLogEffort.setLayoutX(829); // gonna be on the far right
+		if (refinedLogData != null) {
+			for (EffortLog log: refinedLogData) {
+				logWeights.add(5);
+			}
+		} else {
+			for (EffortLog log: historicalData) {
+				logWeights.add(5);
+			}
+		}
+
+		individualLogWeight.setItems(logWeights);
+		individualLogWeight.setVisible(true);
 		System.out.println("Insert Weighted StoryPoints");
 	}
 	

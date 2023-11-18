@@ -87,7 +87,11 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="adjustWeight" layoutX="728.0" layoutY="119.0" mnemonicParsing="false" onAction="#weightedStoryPoints" text="Adjust Story Point Weight" visible="false" />
+      <Button fx:id="adjustWeight" layoutX="76.0" layoutY="132.0" mnemonicParsing="false" onAction="#weightedStoryPoints" text="Change Weight" visible="false">
+         <font>
+            <Font name="Verdana Bold" size="8.0" />
+         </font></Button>
       <ListView fx:id="individualLogEffort" layoutX="829.0" layoutY="148.0" prefHeight="410.0" prefWidth="54.0" visible="false" />
+      <ListView fx:id="individualLogWeight" layoutX="772.0" layoutY="148.0" prefHeight="410.0" prefWidth="54.0" visible="false" />
    </children>
 </AnchorPane>
