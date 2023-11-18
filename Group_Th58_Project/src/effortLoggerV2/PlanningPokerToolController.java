@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.util.Pair;
@@ -34,6 +35,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import prototypes.Prototype1;
 import prototypes.Prototype2;
 import effortLoggerV2.EffortLoggerController;
@@ -87,6 +89,8 @@ public class PlanningPokerToolController {
 	Button loadHistory;
 	@FXML
 	Label estStoryPoints = new Label();
+	@FXML
+	TextInputDialog weight = new TextInputDialog();
 	
 	
 	@FXML
@@ -264,6 +268,7 @@ public class PlanningPokerToolController {
 	public void weightedStoryPoints(ActionEvent event) {
 		logWeights = FXCollections.observableArrayList();
 		userEffortLogs.setLayoutX(23); //-> 39 or 23
+		adjustWeight.setLayoutX(23);
 		individualLogEffort.setLayoutX(829); // gonna be on the far right
 		if (refinedLogData != null) {
 			for (EffortLog log: refinedLogData) {
@@ -278,6 +283,12 @@ public class PlanningPokerToolController {
 		individualLogWeight.setItems(logWeights);
 		individualLogWeight.setVisible(true);
 		System.out.println("Insert Weighted StoryPoints");
+		weight.setHeaderText("Select a weight 1-5");
+		weight.setContentText("Weight:");
+		Optional<String> result = weight.showAndWait();		// to do next: use selection in list & the textInputDialog
+		result.ifPresent(w -> {								// 	to get updated weight into the column 
+			System.out.println(w);
+		});
 	}
 	
 	
