@@ -116,11 +116,18 @@ public class PlanningPokerToolController {
 		@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedLog) {
 				System.out.println("Selected: " + selectedLog);
+				
+				if (individualLogEffort.isVisible() == true) {
+					individualLogEffort.getSelectionModel().select(userEffortLogs.getSelectionModel().getSelectedIndex());
+				}
 			
 			}
 		});
 		roundCounter = 1;
 		roundLabel.setText(Integer.toString(roundCounter));
+//		if (individualLogEffort.isVisible() == true) {
+//			
+//		}
 	}
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
@@ -197,7 +204,10 @@ public class PlanningPokerToolController {
 	public void calculateStoryPoints(ActionEvent event) {
 		logEstimates = planningPokerCalculator.calculateIndividualEffort(refinedLogData, historicalData);
 		double storyPoints = planningPokerCalculator.calculateStoryPoints(logEstimates);
-		adjustWeight.setVisible(true);
+		if (roundCounter > 1) {
+			adjustWeight.setVisible(true);
+		}
+		//adjustWeight.setVisible(true);
 		individualLogEffort.setItems(logEstimates);
 		individualLogEffort.setVisible(true);	// table next to it to hold the individual calculations for each effort log
 		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
@@ -245,6 +255,8 @@ public class PlanningPokerToolController {
 	}
 	
 	public void weightedStoryPoints(ActionEvent event) {
+		userEffortLogs.setLayoutX(23); //-> 39 or 23
+		individualLogEffort.setLayoutX(786);
 		System.out.println("Insert Weighted StoryPoints");
 	}
 	
