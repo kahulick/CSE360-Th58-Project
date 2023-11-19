@@ -29,6 +29,12 @@ import EffortLogger.EffortLog;
 /**
  * @author Kevin Ruiz Hernandez
  * 
+ * Title: EffortLogRepositoty Class
+ * 
+ * Description: This is a class that creates, reads, and writes to a text file storing all effort log data.
+ * 
+ * TODO -> refine description more  (Kevin)
+ * 
  */
 
 

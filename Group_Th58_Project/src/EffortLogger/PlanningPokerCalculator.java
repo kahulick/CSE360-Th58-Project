@@ -11,6 +11,14 @@ import javafx.collections.ObservableList;
 /**
  * @author Kaelyn Hulick 
  * 
+ * 
+ * Title: PlanningPokerToolCalculator Class
+ * 
+ * Description: A class to compute values necessary for the Planning Poker Tool. Includes methods to
+ * get an Effort Logs estimate based on certain categories/ items it includes. Used to calculate the estimated 
+ * number of story points returned to the user. 
+ * 
+ * 
  */
 
 
@@ -19,6 +27,9 @@ public class PlanningPokerCalculator {
 	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList();
 	private ObservableList<String> displayedData = FXCollections.observableArrayList();
 	
+	
+	// Unweighed story estimate method. 
+	// takes an Observable List of Effort Log objects individual estimates to average into the overall estimate
 	public double calculateStoryPoints(ObservableList<Double> logEstimates) {	// not weighted
 		int numLogs = logEstimates.size();
 		double sumEstimates = 0.0;
@@ -34,6 +45,10 @@ public class PlanningPokerCalculator {
 		return estimatedStoryPoints;
 	}
 	
+	// Individual log effort/ story point estimate
+	// takes both refined data and historical data (in case the user never refines the data)
+	// returns a list of story point estimates with the same index as their associated log
+
 	public ObservableList<Double> calculateIndividualEffort(ObservableList<EffortLog> refinedData, ObservableList<EffortLog> historicalData) {	// not weighted
 		if (refinedData == null) {
 			refinedData = historicalData;	// means user never refined the logs/ updated keywords, so there is no refined data
@@ -71,7 +86,7 @@ public class PlanningPokerCalculator {
 	}
 	
 	
-	
+	// gets the numerical value associated with the Effort Logs deltaTime
 	public double getTimeVal(String deltaTime) {
 		double timeVal = 0.0;
 		if (Integer.parseInt(String.valueOf(deltaTime.charAt(0)))<= 1) {
@@ -82,6 +97,7 @@ public class PlanningPokerCalculator {
 		return timeVal;
 	}
 	
+	// gets the numerical value associated with the Effort Logs projectType
 	public double getProjectVal(String projectType) {
 		double projectVal = 0.0;
 		projectType = projectType.toLowerCase();
@@ -99,6 +115,7 @@ public class PlanningPokerCalculator {
 		return projectVal;
 	}
 	
+	// gets the numerical value associated with the Effort Logs effortCategory
 	public double getEffortCategoryVal(String effortCategory) {
 		double effortCategoryVal = 0.0;
 		effortCategory = effortCategory.toLowerCase();
@@ -125,6 +142,7 @@ public class PlanningPokerCalculator {
 		return effortCategoryVal;
 	}
 	
+	// gets the numerical value associated with the Effort Logs plan effortCategyItem 
 	public double getPlansVal(String effortCategoryItem) {
 		double subCategoryVal = 0.0;
 		effortCategoryItem = effortCategoryItem.toLowerCase();
@@ -151,6 +169,7 @@ public class PlanningPokerCalculator {
 		return subCategoryVal;
 	}
 	
+	// gets the numerical value associated with the Effort Logs deliverables effortCategyItem 
 	public double getDeliverablesVal(String effortCategoryItem) {
 		double subCategoryVal = 0.0;
 		effortCategoryItem = effortCategoryItem.toLowerCase();
@@ -192,10 +211,12 @@ public class PlanningPokerCalculator {
 		return subCategoryVal;
 	}
 	
+	// gets the numerical value associated with the Effort Logs interruption effortCategyItem 
 	public double getInterruptionVal(String effortCategoryItem) {
 		return 0.0;
 	}
 	
+	// gets the numerical value associated with the Effort Logs defects effortCategyItem 
 	public double getDefectsVal(String effortCategoryItem) {
 		double subCategoryVal = 0.0;
 		effortCategoryItem = effortCategoryItem.toLowerCase();

@@ -20,6 +20,10 @@ import EffortLogger.EffortLogsRepository;
 /**
  * @author Kaelyn Hulick 
  * 
+ * Title: EffortLogEditorController Class
+ * 
+ * Description: 
+ * 
  */
 
 

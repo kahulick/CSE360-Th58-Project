@@ -34,6 +34,14 @@ import java.util.regex.*;
 /**
  * @author Kaelyn Hulick 
  * 
+ * 
+ * Title: PlanningPokerToolController Class
+ * 
+ * Description: A class that controls the user input in the PlanningPokerTool UI. It makes calls to the EffortLoggerRepository class 
+ * to import data and refine the data. This class also controls which Effort Log objects are exported to the
+ * PlanningPokerToolCalculator class and the returned data is displayed to the user. 
+ * 
+ * 
  */
 
 
@@ -102,9 +110,9 @@ public class PlanningPokerToolController {
 	
 
 	
-	
+	// initialize the UI to allow program to keep track of user selection from the effort log list and initializes the round
 	@FXML
-	public void initialize() {		// allows program to keep track of the selected log
+	public void initialize() {		
 		userEffortLogs.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedLog) {
@@ -123,6 +131,7 @@ public class PlanningPokerToolController {
 		roundLabel.setText(Integer.toString(roundCounter));
 	}
 	
+	// launches the effort console UI
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
 		System.out.println("leaving.");
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
@@ -132,6 +141,8 @@ public class PlanningPokerToolController {
 		stage.show();
 	}
 	
+	// loads the users entire Effort Log repository before refining the search
+	// takes user input for project type, project name, and keywords
 	@FXML
 	public void loadRelevantLogs(ActionEvent event) throws IOException {
 		int count = effortLogsRepository.getEffortLogs();
@@ -161,7 +172,7 @@ public class PlanningPokerToolController {
 		updateSearchButton.setVisible(true);
 	}
 	
-	
+	// Allows the user to update their search by inputting new keywords or removing them
 	public void updateInput(ActionEvent event) throws IOException {
 		submit.setVisible(true);
 		keyWordsInput.setLayoutY(60);
@@ -172,7 +183,7 @@ public class PlanningPokerToolController {
 		adjustWeight.setVisible(false);
 	}
 	
-	
+	// submits the user inputed keywords, refines the presented log data, and displays that to the user
 	public void submitUpdates(ActionEvent event) throws IOException {
 		refinedLogData = FXCollections.observableArrayList();
 		keyWords = keyWordsInput.getText();
@@ -190,12 +201,15 @@ public class PlanningPokerToolController {
 		}
 	}
 	
+	// ends the planning poker round and increments the round counter label 
 	public void endPlanningPokerRound (ActionEvent event) {
 		roundCounter++;
 		roundLabel.setText(Integer.toString(roundCounter));
 		System.out.println("You've ended this round.");
 	}
 	
+	// calls the planning poker calculator to get the individual estimates and calculate the final estimated
+	// story point value. It also displays the weight if the user is participating in subsequent rounds
 	public void calculateStoryPoints(ActionEvent event) {
 		logEstimates = planningPokerCalculator.calculateIndividualEffort(refinedLogData, historicalData);
 		double storyPoints = planningPokerCalculator.calculateStoryPoints(logEstimates);
@@ -209,6 +223,7 @@ public class PlanningPokerToolController {
 		estStoryPoints.setVisible(true);
 	}
 	
+	// maps all Effort Log objects to a string. This string is used to display in the UI and used during the search tool
 	public String mapToString(EffortLog log) {	// refactored from Kevin's repository class
 		//DateTimeFormatter 
 	    DateTimeFormatter makeDate = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
@@ -230,6 +245,8 @@ public class PlanningPokerToolController {
         return strLog;
 	}
 	
+	// Search functionality: refines the  presented Effort Logs displayed to the user based off their keywords
+	// if no keywords have been entered, the users entire effort log repository is returned
 	public void refineData(String keywords) {
 		refinedData = FXCollections.observableArrayList();
 		if (!keyWords.equals("")) {
@@ -249,6 +266,7 @@ public class PlanningPokerToolController {
 		}
 	}
 	
+	// Allows the user to select a log to adjust its weight during subsequent rounds
 	public void weightedStoryPoints(ActionEvent event) {
 		logWeights = FXCollections.observableArrayList();
 		userEffortLogs.setLayoutX(23); //-> 39 or 23
@@ -269,7 +287,7 @@ public class PlanningPokerToolController {
 		System.out.println("Insert Weighted StoryPoints");
 		weight.setHeaderText("Select a weight 1-5");
 		weight.setContentText("Weight:");
-		Optional<String> result = weight.showAndWait();		// to do next: use selection in list & the textInputDialog
+		Optional<String> result = weight.showAndWait();		// TODO next: use selection in list & the textInputDialog
 		result.ifPresent(w -> {								// 	to get updated weight into the column 
 			System.out.println(w);
 		});

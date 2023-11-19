@@ -7,6 +7,8 @@ import javafx.beans.property.SimpleStringProperty;
 /**
  * @author Kaelyn Hulick 
  * 
+ * @deprecated
+ * 
  */
 
 
