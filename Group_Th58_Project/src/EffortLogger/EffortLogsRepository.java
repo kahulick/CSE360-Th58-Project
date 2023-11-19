@@ -26,16 +26,20 @@ import EffortLogger.EffortLog;
 
 @SuppressWarnings("unused")
 
+/**
+ * @author Kevin Ruiz Hernandez
+ * 
+ */
+
+
+
 public class EffortLogsRepository {
 	
-	//need to save to txt file somehow so that count stay accurate;
-	//anything having to do with effortLogAmt is only works if txt file starts empty and only for current session
-	//WILL ONLY
+
 	private static int effortLogAmt = 0;
 	
 	public void CreateEF(EffortLog effortLog) {
 		
-		//code pulled from stackoverflow to create a PrintWriter
 		//other methods would not allow for appending data and only overwrite current data
 		
 		PrintWriter out = null;
@@ -89,7 +93,7 @@ public class EffortLogsRepository {
 	    
 	}
 	
-	//will print out txt file as string data
+	//will print out text file as string data
 	public void retrieveTxtData() throws FileNotFoundException {	
 		
 		File file = new File("effort_logs.txt");
@@ -133,8 +137,6 @@ public class EffortLogsRepository {
 		File file = new File("effort_logs.txt");
 		Scanner sc = new Scanner(file);
 		
-		//parameters for EffortLog objects
-		//String projectType, LocalDate date, LocalTime startTime, LocalTime stopTime, String lifeCycleStep, String effortCategory, String effortCategoryItem
 		
 		String projType;
 		LocalDate dt;

@@ -1,25 +1,15 @@
 package effortLoggerV2;
 
-import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableStringValue;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
-import java.net.URL;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
-import java.util.ResourceBundle;
-
+import java.util.Optional;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,12 +18,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import prototypes.Prototype1;
-import prototypes.Prototype2;
+import javafx.scene.control.TextInputDialog;
 import effortLoggerV2.EffortLoggerController;
 import EffortLogger.EffortLog;
 import EffortLogger.PlanningPokerCalculator;
@@ -42,9 +28,13 @@ import EffortLogger.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.regex.*;
-
-
 @SuppressWarnings("unused")
+
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
 
 
 public class PlanningPokerToolController {
@@ -53,11 +43,10 @@ public class PlanningPokerToolController {
 	private Scene scene;
 	private Parent root;
 	
-	// public ObservableList<String> keyWords = FXCollections.observableArrayList();  // relevant later
-	// public List<String> keyWords = new ArrayList<String>();
 	public String projectType;
 	public String projectName;
 	public String keyWords;
+	public int roundCounter;
 	
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	private PlanningPokerCalculator planningPokerCalculator = new PlanningPokerCalculator();
@@ -68,6 +57,7 @@ public class PlanningPokerToolController {
 	private ObservableList<EffortLog> refinedLogData; // holds all Effort Logs from refined search
 	
 	private ObservableList<Double> logEstimates;
+	private ObservableList<Integer> logWeights;
 	
 	@FXML
 	Label roundLabel = new Label();
@@ -83,6 +73,8 @@ public class PlanningPokerToolController {
 	Button loadHistory;
 	@FXML
 	Label estStoryPoints = new Label();
+	@FXML
+	TextInputDialog weight = new TextInputDialog();
 	
 	
 	@FXML
@@ -105,6 +97,8 @@ public class PlanningPokerToolController {
 	private ListView<String> userEffortLogs;
 	@FXML
 	private ListView<Double> individualLogEffort;
+	@FXML
+	private ListView<Integer> individualLogWeight;
 	
 
 	
@@ -115,9 +109,18 @@ public class PlanningPokerToolController {
 		@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedLog) {
 				System.out.println("Selected: " + selectedLog);
+				
+				if (individualLogEffort.isVisible() == true) {
+					individualLogEffort.getSelectionModel().select(userEffortLogs.getSelectionModel().getSelectedIndex());
+				}
+				if (individualLogWeight.isVisible() == true) {
+					individualLogWeight.getSelectionModel().select(userEffortLogs.getSelectionModel().getSelectedIndex());
+				}
 			
 			}
 		});
+		roundCounter = 1;
+		roundLabel.setText(Integer.toString(roundCounter));
 	}
 	
 	public void exitPlanningPokerTool(ActionEvent event) throws IOException {
@@ -164,7 +167,9 @@ public class PlanningPokerToolController {
 		keyWordsInput.setLayoutY(60);
 		keyWordsInput.setVisible(true);
 		individualLogEffort.setVisible(false);
+		individualLogWeight.setVisible(false);
 		estStoryPoints.setVisible(false);
+		adjustWeight.setVisible(false);
 	}
 	
 	
@@ -186,13 +191,18 @@ public class PlanningPokerToolController {
 	}
 	
 	public void endPlanningPokerRound (ActionEvent event) {
+		roundCounter++;
+		roundLabel.setText(Integer.toString(roundCounter));
 		System.out.println("You've ended this round.");
 	}
 	
 	public void calculateStoryPoints(ActionEvent event) {
 		logEstimates = planningPokerCalculator.calculateIndividualEffort(refinedLogData, historicalData);
 		double storyPoints = planningPokerCalculator.calculateStoryPoints(logEstimates);
-		adjustWeight.setVisible(true);
+		if (roundCounter > 1) {
+			adjustWeight.setVisible(true);
+		}
+		//adjustWeight.setVisible(true);
 		individualLogEffort.setItems(logEstimates);
 		individualLogEffort.setVisible(true);	// table next to it to hold the individual calculations for each effort log
 		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
@@ -240,7 +250,29 @@ public class PlanningPokerToolController {
 	}
 	
 	public void weightedStoryPoints(ActionEvent event) {
+		logWeights = FXCollections.observableArrayList();
+		userEffortLogs.setLayoutX(23); //-> 39 or 23
+		adjustWeight.setLayoutX(23);
+		individualLogEffort.setLayoutX(829); // gonna be on the far right
+		if (refinedLogData != null) {
+			for (EffortLog log: refinedLogData) {
+				logWeights.add(5);
+			}
+		} else {
+			for (EffortLog log: historicalData) {
+				logWeights.add(5);
+			}
+		}
+
+		individualLogWeight.setItems(logWeights);
+		individualLogWeight.setVisible(true);
 		System.out.println("Insert Weighted StoryPoints");
+		weight.setHeaderText("Select a weight 1-5");
+		weight.setContentText("Weight:");
+		Optional<String> result = weight.showAndWait();		// to do next: use selection in list & the textInputDialog
+		result.ifPresent(w -> {								// 	to get updated weight into the column 
+			System.out.println(w);
+		});
 	}
 	
 	

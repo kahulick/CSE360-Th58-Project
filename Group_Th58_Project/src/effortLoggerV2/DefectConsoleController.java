@@ -11,6 +11,14 @@ import javafx.stage.Stage;
 import effortLoggerV2.EffortConsoleController;
 @SuppressWarnings("unused")
 
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+
 public class DefectConsoleController {
 	private Stage stage;
 	private Scene scene;

@@ -8,7 +8,13 @@ import java.time.LocalTime;
 import java.util.Calendar;
 @SuppressWarnings("unused")
 
-public class EffortLog {	// gonna have to map multiple Effort Logs to a project & utilize the update log 
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+public class EffortLog {	
 	
 	private String projectType;
 	private LocalDate date;
