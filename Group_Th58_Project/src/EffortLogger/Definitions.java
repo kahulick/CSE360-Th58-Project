@@ -2,7 +2,12 @@ package EffortLogger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-@SuppressWarnings("unused")
+
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
 
 
 public class Definitions {

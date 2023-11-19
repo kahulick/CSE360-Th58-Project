@@ -1,5 +1,13 @@
 package EffortLogger;  // initial class in the EffortLogger Package
 					   
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+
 public class LogHistory {
 	
 	/* class will be used to store/ retrieve 'EffortLogger' info

@@ -40,6 +40,13 @@ import java.nio.file.StandardOpenOption;
 
 @SuppressWarnings("unused")
 
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+
 public class EffortConsoleController {
 	private Stage stage;
 	private Scene scene;
@@ -71,10 +78,6 @@ public class EffortConsoleController {
 	@FXML
 	private Label clockLabel = new Label();
 
-	
-	
-	// screen size 1200x 800y
-	
 	
 	// launches the effort log editor 
 	public void launchEffortLogEditor(ActionEvent event) throws IOException {
@@ -112,7 +115,6 @@ public class EffortConsoleController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("PlanningPokerToolUI.fxml"));
 		loader.setController(planningPokerToolController);
 		planningPokerToolController = loader.<PlanningPokerToolController>getController();
-		// planningPokerToolController.;
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -205,7 +207,6 @@ public class EffortConsoleController {
 			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from txt field
 		}
 		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
-		// STORE THIS ^^^^ EFFORT LOG OBJECT INTO A TXT FILE WITHIN THE PROJ. FILES
 		effortLogsRepository.CreateEF(effortLog);
 		return effortLog;
 	}

@@ -7,20 +7,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 @SuppressWarnings("unused")
 
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
 public class PlanningPokerCalculator {
 
 	private ObservableList<EffortLog> historicalData = FXCollections.observableArrayList();
 	private ObservableList<String> displayedData = FXCollections.observableArrayList();
-	
-//	private String projectType;
-//	private LocalDate date;
-//	private LocalTime startTime;
-//	private LocalTime stopTime;
-//	private String deltaTime;
-//	private String lifeCycleStep;
-//	private String effortCategory;
-//	private String effortCategoryItem;
-//	private int number = 1;
 	
 	public double calculateStoryPoints(ObservableList<Double> logEstimates) {	// not weighted
 		int numLogs = logEstimates.size();

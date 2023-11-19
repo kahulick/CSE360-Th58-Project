@@ -17,12 +17,19 @@ import effortLoggerV2.PlanningPokerToolController;
 
 @SuppressWarnings("unused")
 
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+// DEPRECATED
+
 public class EffortLoggerController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-	
-	// This is ugly I'll fix it
 	
 	@FXML
 	private Tab effortConsoleTab = new Tab();

@@ -1,28 +1,15 @@
 package effortLoggerV2;
 
-import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableStringValue;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
-import java.net.URL;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.ResourceBundle;
-
-import javafx.util.Pair;
-
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,13 +18,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import prototypes.Prototype1;
-import prototypes.Prototype2;
 import effortLoggerV2.EffortLoggerController;
 import EffortLogger.EffortLog;
 import EffortLogger.PlanningPokerCalculator;
@@ -46,9 +28,13 @@ import EffortLogger.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.regex.*;
-
-
 @SuppressWarnings("unused")
+
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
 
 
 public class PlanningPokerToolController {
@@ -57,8 +43,6 @@ public class PlanningPokerToolController {
 	private Scene scene;
 	private Parent root;
 	
-	// public ObservableList<String> keyWords = FXCollections.observableArrayList();  // relevant later
-	// public List<String> keyWords = new ArrayList<String>();
 	public String projectType;
 	public String projectName;
 	public String keyWords;

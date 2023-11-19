@@ -24,7 +24,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 @SuppressWarnings("unused")
 
-public class LogsController {	// eventually make an observable list for effort logs to add into it
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+
+// NOT RELEVANT RIGHT NOW
+
+public class LogsController {	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -78,7 +88,6 @@ public class LogsController {	// eventually make an observable list for effort l
 		logs.add(effortLog);
 		addToTable();
 		effortLogsTable.refresh();
-		// addToTable();
 	}
 	
 	public void enterLog(EffortLog effortLog) {
@@ -96,8 +105,6 @@ public class LogsController {	// eventually make an observable list for effort l
 		lifeCycleCol.setCellValueFactory(new PropertyValueFactory<>("lifeCycleStep"));
 		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<>("effortCategory"));
 		effortItemCol.setCellValueFactory(new PropertyValueFactory<>("effortCategoryItem"));
-		// numberCol.getCellData();
-		// this.effortLog = effortLog;
 		effortLogsTable.setItems(logs);
 	}
 	
@@ -115,28 +122,5 @@ public class LogsController {	// eventually make an observable list for effort l
 		}
 	}
 	
-	
-	
-//	private String projectType;
-//	private LocalDate date;
-//	private LocalTime startTime;
-//	private LocalTime stopTime;
-//	private String deltaTime;
-//	private String lifeCycleStep;
-//	private String effortCategory;
-//	private String effortCategoryItem;
-//	private int number = 1;
-	
-	
 }
 
-// for testing purposes
-
-//System.out.println("Date: " + effortLog.getDate());
-//System.out.println("Start: " + effortLog.getStartTime());
-//System.out.println("Stop: " + effortLog.getStopTime());
-//System.out.println("Delta: " + effortLog.getDeltaTime());
-//System.out.println("Project Type: " + effortLog.getProjectType());
-//System.out.println("Life Cycle Step: " + effortLog.getLifeCycleStep());
-//System.out.println("Effort Category: " + effortLog.getEffortCategory());
-//System.out.println("Effort Category: " + effortLog.getEffortCategoryItem());

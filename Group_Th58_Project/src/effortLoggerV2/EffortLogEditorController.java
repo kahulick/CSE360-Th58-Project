@@ -16,6 +16,14 @@ import effortLoggerV2.EffortConsoleController;
 import EffortLogger.EffortLogsRepository;
 @SuppressWarnings("unused")
 
+
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+
 public class EffortLogEditorController {
 	private Stage stage;
 	private Scene scene;
@@ -30,6 +38,7 @@ public class EffortLogEditorController {
 		stage.show();
 	}
 	
+	// test to retrieve data from text file 
 	public void retireveTxtData() throws FileNotFoundException {
 		effortLogsRepository.retrieveTxtData();
 	}

@@ -4,6 +4,13 @@ import javafx.beans.property.SimpleStringProperty;
 
 @SuppressWarnings("unused")
 
+/**
+ * @author Kaelyn Hulick 
+ * 
+ */
+
+
+
 public class Log {
 	
 	private String project;
