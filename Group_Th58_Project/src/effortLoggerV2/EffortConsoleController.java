@@ -43,6 +43,11 @@ import java.nio.file.StandardOpenOption;
 /**
  * @author Kaelyn Hulick 
  * 
+ * Title: EfforConsoleController Class 
+ * 
+ * Description: A class that controls the user input and UI for the Effort Console. The user input is then mapped to an Effort Log 
+ * object that can be stored and used for necessary calculations.  
+ * 
  */
 
 
@@ -97,7 +102,7 @@ public class EffortConsoleController {
 		stage.show();
 	}
 	
-	// launches the logs UI --> TRANSPORTS DATA BETWEEN CONTROLLERS !!! IMPORTANT HERE !!!!
+	// launches the logs UI --> exports data between controllers 
 	public void launchLogs(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("LogsUI.fxml"));
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogsUI.fxml"));
@@ -110,6 +115,7 @@ public class EffortConsoleController {
 		stage.show();
 	}
 	
+	// launches the planning poker tool UI --> exports data between controllers
 	public void launchPlanningPokerTool(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("PlanningPokerToolUI.fxml"));
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("PlanningPokerToolUI.fxml"));
@@ -124,6 +130,8 @@ public class EffortConsoleController {
 	
 	
 	// ALL FOLLOWING METHODS: components for retrieving user data
+	
+	// initializes the timer and stores the start time when the button is clicked
 	public void startAnActivity(ActionEvent event) { 
 		start = true;
 		clockLabel.setText("Clock is Running");
@@ -132,7 +140,8 @@ public class EffortConsoleController {
 		date = LocalDate.now();
 	}
 	
-	public void stopActivity(ActionEvent event) {	// calculate delta time within the Log class
+	// ends the timer and stores the stop time when the button is clicked
+	public void stopActivity(ActionEvent event) {	
 		if (start == true) {
 			clockLabel.setText("Clock is Stopped");
 			clockLabel.setStyle("-fx-background-color: red;");
@@ -142,6 +151,7 @@ public class EffortConsoleController {
 		start = false;
 	}
 	
+	// initializes all drop down menu items
 	@FXML
 	public void initialize() {
 		initializeProjectItems();
@@ -150,6 +160,7 @@ public class EffortConsoleController {
 		initializeEffortCategoryItems();
 	}
 	
+	// initializes drop down menu for the project type
 	@FXML
 	public void initializeProjectItems() {
 		if (projectItems.getValue() == null) {
@@ -157,6 +168,7 @@ public class EffortConsoleController {
 		}
 	}
 	
+	// initializes drop down menu for the life cycle step, based on the project type
 	@FXML
 	public void initializeLifeCycleItems() {
 		lifeCycleItems.getItems().removeAll();
@@ -168,6 +180,7 @@ public class EffortConsoleController {
 		}
 	}
 	
+	// initializes the drop down menu for the effort category
 	@FXML
 	public void initializeEffortCategory() {
 		if (effortCategories.getValue() == null) {
@@ -175,6 +188,7 @@ public class EffortConsoleController {
 		}
 	}
 	
+	// initializes the drop down menu for the effort category items, based on the selected effort category
 	@FXML
 	public void initializeEffortCategoryItems() {
 		effortCategoryItems.getItems().removeAll();
@@ -204,10 +218,10 @@ public class EffortConsoleController {
 		if (otherDetails.isVisible() == true) {
 			effortDetails = otherDetails.getText();
 		} else {
-			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from txt field
+			effortDetails = effortCategoryItems.getValue(); // if "other" -> comes from text field
 		}
 		effortLog = new EffortLog(projectItems.getValue(), date, startTime, stopTime, lifeCycleItems.getValue(), effortCategories.getValue(), effortDetails);
-		effortLogsRepository.CreateEF(effortLog);
+		effortLogsRepository.CreateEF(effortLog);	// saves new log in the text file
 		return effortLog;
 	}
 

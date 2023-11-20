@@ -7,7 +7,13 @@ import javafx.collections.ObservableList;
 /**
  * @author Kaelyn Hulick 
  * 
+ * Title: Definitions Class
+ * 
+ * Description: A class to store objects which appear in the drop down menus of the Effort Logger V2 UI's. This
+ * class serves as a library for the separate controllers to pull data from. 
+ * 
  */
+
 
 
 public class Definitions {

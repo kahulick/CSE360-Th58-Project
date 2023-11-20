@@ -11,6 +11,13 @@ import java.util.Calendar;
 /**
  * @author Kaelyn Hulick 
  * 
+ * Title: EffortLogger class
+ * 
+ * Description: A class which represents an individual Effort Log. User input from the Effort Console UI is mapped to the
+ * attributes below, besides delta time. Getters are included to return each attribute and setters are included to set the values
+ * of certain attributes that can be updated within the Edit Log Console. 
+ * 
+ * 
  */
 
 
@@ -49,6 +56,7 @@ public class EffortLog {
 		this.effortCategoryItem = effortCategoryItem;
 	}
 	
+	// calculates the time difference between the Effort Logs start & stop times
 	public String calculateDeltaTime(LocalTime start, LocalTime stop) {
 		Duration duration = Duration.between(stopTime, startTime).abs();
 		long durationSec = duration.getSeconds();
