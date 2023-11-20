@@ -24,6 +24,8 @@ import EffortLogger.Definitions;
 import EffortLogger.EffortLog;
 import EffortLogger.EffortLogsRepository;
 
+import prototypes.Prototype2;
+
 //added imports for txt file reading
 //not all are needed, will prob trim later
 import java.util.Scanner;
@@ -82,6 +84,20 @@ public class EffortConsoleController {
 	private TextField otherDetails = new TextField();
 	@FXML
 	private Label clockLabel = new Label();
+	
+	public void prototype2(ActionEvent event) throws IOException {
+		Prototype2 proto2 = new Prototype2();
+		proto2.launch();
+//		System.out.println("LAUNCH");
+	}
+	
+	public void switchToPrototype2(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("Prototype2UI.fxml")); 
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
 
 	
 	// launches the effort log editor 
