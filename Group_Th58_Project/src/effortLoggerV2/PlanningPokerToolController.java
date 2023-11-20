@@ -215,6 +215,22 @@ public class PlanningPokerToolController {
 		double storyPoints = planningPokerCalculator.calculateStoryPoints(logEstimates);
 		if (roundCounter > 1) {
 			adjustWeight.setVisible(true);
+			logWeights = FXCollections.observableArrayList();
+			userEffortLogs.setLayoutX(23); //-> 39 or 23
+			adjustWeight.setLayoutX(23);
+			individualLogEffort.setLayoutX(829); // gonna be on the far right
+			if (refinedLogData != null) {
+				for (EffortLog log: refinedLogData) {
+					logWeights.add(3);
+				}
+			} else {
+				for (EffortLog log: historicalData) {
+					logWeights.add(3);
+				}
+			}
+
+			individualLogWeight.setItems(logWeights);
+			individualLogWeight.setVisible(true);
 		}
 		//adjustWeight.setVisible(true);
 		individualLogEffort.setItems(logEstimates);
@@ -268,29 +284,46 @@ public class PlanningPokerToolController {
 	
 	// Allows the user to select a log to adjust its weight during subsequent rounds
 	public void weightedStoryPoints(ActionEvent event) {
-		logWeights = FXCollections.observableArrayList();
-		userEffortLogs.setLayoutX(23); //-> 39 or 23
-		adjustWeight.setLayoutX(23);
-		individualLogEffort.setLayoutX(829); // gonna be on the far right
-		if (refinedLogData != null) {
-			for (EffortLog log: refinedLogData) {
-				logWeights.add(5);
-			}
-		} else {
-			for (EffortLog log: historicalData) {
-				logWeights.add(5);
-			}
-		}
-
-		individualLogWeight.setItems(logWeights);
-		individualLogWeight.setVisible(true);
 		System.out.println("Insert Weighted StoryPoints");
 		weight.setHeaderText("Select a weight 1-5");
 		weight.setContentText("Weight:");
-		Optional<String> result = weight.showAndWait();		// TODO next: use selection in list & the textInputDialog
-		result.ifPresent(w -> {								// 	to get updated weight into the column 
-			System.out.println(w);
-		});
+		if (userEffortLogs.getSelectionModel().getSelectedItem() != null) {
+			Optional<String> result = weight.showAndWait();		
+			result.ifPresent(w -> {								 
+				System.out.println(w);
+				if (Integer.parseInt(w) > 5) {
+					w = "5";
+				}
+				try {
+					logWeights.set(userEffortLogs.getSelectionModel().getSelectedIndex(), Integer.parseInt(w));
+					if (refinedLogData != null) {
+						EffortLog selectedLog = refinedLogData.get(userEffortLogs.getSelectionModel().getSelectedIndex());
+						calculateWeightedValue(Integer.parseInt(w), selectedLog, userEffortLogs.getSelectionModel().getSelectedIndex());
+					} else {
+						EffortLog selectedLog = historicalData.get(userEffortLogs.getSelectionModel().getSelectedIndex());
+						calculateWeightedValue(Integer.parseInt(w), selectedLog, userEffortLogs.getSelectionModel().getSelectedIndex());
+					}
+				} catch(Exception e) { 
+					System.out.println("No log selected.");
+				}
+
+			});
+		}
+		generateWeightedStoryPoints();
+	}
+	
+	public void calculateWeightedValue(int weight, EffortLog log, int index) {
+		double logWeight = planningPokerCalculator.calculateWeightedEffort(weight, log);
+		System.out.println(logEstimates.get(userEffortLogs.getSelectionModel().getSelectedIndex()));
+		System.out.println(logWeight);
+		logEstimates.set(index, logWeight);
+		//get(userEffortLogs.getSelectionModel().getSelectedIndex()))
+	}
+	
+	public void generateWeightedStoryPoints() {
+		double storyPoints = planningPokerCalculator.calculateStoryPoints(logEstimates);
+		System.out.println(storyPoints);
+		estStoryPoints.setText("Estimated Story Points: " + storyPoints);
 	}
 	
 	
