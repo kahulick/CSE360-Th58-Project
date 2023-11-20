@@ -283,6 +283,7 @@ public class PlanningPokerToolController {
 	}
 	
 	// Allows the user to select a log to adjust its weight during subsequent rounds
+	// uses the selected log to adjust weight & recalculate both individual and overall story point estimate
 	public void weightedStoryPoints(ActionEvent event) {
 		System.out.println("Insert Weighted StoryPoints");
 		weight.setHeaderText("Select a weight 1-5");
@@ -312,14 +313,15 @@ public class PlanningPokerToolController {
 		generateWeightedStoryPoints();
 	}
 	
+	// update the EffortLogs estimated value & store it back in the list
 	public void calculateWeightedValue(int weight, EffortLog log, int index) {
 		double logWeight = planningPokerCalculator.calculateWeightedEffort(weight, log);
 		System.out.println(logEstimates.get(userEffortLogs.getSelectionModel().getSelectedIndex()));
 		System.out.println(logWeight);
 		logEstimates.set(index, logWeight);
-		//get(userEffortLogs.getSelectionModel().getSelectedIndex()))
 	}
 	
+	// calculate the new story point estimate using the new weighted log values
 	public void generateWeightedStoryPoints() {
 		double storyPoints = planningPokerCalculator.calculateStoryPoints(logEstimates);
 		System.out.println(storyPoints);
