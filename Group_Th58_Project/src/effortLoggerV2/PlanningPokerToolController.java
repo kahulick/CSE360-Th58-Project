@@ -319,6 +319,7 @@ public class PlanningPokerToolController {
 		System.out.println(logEstimates.get(userEffortLogs.getSelectionModel().getSelectedIndex()));
 		System.out.println(logWeight);
 		logEstimates.set(index, logWeight);
+		individualLogEffort.setItems(logEstimates);
 	}
 	
 	// calculate the new story point estimate using the new weighted log values
