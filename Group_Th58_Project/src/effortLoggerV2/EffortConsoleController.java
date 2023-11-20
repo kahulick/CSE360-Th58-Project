@@ -85,6 +85,9 @@ public class EffortConsoleController {
 	@FXML
 	private Label clockLabel = new Label();
 	
+	//@author Kevin Ruiz
+	//added in the new branch in order to access the previous risk prototype
+	
 	public void prototype2(ActionEvent event) throws IOException {
 		Prototype2 proto2 = new Prototype2();
 		proto2.launch();
