@@ -61,6 +61,7 @@ public class EffortConsoleController {
 	private LogsController logsController = new LogsController();
 	private PlanningPokerToolController planningPokerToolController = new PlanningPokerToolController();
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
+	private DefectConsoleController defectConsoleController = new DefectConsoleController();
 	private LocalDate date; 
 	private LocalTime startTime;
 	private LocalTime stopTime;
@@ -95,11 +96,23 @@ public class EffortConsoleController {
 	
 	// launches the defect console
 	public void launchDefectConsole(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml")); 
+		
+		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DefectConsoleUI.fxml"));
+		loader.setController(defectConsoleController);
+		defectConsoleController = loader.<DefectConsoleController>getController();
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+		
+		
+		
+//		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml")); 
+//		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//		scene = new Scene(root);
+//		stage.setScene(scene);
+//		stage.show();
 	}
 	
 	// launches the logs UI --> exports data between controllers 
