@@ -35,6 +35,7 @@ import javafx.collections.ObservableList;
  */
 
 
+//	TABLE VIEW -> NOT IT!! LISTVIEW IS CORRECT
 
 // NOT RELEVANT RIGHT NOW
 
