@@ -250,7 +250,8 @@ public class PlanningPokerToolController {
         String startTime = makeTime.format(log.getStartTime());
         String stopTime = makeTime.format(log.getStopTime());
         
-        String strLog = log.getProjectType() + "," +
+        String strLog = log.getID() + "," +
+        		log.getProjectType() + "," +
 	    		date + "," +
 	    		startTime + "," + 
 	    		stopTime + "," +

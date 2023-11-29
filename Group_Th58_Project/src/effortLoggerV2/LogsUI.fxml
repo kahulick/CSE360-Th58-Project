@@ -5,8 +5,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -48,18 +46,6 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="effortLogsTable" editable="true" layoutX="17.0" layoutY="44.0" prefHeight="200.0" prefWidth="877.0" visible="false">
-                          <columns>
-                            <TableColumn fx:id="numberCol" prefWidth="63.0" text="Number" />
-                            <TableColumn fx:id="dateCol" prefWidth="86.0" text="Date" />
-                              <TableColumn fx:id="startCol" prefWidth="61.0" text="Start" />
-                              <TableColumn fx:id="stopCol" prefWidth="63.0" text="Stop" />
-                              <TableColumn fx:id="deltaCol" prefWidth="70.0" text="Time" />
-                              <TableColumn fx:id="lifeCycleCol" prefWidth="143.0" text="Life Cycle Step" />
-                              <TableColumn fx:id="effortCategoryCol" prefWidth="108.0" text="Effort Category" />
-                              <TableColumn fx:id="effortItemCol" prefWidth="282.0" text="Deliverable / Interruption / etc." />
-                          </columns>
-                        </TableView>
                         <ListView fx:id="userEffortLogs" layoutX="26.0" layoutY="44.0" prefHeight="471.0" prefWidth="847.0" />
                      </children>
                   </AnchorPane>

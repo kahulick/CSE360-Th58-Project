@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Random;
 @SuppressWarnings("unused")
 
 /**
@@ -32,10 +33,22 @@ public class EffortLog {
 	private String effortCategory;
 	private String effortCategoryItem;
 	private int number = 1;
+	private String id;
 	
 	// Effort Log object used to map into the table (no projectType & has a set deltaTime attribute)
-	public EffortLog(int number, LocalDate date, LocalTime startTime, LocalTime stopTime, String deltaTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
-		this.number = number;
+//	public EffortLog(int number, LocalDate date, LocalTime startTime, LocalTime stopTime, String deltaTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
+//		this.number = number;
+//		this.date = date;
+//		this.startTime = startTime;
+//		this.stopTime = stopTime;
+//		this.deltaTime = deltaTime;
+//		this.lifeCycleStep = lifeCycleStep;
+//		this.effortCategory = effortCategory;
+//		this.effortCategoryItem = effortCategoryItem;
+//	}
+	
+	public EffortLog(String id, LocalDate date, LocalTime startTime, LocalTime stopTime, String deltaTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
+		this.id = id;
 		this.date = date;
 		this.startTime = startTime;
 		this.stopTime = stopTime;
@@ -45,7 +58,21 @@ public class EffortLog {
 		this.effortCategoryItem = effortCategoryItem;
 	}
 	
+	public EffortLog(String id, String projectType, LocalDate date, LocalTime startTime, LocalTime stopTime, String deltaTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
+		this.id = id;
+		this.projectType = projectType;
+		this.date = date;
+		this.startTime = startTime;
+		this.stopTime = stopTime;
+		this.deltaTime = deltaTime;
+		this.lifeCycleStep = lifeCycleStep;
+		this.effortCategory = effortCategory;
+		this.effortCategoryItem = effortCategoryItem;
+	}
+	
+	// initial effort log creation
 	public EffortLog(String projectType, LocalDate date, LocalTime startTime, LocalTime stopTime, String lifeCycleStep, String effortCategory, String effortCategoryItem) {
+		this.id = generateID();
 		this.projectType = projectType;
 		this.date = date;
 		this.startTime = startTime;
@@ -62,6 +89,17 @@ public class EffortLog {
 		long durationSec = duration.getSeconds();
 		String deltaTime = String.format("%d:%02d:%02d", durationSec/3600, (durationSec%3600)/60, durationSec%60);
 		return deltaTime;
+	}
+	
+	// generates a random 6 digit number 
+	public static String generateID() {
+	    Random rnd = new Random();
+	    int number = rnd.nextInt(999999);
+	    return String.format("%06d", number);
+	}
+	
+	public String getID() {
+		return id;
 	}
 	
 	public String getProjectType() {
