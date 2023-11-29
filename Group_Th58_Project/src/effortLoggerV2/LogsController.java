@@ -54,24 +54,6 @@ public class LogsController {
 	private Label numberEffortLogs = new Label();
 	@FXML
 	private Label numberDefectLogs = new Label();
-//	@FXML
-//	private TableView<EffortLog> effortLogsTable = new TableView<>();
-//	@FXML
-//	private TableColumn<EffortLog, Integer> numberCol = new TableColumn<>();
-//	@FXML
-//	private TableColumn<EffortLog, LocalDate> dateCol = new TableColumn<>();
-//	@FXML
-//	private TableColumn<EffortLog, LocalTime> startCol = new TableColumn<>();
-//	@FXML
-//	private TableColumn<EffortLog, LocalTime> stopCol = new TableColumn<>();
-//	@FXML
-//	private TableColumn<EffortLog, String> deltaCol = new TableColumn<>();
-//	@FXML
-//	private TableColumn<EffortLog, String> lifeCycleCol = new TableColumn<>();
-//	@FXML
-//	private TableColumn<EffortLog, String> effortCategoryCol = new TableColumn<>();
-//	@FXML
-//	private TableColumn<EffortLog, String> effortItemCol = new TableColumn<>();
 	@FXML
 	private ListView<String> userEffortLogs;
 	
@@ -137,38 +119,6 @@ public class LogsController {
 //		addToTable();
 //		effortLogsTable.refresh();
 	}
-//	
-//	public void enterLog(EffortLog effortLog) {
-//		this.effortLog = effortLog;
-//	}
-	
-//	@FXML
-//	public void initialize() {
-//		
-//		numberCol.setCellValueFactory(new PropertyValueFactory<>("number"));
-//		dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-//		startCol.setCellValueFactory(new PropertyValueFactory<>("startTime"));
-//		stopCol.setCellValueFactory(new PropertyValueFactory<>("stopTime"));
-//		deltaCol.setCellValueFactory(new PropertyValueFactory<>("deltaTime"));
-//		lifeCycleCol.setCellValueFactory(new PropertyValueFactory<>("lifeCycleStep"));
-//		effortCategoryCol.setCellValueFactory(new PropertyValueFactory<>("effortCategory"));
-//		effortItemCol.setCellValueFactory(new PropertyValueFactory<>("effortCategoryItem"));
-//		effortLogsTable.setItems(logs);
-//	}
-	
-//	public void addToTable() {
-//		if (effortLog != null) {
-//			EffortLog effortLogRow = new EffortLog(effortLog.getID(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getDeltaTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
-//			logs.add(effortLogRow);
-//			effortLogsTable.getItems().add(effortLogRow);
-//		}
-//		effortLogsTable.refresh();
-//		System.out.println(effortLogsTable.getItems());
-//		ObservableList<EffortLog> returnedLogs = effortLogsTable.getItems();
-//		for (EffortLog log : returnedLogs) {
-//			System.out.println(log.getEffortCategory());	// ITS GETTING THE OBJECT
-//		}
-//	}
 	
 }
 
