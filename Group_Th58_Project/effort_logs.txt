@@ -20,3 +20,4 @@ Business Project,16/11/2023,16:36:24,16:36:31,0:00:07,Outlining,Interruptions,Vi
 Business Project,16/11/2023,16:41:35,16:41:46,0:00:11,Verifying,Others,yuh?
 Business Project,16/11/2023,17:15:31,17:15:38,0:00:07,Verifying,Interruptions,Teammate
 Business Project,17/11/2023,00:16:58,00:18:22,0:01:24,Finalizing,Defects,10 Documentation
+Development Project,25/11/2023,14:22:55,14:23:06,0:00:11,Conceptual Design,Interruptions,Teammate

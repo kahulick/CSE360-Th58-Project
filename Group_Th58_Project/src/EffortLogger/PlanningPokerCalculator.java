@@ -48,6 +48,40 @@ public class PlanningPokerCalculator {
 	// Individual log effort/ story point estimate
 	// takes both refined data and historical data (in case the user never refines the data)
 	// returns a list of story point estimates with the same index as their associated log
+	
+	public double calculateWeightedEffort(int weight, EffortLog log) {
+		double weightedEffort = 0.0;
+		double timeVal = getTimeVal(log.getDeltaTime());
+		double projectVal = getProjectVal(log.getProjectType());
+		double effortCategoryVal = getEffortCategoryVal(log.getEffortCategory());
+		double subCategoryVal = 0.0;
+		switch(log.getEffortCategory().toLowerCase()) {
+		case "plans":
+			subCategoryVal = getPlansVal(log.getEffortCategoryItem());
+			break;
+		case "deliverables":
+			subCategoryVal = getDeliverablesVal(log.getEffortCategoryItem());
+			break;
+		case "interruptions":
+			subCategoryVal = getInterruptionVal(log.getEffortCategoryItem());
+			break;
+		case "defects":
+			subCategoryVal = getDefectsVal(log.getEffortCategoryItem());
+			break;
+		case "others":
+			subCategoryVal = 1.0;	// no "others" sub category in formula 
+			break;
+		default:
+			subCategoryVal = 0.0;
+		}
+		double rating = (timeVal + projectVal + effortCategoryVal + subCategoryVal);
+		double factor = getWeightedFactor(weight);
+		weightedEffort = rating * factor;
+		
+		
+		
+		return Math.floor(weightedEffort * 100) / 100;
+	}
 
 	public ObservableList<Double> calculateIndividualEffort(ObservableList<EffortLog> refinedData, ObservableList<EffortLog> historicalData) {	// not weighted
 		if (refinedData == null) {
@@ -257,6 +291,32 @@ public class PlanningPokerCalculator {
 		}
 		
 		return subCategoryVal;
+	}
+	
+	public double getWeightedFactor(int weight) {
+		double factor = 1.0;
+		
+		switch(weight) {
+		case 1:
+			factor = 0.5;
+			break;
+		case 2:
+			factor = 0.75;
+			break;
+		case 3:
+			factor = 1.0;
+			break;
+		case 4:
+			factor = 1.25;
+			break;
+		case 5:
+			factor = 1.5;
+			break;
+		default:
+			factor = 1.0;
+		}
+		
+		return factor;
 	}
 	
 	
