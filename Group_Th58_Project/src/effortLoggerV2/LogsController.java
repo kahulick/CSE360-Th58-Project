@@ -54,24 +54,24 @@ public class LogsController {
 	private Label numberEffortLogs = new Label();
 	@FXML
 	private Label numberDefectLogs = new Label();
-	@FXML
-	private TableView<EffortLog> effortLogsTable = new TableView<>();
-	@FXML
-	private TableColumn<EffortLog, Integer> numberCol = new TableColumn<>();
-	@FXML
-	private TableColumn<EffortLog, LocalDate> dateCol = new TableColumn<>();
-	@FXML
-	private TableColumn<EffortLog, LocalTime> startCol = new TableColumn<>();
-	@FXML
-	private TableColumn<EffortLog, LocalTime> stopCol = new TableColumn<>();
-	@FXML
-	private TableColumn<EffortLog, String> deltaCol = new TableColumn<>();
-	@FXML
-	private TableColumn<EffortLog, String> lifeCycleCol = new TableColumn<>();
-	@FXML
-	private TableColumn<EffortLog, String> effortCategoryCol = new TableColumn<>();
-	@FXML
-	private TableColumn<EffortLog, String> effortItemCol = new TableColumn<>();
+//	@FXML
+//	private TableView<EffortLog> effortLogsTable = new TableView<>();
+//	@FXML
+//	private TableColumn<EffortLog, Integer> numberCol = new TableColumn<>();
+//	@FXML
+//	private TableColumn<EffortLog, LocalDate> dateCol = new TableColumn<>();
+//	@FXML
+//	private TableColumn<EffortLog, LocalTime> startCol = new TableColumn<>();
+//	@FXML
+//	private TableColumn<EffortLog, LocalTime> stopCol = new TableColumn<>();
+//	@FXML
+//	private TableColumn<EffortLog, String> deltaCol = new TableColumn<>();
+//	@FXML
+//	private TableColumn<EffortLog, String> lifeCycleCol = new TableColumn<>();
+//	@FXML
+//	private TableColumn<EffortLog, String> effortCategoryCol = new TableColumn<>();
+//	@FXML
+//	private TableColumn<EffortLog, String> effortItemCol = new TableColumn<>();
 	@FXML
 	private ListView<String> userEffortLogs;
 	
@@ -116,7 +116,8 @@ public class LogsController {
         String startTime = makeTime.format(log.getStartTime());
         String stopTime = makeTime.format(log.getStopTime());
         
-        String strLog = log.getProjectType() + "," +
+        String strLog = log.getID() + "," +
+         		log.getProjectType() + "," +
 	    		date + "," +
 	    		startTime + "," + 
 	    		stopTime + "," +
@@ -133,13 +134,13 @@ public class LogsController {
 		this.effortLog = effortLog;
 		System.out.println(effortLog == null);
 		logs.add(effortLog);
-		addToTable();
-		effortLogsTable.refresh();
+//		addToTable();
+//		effortLogsTable.refresh();
 	}
-	
-	public void enterLog(EffortLog effortLog) {
-		this.effortLog = effortLog;
-	}
+//	
+//	public void enterLog(EffortLog effortLog) {
+//		this.effortLog = effortLog;
+//	}
 	
 //	@FXML
 //	public void initialize() {
@@ -155,19 +156,19 @@ public class LogsController {
 //		effortLogsTable.setItems(logs);
 //	}
 	
-	public void addToTable() {
-		if (effortLog != null) {
-			EffortLog effortLogRow = new EffortLog(effortLog.getNumber(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getDeltaTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
-			logs.add(effortLogRow);
-			effortLogsTable.getItems().add(effortLogRow);
-		}
-		effortLogsTable.refresh();
-		System.out.println(effortLogsTable.getItems());
-		ObservableList<EffortLog> returnedLogs = effortLogsTable.getItems();
-		for (EffortLog log : returnedLogs) {
-			System.out.println(log.getEffortCategory());	// ITS GETTING THE OBJECT
-		}
-	}
+//	public void addToTable() {
+//		if (effortLog != null) {
+//			EffortLog effortLogRow = new EffortLog(effortLog.getID(), effortLog.getDate(), effortLog.getStartTime(), effortLog.getStopTime(), effortLog.getDeltaTime(), effortLog.getLifeCycleStep(), effortLog.getEffortCategory(), effortLog.getEffortCategoryItem());
+//			logs.add(effortLogRow);
+//			effortLogsTable.getItems().add(effortLogRow);
+//		}
+//		effortLogsTable.refresh();
+//		System.out.println(effortLogsTable.getItems());
+//		ObservableList<EffortLog> returnedLogs = effortLogsTable.getItems();
+//		for (EffortLog log : returnedLogs) {
+//			System.out.println(log.getEffortCategory());	// ITS GETTING THE OBJECT
+//		}
+//	}
 	
 }
 

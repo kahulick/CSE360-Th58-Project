@@ -76,7 +76,7 @@ public class EffortLogsRepository {
 	    
         //writes the effort log object as a string to the effort_logs.txt file, each log is separated by a newline
 	    out.println(
-	    		
+	    		effortLog.getID() + "," +
 	    		effortLog.getProjectType() + "," +
 	    		date + "," +
 	    		startTime + "," + 
@@ -143,16 +143,17 @@ public class EffortLogsRepository {
 		File file = new File("effort_logs.txt");
 		Scanner sc = new Scanner(file);
 		
-		
+		String ID;
 		String projType;
 		LocalDate dt;
 		LocalTime startT;
 		LocalTime stopT;
+		String deltaTime;
 		String LCS;
 		String effortCat;
 		String ECItem;
 		
-		String[] effortLogData = new String[6];
+		String[] effortLogData = new String[8];
 		
 		//for formatting the string in the txt file to LocalDate object
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -168,15 +169,17 @@ public class EffortLogsRepository {
 			//is parsed at a time
 			effortLogData = sc.nextLine().split(",");
 			
-			projType = effortLogData[0];
-			dt = LocalDate.parse(effortLogData[1], formatter);
-			startT = LocalTime.parse(effortLogData[2], parser);
-			stopT = LocalTime.parse(effortLogData[3], parser);
-			LCS = effortLogData[4];
-			effortCat = effortLogData[5];
-			ECItem = effortLogData[6];
+			ID = effortLogData[0];
+			projType = effortLogData[1];
+			dt = LocalDate.parse(effortLogData[2], formatter);
+			startT = LocalTime.parse(effortLogData[3], parser);
+			stopT = LocalTime.parse(effortLogData[4], parser);
+			deltaTime = effortLogData[5];
+			LCS = effortLogData[6];
+			effortCat = effortLogData[7];
+			ECItem = effortLogData[8];
 			
-			effortRepo[i] = new EffortLog(projType, dt, startT, stopT, LCS, effortCat, ECItem);
+			effortRepo[i] = new EffortLog(ID, projType, dt, startT, stopT, deltaTime, LCS, effortCat, ECItem);
 			
 		}
 		

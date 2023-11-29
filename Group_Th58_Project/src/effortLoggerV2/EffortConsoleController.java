@@ -8,6 +8,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -171,6 +173,7 @@ public class EffortConsoleController {
 		initializeLifeCycleItems();
 		initializeEffortCategory();
 		initializeEffortCategoryItems();
+		// System.out.println(getRandomNumberString());
 	}
 	
 	// initializes drop down menu for the project type

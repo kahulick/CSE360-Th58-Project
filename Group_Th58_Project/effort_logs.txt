@@ -1,23 +1,4 @@
-Development Project,12/11/2023,18:11:12,18:11:21,Conceptual Design Plan,Deliverables,Test Cases
-Development Project,12/11/2023,18:12:01,18:12:14,Detailed Design Review,Plans,Risk Management Plan
-Development Project,12/11/2023,18:43:48,18:43:54,Conceptual Design Plan,Interruptions,Teammate
-Business Project,12/11/2023,18:43:58,18:44:04,Information Understanding,Interruptions,Phone
-Business Project,12/11/2023,19:02:43,19:02:50,Information Gathering,Interruptions,Teammate
-Development Project,12/11/2023,19:02:59,19:03:09,Requirements,Deliverables,Test Cases
-Development Project,12/11/2023,20:04:19,20:04:30,Conceptual Design Plan,Interruptions,Teammate
-Business Project,12/11/2023,20:13:11,20:13:26,Verifying,Others,hey!!
-Business Project,12/11/2023,20:38:58,20:39:10,Coach Meeting,Others,TESTING
-Business Project,12/11/2023,20:46:52,20:47:03,Verifying,Plans,Detailed Design Plan
-Development Project,12/11/2023,20:47:16,20:48:12,Requirements,Others,Figuring out what my boss wants me to do 
-Development Project,12/11/2023,21:23:53,21:24:06,Conceptual Design,Interruptions,Teammate
-Business Project,12/11/2023,21:27:25,21:27:32,Verifying,Interruptions,Visitor
-Business Project,12/11/2023,21:27:33,21:27:42,Team Meeting,Defects,50 Interface
-Business Project,12/11/2023,21:30:16,21:31:31,Verifying,Others,make sure search engine returns back within 1ns
-Business Project,12/11/2023,23:54:44,23:55:02,Verifying,Others,SCREEN CAST TEST 5
-Business Project,15/11/2023,18:09:32,18:09:42,Outlining,Others,Cool
-Business Project,16/11/2023,16:25:05,16:25:18,Deliverables,Outlining,Deliverables,Draft
-Business Project,16/11/2023,16:36:24,16:36:31,0:00:07,Outlining,Interruptions,Visitor
-Business Project,16/11/2023,16:41:35,16:41:46,0:00:11,Verifying,Others,yuh?
-Business Project,16/11/2023,17:15:31,17:15:38,0:00:07,Verifying,Interruptions,Teammate
-Business Project,17/11/2023,00:16:58,00:18:22,0:01:24,Finalizing,Defects,10 Documentation
-Development Project,25/11/2023,14:22:55,14:23:06,0:00:11,Conceptual Design,Interruptions,Teammate
+033081, Business Project,29/11/2023,13:28:45,13:28:54,0:00:09,Information Understanding,Defects,20 Syntax
+827776, Development Project,29/11/2023,13:34:01,13:34:08,0:00:07,Requirements,Interruptions,Teammate
+776684, Business Project,29/11/2023,13:35:16,13:35:23,0:00:07,Verifying,Defects,20 Syntax
+259917, Business Project,29/11/2023,13:37:19,13:37:26,0:00:07,Information Understanding,Interruptions,Visitor
