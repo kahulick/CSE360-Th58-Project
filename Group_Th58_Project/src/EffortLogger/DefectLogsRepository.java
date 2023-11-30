@@ -102,8 +102,6 @@ public class DefectLogsRepository {
 	
 	// returns total number of defect logs, business project defect logs, and development project defect logs
 	public int[] getDefectLogCount() throws IOException {
-		
-		// int numDefectLogs[] = new int[3];
 		int defectLogCount = 0; 	  // numDefectLogs[0]
 		int businessLogCount = 0; 	  // numDefectLogs[1]
 		int developmentLogCount = 0;  // numDefectLogs[2]
@@ -118,17 +116,24 @@ public class DefectLogsRepository {
 	    	} else if (arr[0].equalsIgnoreCase("Development")) {
 	    		developmentLogCount++;
 	    	}
-	    	//System.out.println(sc.nextLine());
 	    	System.out.println(arr[0]);
 	    	defectLogCount++;
 	    }
 	    sc.close();
-	    // numDefectLogs[0] = defectLogCount;
 	    int numDefectLogs[] = {defectLogCount, businessLogCount, developmentLogCount};
 	    return numDefectLogs;
-	    
-	    
-	    // return defectLogCount;
+	}
+	
+	public List<String> getDefectLogStrings() throws IOException, NoSuchElementException {
+		List<String> logStrings = new ArrayList<String>();
+		File file = new File("defect_logs.txt");
+	    Scanner sc = new Scanner(file);
+	    while (sc.hasNextLine()) {
+	    	// System.out.println(sc.nextLine());
+	    	logStrings.add(sc.nextLine());
+	    }
+	    sc.close();
+	    return logStrings;
 	}
 	
 

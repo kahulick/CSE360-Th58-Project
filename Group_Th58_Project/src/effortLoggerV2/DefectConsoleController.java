@@ -2,6 +2,8 @@ package effortLoggerV2;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 import EffortLogger.DefectLog;
 import EffortLogger.Definitions;
@@ -10,6 +12,7 @@ import EffortLogger.EffortLogsRepository;
 import EffortLogger.DefectLogsRepository;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 //import effortLoggerV2.EffortConsoleController;
@@ -42,8 +46,8 @@ public class DefectConsoleController {
 	private LogsController logsController = new LogsController();
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	private DefectLogsRepository defectLogsRepository = new DefectLogsRepository();
-	private int businessDefectLogs;
-	private int developmentDefectLogs;
+	private int numBusiness;
+	private int numDevelopment;
 	
 	@FXML
 	private ComboBox<String> projectItems = new ComboBox<String>();	// definitions options1a -> project type 
@@ -58,7 +62,7 @@ public class DefectConsoleController {
 	@FXML
 	private TextField defectNameInput = new TextField();
 	@FXML
-	private TextField descriptionInput = new TextField();
+	private TextArea detailInput = new TextArea();
 	@FXML												// business		 development
 	private ListView<String> injectedSteps;	// definitions options1a1 or options1a2 -> injected & removed drop down
 	@FXML
@@ -70,6 +74,13 @@ public class DefectConsoleController {
 	private String selectedRemovedStep;
 	private String selectedDefectCategory;
 	private boolean open = false;
+	
+	private List<String> defectLogStrings = FXCollections.observableArrayList();
+	private List<DefectLog> defectLogs = FXCollections.observableArrayList();
+	private List<String> businessLogStrings = FXCollections.observableArrayList();
+	private List<DefectLog> businessDefectLogs = FXCollections.observableArrayList();
+	private List<String> develLogStrings = FXCollections.observableArrayList();
+	private List<DefectLog> develDefectLogs = FXCollections.observableArrayList();
 
 	public void launchEffortConsole(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
@@ -108,6 +119,11 @@ public class DefectConsoleController {
 		
 		initializeProjectItems();
 		defectCategory.setItems(definitions.options3d);
+		try {
+			defectLogStrings = defectLogsRepository.getDefectLogStrings();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -163,13 +179,6 @@ public class DefectConsoleController {
 	
 	public void clearDefectLog(ActionEvent event) throws IOException {
 		System.out.println("Clear");
-		
-		// TESTING PURPOSES !!! 
-		int defectLogs[] = defectLogsRepository.getDefectLogCount();
-		System.out.printf("Total: %d\n", defectLogs[0]);
-		System.out.printf("Business: %d\n", defectLogs[1]);
-		System.out.printf("Development: %d\n", defectLogs[2]);
-		// System.out.println(defectLogsRepository.getDefectLogCount());
 	}
 	
 	public void createNewDefect(ActionEvent event) {
@@ -188,21 +197,30 @@ public class DefectConsoleController {
 		open = true;
 	}
 	
-	
+	// saves the new defect log or updates the current one
 	// public DefectLog(String project, String defectName, boolean status, String detail, String injectedStep, String removedStep, String defectCategory, String fix)
 	public void updateCurrentDefect(ActionEvent event) {
-		System.out.println("Update/Save");
-		System.out.println(defectNameInput.getText());
-		System.out.println(descriptionInput.getText());
-		System.out.println(injectedSteps.getSelectionModel().getSelectedItem());
-		defectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, descriptionInput.getText(), injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
+		defectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, detailInput.getText(), 
+				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
+				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
 		defectLogsRepository.CreateDF(defectLog);
+		try {
+			defectLogStrings = defectLogsRepository.getDefectLogStrings();
+			numLabel.setText(Integer.toString(initializeCurrentDefect(projectItems.getValue())));
+//			for (String log : defectLogStrings) {
+//				System.out.println(log);
+//			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+	
 	
 	public void deleteCurrentDefect(ActionEvent event) {
 		System.out.println("Delete");
 	}
 	
+	// NOT USEFUL LOL 
 	public void testSave(ActionEvent event) throws IOException {
 		System.out.println("Saving");
 		defectLogsRepository.retrieveTxtData();
