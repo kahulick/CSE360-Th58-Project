@@ -100,6 +100,37 @@ public class DefectLogsRepository {
 	    sc.close();      
 	}
 	
+	// returns total number of defect logs, business project defect logs, and development project defect logs
+	public int[] getDefectLogCount() throws IOException {
+		
+		// int numDefectLogs[] = new int[3];
+		int defectLogCount = 0; 	  // numDefectLogs[0]
+		int businessLogCount = 0; 	  // numDefectLogs[1]
+		int developmentLogCount = 0;  // numDefectLogs[2]
+		
+		File file = new File("defect_logs.txt");
+	    Scanner sc = new Scanner(file);
+	    while (sc.hasNextLine()) {
+	    	String test = sc.nextLine();
+	    	String arr[] = test.split(" ");
+	    	if (arr[0].equalsIgnoreCase("Business")) {
+	    		businessLogCount++;
+	    	} else if (arr[0].equalsIgnoreCase("Development")) {
+	    		developmentLogCount++;
+	    	}
+	    	//System.out.println(sc.nextLine());
+	    	System.out.println(arr[0]);
+	    	defectLogCount++;
+	    }
+	    sc.close();
+	    // numDefectLogs[0] = defectLogCount;
+	    int numDefectLogs[] = {defectLogCount, businessLogCount, developmentLogCount};
+	    return numDefectLogs;
+	    
+	    
+	    // return defectLogCount;
+	}
+	
 
 }
 

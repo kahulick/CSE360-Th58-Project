@@ -141,8 +141,13 @@ public class DefectConsoleController {
 	}
 
 	
-	public void clearDefectLog(ActionEvent event) {
+	public void clearDefectLog(ActionEvent event) throws IOException {
 		System.out.println("Clear");
+		int defectLogs[] = defectLogsRepository.getDefectLogCount();
+		System.out.printf("Total: %d\n", defectLogs[0]);
+		System.out.printf("Business: %d\n", defectLogs[1]);
+		System.out.printf("Development: %d\n", defectLogs[2]);
+		// System.out.println(defectLogsRepository.getDefectLogCount());
 	}
 	
 	public void createNewDefect(ActionEvent event) {
@@ -176,13 +181,9 @@ public class DefectConsoleController {
 		System.out.println("Delete");
 	}
 	
-	public void testSave(ActionEvent event) {
+	public void testSave(ActionEvent event) throws IOException {
 		System.out.println("Saving");
-		try {
-			defectLogsRepository.retrieveTxtData();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		defectLogsRepository.retrieveTxtData();
 	}
 	
 	

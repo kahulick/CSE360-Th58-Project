@@ -2,3 +2,4 @@
 827776, Development Project,29/11/2023,13:34:01,13:34:08,0:00:07,Requirements,Interruptions,Teammate
 776684, Business Project,29/11/2023,13:35:16,13:35:23,0:00:07,Verifying,Defects,20 Syntax
 259917, Business Project,29/11/2023,13:37:19,13:37:26,0:00:07,Information Understanding,Interruptions,Visitor
+867223,Development Project,30/11/2023,11:43:59,11:44:05,0:00:06,Requirements,Plans,Conceptual Design Plan

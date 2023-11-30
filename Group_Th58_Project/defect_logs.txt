@@ -1,4 +1,3 @@
-null,,false,,null,null,null,null
-Business,My Defect,true,Woohoo these are my details,null,null,null,null
-Business Project,Defect,false,hey hey hhey hey hey ,Information Gathering,Information Understanding,Not specified,null
-Business,My Defect,true,Woohoo these are my details,null,null,null,null
+Business Project,Defect,false,hey hey hey hey hey ,Information Gathering,Information Understanding,Not specified,null
+Development Project,Another defect,true,Code would not compile rip,Implementation Plan,Problem Understanding,10 Documentation,null
+Business Project,being an idiot,true,Sorry I was born with it :(,Planning,Information Understanding,20 Syntax,null
