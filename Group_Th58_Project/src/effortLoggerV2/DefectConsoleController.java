@@ -67,9 +67,7 @@ public class DefectConsoleController {
 	private String selectedInjectedStep;
 	private String selectedRemovedStep;
 	private String selectedDefectCategory;
-	
-	// private
-	
+
 	public void launchEffortConsole(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -84,7 +82,6 @@ public class DefectConsoleController {
 		injectedSteps.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedStep) {
-				// TODO Auto-generated method stub
 				System.out.println("Selected Injected Step: " + selectedStep);
 				selectedInjectedStep = selectedStep;
 			}
@@ -93,7 +90,6 @@ public class DefectConsoleController {
 		removedSteps.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedStep) {
-				// TODO Auto-generated method stub
 				System.out.println("Selected Removed Step: " + selectedStep);
 				selectedRemovedStep = selectedStep;
 			}
@@ -102,14 +98,13 @@ public class DefectConsoleController {
 		defectCategory.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedStep) {
-				// TODO Auto-generated method stub
 				System.out.println("Selected Defect Category: " + selectedStep);
 				selectedDefectCategory = selectedStep;
 			}
 		});
-
 		initializeProjectItems();
 		defectCategory.setItems(definitions.options3d);
+		
 	}
 	
 	
@@ -132,32 +127,21 @@ public class DefectConsoleController {
 		if (projectItems.getValue() == "Business Project") {
 			injectedSteps.setItems(definitions.options1a1);
 			removedSteps.setItems(definitions.options1a1);
+			defectItems.setItems(definitions.defectOptions1);
+			defectItems.getSelectionModel().select(definitions.defectOptions1.get(0));
 		} 
 		if (projectItems.getValue() == "Development Project") {
 			injectedSteps.setItems(definitions.options1a2);
 			removedSteps.setItems(definitions.options1a2);
+			defectItems.setItems(definitions.defectOptions2);
+			defectItems.getSelectionModel().select(definitions.defectOptions2.get(0));
 		}
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	public void clearDefectLog(ActionEvent event) {
 		System.out.println("Clear");
-		
 	}
 	
 	public void createNewDefect(ActionEvent event) {
@@ -166,10 +150,12 @@ public class DefectConsoleController {
 	
 	public void closeStatus(ActionEvent event) {
 		System.out.println("Close");
+		statusLabel.setText("Closed");
 	}
 	
 	public void openStatus(ActionEvent event) {
 		System.out.println("Open");
+		statusLabel.setText("Open");
 	}
 	
 	public void updateCurrentDefect(ActionEvent event) {

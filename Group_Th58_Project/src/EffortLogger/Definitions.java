@@ -51,9 +51,9 @@ public class Definitions {
 	
 	// Defect Names
 	// business project defect options
-	public ObservableList<String> defectOptions1 = FXCollections.observableArrayList();	// load created business project defects into this option
+	public ObservableList<String> defectOptions1 = FXCollections.observableArrayList("- no defect selected -");	// load created business project defects into this option
 	// development project defect options
-	public ObservableList<String> defectOptions2 = FXCollections.observableArrayList();	// load created development project defects into this option
+	public ObservableList<String> defectOptions2 = FXCollections.observableArrayList("- no defect selected -");	// load created development project defects into this option
 	
 
 	
