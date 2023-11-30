@@ -178,13 +178,9 @@ public class DefectConsoleController {
 	
 	public void testSave(ActionEvent event) {
 		System.out.println("Saving");
-		defectLog = new DefectLog("Business", "My Defect");
-		defectLog.setDetail("Woohoo these are my details");
-		defectLogsRepository.CreateDF(defectLog);
 		try {
 			defectLogsRepository.retrieveTxtData();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
