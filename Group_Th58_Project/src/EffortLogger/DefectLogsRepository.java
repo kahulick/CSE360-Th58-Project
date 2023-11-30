@@ -116,7 +116,6 @@ public class DefectLogsRepository {
 	    	} else if (arr[0].equalsIgnoreCase("Development")) {
 	    		developmentLogCount++;
 	    	}
-	    	System.out.println(arr[0]);
 	    	defectLogCount++;
 	    }
 	    sc.close();
@@ -129,7 +128,6 @@ public class DefectLogsRepository {
 		File file = new File("defect_logs.txt");
 	    Scanner sc = new Scanner(file);
 	    while (sc.hasNextLine()) {
-	    	// System.out.println(sc.nextLine());
 	    	logStrings.add(sc.nextLine());
 	    }
 	    sc.close();

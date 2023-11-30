@@ -41,13 +41,14 @@ public class DefectConsoleController {
 	private Scene scene;
 	private Parent root;
 	private Definitions definitions = new Definitions();
-	private DefectLog defectLog;
+	private DefectLog defectLog;	// current defect log or new one??
+	private DefectLog currentDefectLog;
 	private EffortLog effortLog;
 	private LogsController logsController = new LogsController();
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	private DefectLogsRepository defectLogsRepository = new DefectLogsRepository();
-	private int numBusiness;
-	private int numDevelopment;
+//	private int numBusiness;
+//	private int numDevelopment;
 	
 	@FXML
 	private ComboBox<String> projectItems = new ComboBox<String>();	// definitions options1a -> project type 
@@ -117,8 +118,6 @@ public class DefectConsoleController {
 			}
 		});
 		
-//		initializeProjectItems();
-//		defectCategory.setItems(definitions.options3d);
 		try {
 			defectLogStrings = defectLogsRepository.getDefectLogStrings();
 		} catch (Exception e) {
@@ -130,7 +129,7 @@ public class DefectConsoleController {
 	}
 	
 	@FXML
-	public void initializeDefectLogs() {
+	public void initializeDefectLogs() {	// 2.b
 		for (String log : defectLogStrings) {
 			String arr[] = log.split(",");
 	    	if (arr[0].equalsIgnoreCase("Business Project")) {
@@ -141,16 +140,9 @@ public class DefectConsoleController {
 	    		definitions.defectOptions2.add(String.format("%d. %s", definitions.defectOptions2.size(), arr[1]));
 	    	}
 		}
-		
 	}
 	
-	
-	// definitions options1a -> project type
-	// definitions options1a1 -> business project steps 
-	// definitions defectOptions1 -> business project defect logs
-	// definitions options1a2 -> development project steps 
-	// definitions defectOptions1 -> development project defect logs
-	// definitions options3d -> defect category
+	// public DefectLog
 	
 	@FXML
 	public void initializeProjectItems() {
@@ -173,25 +165,31 @@ public class DefectConsoleController {
 			defectItems.setItems(definitions.defectOptions2);
 			defectItems.getSelectionModel().select(definitions.defectOptions2.get(0));
 		}
-		try {
-			numLabel.setText(Integer.toString(initializeCurrentDefect(projectItems.getValue())));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 	}
 	
-	// returns the correct number of defect logs by category
-	public int initializeCurrentDefect(String projectType) throws IOException {
-		int num = 0;
-		int defectLogs[] = defectLogsRepository.getDefectLogCount();
-		if (projectType.equalsIgnoreCase("Business Project")) {
-			num = defectLogs[1];
-		} else if (projectType.equalsIgnoreCase("Development Project")) {
-			num = defectLogs[2];
+	@FXML
+	public void existingLog(ActionEvent event) {
+		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
+			System.out.println("Existing");
+			// System.out.println(defin)
+		} else {
+			System.out.println("New");
 		}
-		return num;
+		numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
 	}
+	
+	
+	// returns the correct number of defect logs by category
+//	public int initializeCurrentDefect(String projectType) throws IOException {
+//		int num = 0;
+//		int defectLogs[] = defectLogsRepository.getDefectLogCount();
+//		if (projectType.equalsIgnoreCase("Business Project")) {
+//			num = defectLogs[1];
+//		} else if (projectType.equalsIgnoreCase("Development Project")) {
+//			num = defectLogs[2];
+//		}
+//		return num;
+//	}
 
 	
 	public void clearDefectLog(ActionEvent event) throws IOException {
@@ -223,7 +221,7 @@ public class DefectConsoleController {
 		defectLogsRepository.CreateDF(defectLog);
 		try {
 			defectLogStrings = defectLogsRepository.getDefectLogStrings();
-			numLabel.setText(Integer.toString(initializeCurrentDefect(projectItems.getValue())));
+			// numLabel.setText(Integer.toString(initializeCurrentDefect(projectItems.getValue())));
 //			for (String log : defectLogStrings) {
 //				System.out.println(log);
 //			}
