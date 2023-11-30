@@ -42,6 +42,8 @@ public class DefectConsoleController {
 	private LogsController logsController = new LogsController();
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	private DefectLogsRepository defectLogsRepository = new DefectLogsRepository();
+	private int businessDefectLogs;
+	private int developmentDefectLogs;
 	
 	@FXML
 	private ComboBox<String> projectItems = new ComboBox<String>();	// definitions options1a -> project type 
@@ -103,6 +105,7 @@ public class DefectConsoleController {
 				selectedDefectCategory = selectedStep;
 			}
 		});
+		
 		initializeProjectItems();
 		defectCategory.setItems(definitions.options3d);
 		
@@ -123,7 +126,7 @@ public class DefectConsoleController {
 		}
 	}
 	
-	@FXML
+	@FXML // initializes the rest of the categories based on business versus development project
 	public void initializeLifeCycleSteps() {
 		if (projectItems.getValue() == "Business Project") {
 			injectedSteps.setItems(definitions.options1a1);
@@ -137,12 +140,31 @@ public class DefectConsoleController {
 			defectItems.setItems(definitions.defectOptions2);
 			defectItems.getSelectionModel().select(definitions.defectOptions2.get(0));
 		}
+		try {
+			numLabel.setText(Integer.toString(initializeCurrentDefect(projectItems.getValue())));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
+	}
+	
+	// returns the correct number of defect logs by category
+	public int initializeCurrentDefect(String projectType) throws IOException {
+		int num = 0;
+		int defectLogs[] = defectLogsRepository.getDefectLogCount();
+		if (projectType.equalsIgnoreCase("Business Project")) {
+			num = defectLogs[1];
+		} else if (projectType.equalsIgnoreCase("Development Project")) {
+			num = defectLogs[2];
+		}
+		return num;
 	}
 
 	
 	public void clearDefectLog(ActionEvent event) throws IOException {
 		System.out.println("Clear");
+		
+		// TESTING PURPOSES !!! 
 		int defectLogs[] = defectLogsRepository.getDefectLogCount();
 		System.out.printf("Total: %d\n", defectLogs[0]);
 		System.out.printf("Business: %d\n", defectLogs[1]);
