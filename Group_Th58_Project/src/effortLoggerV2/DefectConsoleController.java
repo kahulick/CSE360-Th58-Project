@@ -8,6 +8,8 @@ import EffortLogger.Definitions;
 import EffortLogger.EffortLog;
 import EffortLogger.EffortLogsRepository;
 import EffortLogger.DefectLogsRepository;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,6 +64,12 @@ public class DefectConsoleController {
 	@FXML
 	private ListView<String> defectCategory; // definitions options3d
 	
+	private String selectedInjectedStep;
+	private String selectedRemovedStep;
+	private String selectedDefectCategory;
+	
+	// private
+	
 	public void launchEffortConsole(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -70,12 +78,82 @@ public class DefectConsoleController {
 		stage.show();
 	}
 	
+	
+	@FXML
+	public void initialize() {		
+		injectedSteps.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedStep) {
+				// TODO Auto-generated method stub
+				System.out.println("Selected Injected Step: " + selectedStep);
+				selectedInjectedStep = selectedStep;
+			}
+		});
+		
+		removedSteps.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedStep) {
+				// TODO Auto-generated method stub
+				System.out.println("Selected Removed Step: " + selectedStep);
+				selectedRemovedStep = selectedStep;
+			}
+		});
+		
+		defectCategory.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedStep) {
+				// TODO Auto-generated method stub
+				System.out.println("Selected Defect Category: " + selectedStep);
+				selectedDefectCategory = selectedStep;
+			}
+		});
+
+		initializeProjectItems();
+		defectCategory.setItems(definitions.options3d);
+	}
+	
+	
 	// definitions options1a -> project type
 	// definitions options1a1 -> business project steps 
 	// definitions defectOptions1 -> business project defect logs
 	// definitions options1a2 -> development project steps 
 	// definitions defectOptions1 -> development project defect logs
 	// definitions options3d -> defect category
+	
+	@FXML
+	public void initializeProjectItems() {
+		if (projectItems.getValue() == null) {
+			projectItems.setItems(definitions.options1a);
+		}
+	}
+	
+	@FXML
+	public void initializeLifeCycleSteps() {
+		if (projectItems.getValue() == "Business Project") {
+			injectedSteps.setItems(definitions.options1a1);
+			removedSteps.setItems(definitions.options1a1);
+		} 
+		if (projectItems.getValue() == "Development Project") {
+			injectedSteps.setItems(definitions.options1a2);
+			removedSteps.setItems(definitions.options1a2);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void clearDefectLog(ActionEvent event) {
 		System.out.println("Clear");
