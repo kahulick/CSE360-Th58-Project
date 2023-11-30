@@ -117,12 +117,29 @@ public class DefectConsoleController {
 			}
 		});
 		
-		initializeProjectItems();
-		defectCategory.setItems(definitions.options3d);
+//		initializeProjectItems();
+//		defectCategory.setItems(definitions.options3d);
 		try {
 			defectLogStrings = defectLogsRepository.getDefectLogStrings();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		initializeDefectLogs();
+		initializeProjectItems();
+		defectCategory.setItems(definitions.options3d);
+	}
+	
+	@FXML
+	public void initializeDefectLogs() {
+		for (String log : defectLogStrings) {
+			String arr[] = log.split(",");
+	    	if (arr[0].equalsIgnoreCase("Business Project")) {
+	    		businessLogStrings.add(log);
+	    		definitions.defectOptions1.add(String.format("%d. %s", definitions.defectOptions1.size(), arr[1]));
+	    	} else if (arr[0].equalsIgnoreCase("Development Project")) {
+	    		develLogStrings.add(log);
+	    		definitions.defectOptions2.add(String.format("%d. %s", definitions.defectOptions2.size(), arr[1]));
+	    	}
 		}
 		
 	}
