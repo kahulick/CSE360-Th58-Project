@@ -26,6 +26,17 @@ public class DefectLog {
 		this.defectName = defectName;
 		this.defectNum = defectNum;
 	}
+	
+	public DefectLog(String project, String defectName, boolean status, String detail, String injectedStep, String removedStep, String defectCategory, String fix) {
+		this.project = project;
+		this.defectName = defectName;
+		this.status = status;
+		this.detail = detail;
+		this.injectedStep = injectedStep;
+		this.removedStep = removedStep;
+		this.defectCategory = defectCategory;
+		this.fix = fix;
+	}
 
 	public String getProject() {
 		return project;
@@ -51,7 +62,7 @@ public class DefectLog {
 		this.defectNum = defectNum;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 

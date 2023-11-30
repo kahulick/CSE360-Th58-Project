@@ -67,6 +67,7 @@ public class DefectConsoleController {
 	private String selectedInjectedStep;
 	private String selectedRemovedStep;
 	private String selectedDefectCategory;
+	private boolean open = false;
 
 	public void launchEffortConsole(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("EffortConsoleUI.fxml")); 
@@ -151,15 +152,24 @@ public class DefectConsoleController {
 	public void closeStatus(ActionEvent event) {
 		System.out.println("Close");
 		statusLabel.setText("Closed");
+		open = false;
 	}
 	
 	public void openStatus(ActionEvent event) {
 		System.out.println("Open");
 		statusLabel.setText("Open");
+		open = true;
 	}
 	
+	
+	// public DefectLog(String project, String defectName, boolean status, String detail, String injectedStep, String removedStep, String defectCategory, String fix)
 	public void updateCurrentDefect(ActionEvent event) {
 		System.out.println("Update/Save");
+		System.out.println(defectNameInput.getText());
+		System.out.println(descriptionInput.getText());
+		System.out.println(injectedSteps.getSelectionModel().getSelectedItem());
+		defectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, descriptionInput.getText(), injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
+		defectLogsRepository.CreateDF(defectLog);
 	}
 	
 	public void deleteCurrentDefect(ActionEvent event) {

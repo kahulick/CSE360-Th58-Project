@@ -69,12 +69,18 @@ public class DefectLogsRepository {
 	    out.println(
 	    		defectLog.getProject() + "," +
 	    		defectLog.getDefectName() + "," +
-	    		defectLog.getDetail()
+	    		defectLog.getStatus() + "," +
+	    		defectLog.getDetail() + "," +
+	    		defectLog.getInjectedStep() + "," +
+	    		defectLog.getRemovedStep() + "," +
+	    		defectLog.getDefectCategory() + "," +
+	    		defectLog.getFix()
 	    );
 
 	    //After done writing, remember to close!
 	    out.close();
-	    
+		// public DefectLog(String project, String defectName, boolean status, String detail, String injectedStep, String removedStep, String defectCategory, String fix)
+
 	    //indicate that a new log has been added
 	    defectLogAmt++;
 	    System.out.println("Defect Log created...");
