@@ -120,6 +120,7 @@ public class DefectConsoleController {
 		
 		try {
 			defectLogStrings = defectLogsRepository.getDefectLogStrings();
+			defectLogs = defectLogsRepository.getDefectLogs();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -168,9 +169,10 @@ public class DefectConsoleController {
 	}
 	
 	@FXML
-	public void existingLog(ActionEvent event) {
+	public void existingLog(ActionEvent event) throws FileNotFoundException {
 		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
 			System.out.println("Existing");
+//			defectLogs = defectLogsRepository.getDefectLogs();
 			// System.out.println(defin)
 		} else {
 			System.out.println("New");
@@ -221,6 +223,7 @@ public class DefectConsoleController {
 		defectLogsRepository.CreateDF(defectLog);
 		try {
 			defectLogStrings = defectLogsRepository.getDefectLogStrings();
+			defectLogs = defectLogsRepository.getDefectLogs();
 			// numLabel.setText(Integer.toString(initializeCurrentDefect(projectItems.getValue())));
 //			for (String log : defectLogStrings) {
 //				System.out.println(log);

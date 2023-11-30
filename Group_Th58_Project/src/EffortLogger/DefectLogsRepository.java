@@ -134,6 +134,48 @@ public class DefectLogsRepository {
 	    return logStrings;
 	}
 	
+	// public DefectLog(String project, String defectName, boolean status, String detail, String injectedStep, String removedStep, String defectCategory, String fix)
+	
+	public List<DefectLog> getDefectLogs() throws FileNotFoundException {
+		List<DefectLog> defectRepo = new ArrayList<DefectLog>();
+		File file = new File("defect_logs.txt");
+	    Scanner sc = new Scanner(file);
+//	    
+//	    String projectType;
+//	    String name;
+	    boolean status;
+//	    String dt;
+//	    String inj;
+//	    String rem;
+//	    String defectCat;
+//	    String fx;
+	    
+	    while (sc.hasNextLine()) {
+	    	String data[] = sc.nextLine().split(",");
+	    	if (data[2].equalsIgnoreCase("true")) {
+	    		status = true;
+	    	} else {
+	    		status = false;
+	    	}
+	    	DefectLog defectLog = new DefectLog(data[0], data[1], status, data[3], data[4], data[5], data[6], data[7]);
+	    	defectRepo.add(defectLog);
+	    }
+	    
+	    sc.close();
+	    
+//		this.project = project;
+//		this.defectName = defectName;
+//		this.status = status;
+//		this.detail = detail;
+//		this.injectedStep = injectedStep;
+//		this.removedStep = removedStep;
+//		this.defectCategory = defectCategory;
+//		this.fix = fix;
+		
+	    System.out.println(defectRepo.size());
+		return defectRepo;
+	}
+	
 
 }
 
