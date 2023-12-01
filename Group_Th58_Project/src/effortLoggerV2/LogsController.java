@@ -86,6 +86,8 @@ public class LogsController {
 			logStrings.add(mapToString(log));	// updates array of strings (that represent logs)
 		}
 		userEffortLogs.setItems(logStrings);
+		numberEffortLogs.setText(Integer.toString(count));
+		projectLabel.setText(logHistory.get(0).getProjectType());
 	}
 	
 	public String mapToString(EffortLog log) {	// refactored from Kevin's repository class

@@ -32,7 +32,6 @@ public class Definitions {
 			"Implementation Plan", "Test Case Generation", "Solution Specification", "Solution Review", 
 			"Solution Implementation", "Unit/System Test", "Reflection", "Repository Update");
 	
-	
 	// Effort Categories and Options
 	public ObservableList<String> options3 = FXCollections.observableArrayList("Plans", "Deliverables",
 			"Interruptions", "Defects", "Others");
@@ -49,7 +48,13 @@ public class Definitions {
 			"20 Syntax","30 Build, Package", "40 Assignment", "50 Interface", "60 Checking", "70 Data", "80 Function", 
 			"90 System", "100 Environment");
 	public ObservableList<String> options3e = FXCollections.observableArrayList("");
-			
+	
+	// Defect Names
+	// business project defect options
+	public ObservableList<String> defectOptions1 = FXCollections.observableArrayList("- no defect selected -");	// load created business project defects into this option
+	// development project defect options
+	public ObservableList<String> defectOptions2 = FXCollections.observableArrayList("- no defect selected -");	// load created development project defects into this option
+	
 
 	
 }
