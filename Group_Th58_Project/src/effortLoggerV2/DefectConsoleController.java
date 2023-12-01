@@ -235,19 +235,21 @@ public class DefectConsoleController {
 	
 	public void saveExistingLog() {
 		System.out.println("Save Existing");
-		// String strLog = "";
 		currentDefectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, detailInput.getText(), 
 				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
 				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
+		String currentStr = (currentDefectLog.getProject() + "," + currentDefectLog.getDefectName() + "," + Boolean.toString(currentDefectLog.getStatus()) + "," +
+				currentDefectLog.getDetail() + "," + currentDefectLog.getInjectedStep() + "," + currentDefectLog.getRemovedStep() + "," +
+				currentDefectLog.getDefectCategory() + "," + currentDefectLog.getFix());
 		
 		if (projectItems.getValue().equalsIgnoreCase("Business Project")) {
 			String strLog = businessLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1);
-			int updateIndex = defectLogStrings.indexOf(strLog);	// wrong index?
+			int updateIndex = defectLogStrings.indexOf(strLog);	// 
 			defectLog = defectLogs.get(updateIndex);
 			System.out.println(defectLog.getDefectName() + " \n");
 			try {
-				defectLogsRepository.updateLog(currentDefectLog, strLog, updateIndex);
-			} catch (FileNotFoundException e) {
+				defectLogsRepository.updateLog(strLog, currentStr, updateIndex);
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -258,8 +260,11 @@ public class DefectConsoleController {
 			defectLog = defectLogs.get(updateIndex);
 			System.out.println(defectLog.getDefectName() + " \n");
 			try {
-				defectLogsRepository.updateLog(currentDefectLog, strLog, updateIndex);
-			} catch (FileNotFoundException e) {
+				defectLogsRepository.updateLog(strLog, currentStr, updateIndex);
+//			} catch (FileNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
