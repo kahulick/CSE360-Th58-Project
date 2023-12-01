@@ -1,17 +1,17 @@
-Business Project,Defect,false,hey hey hey hey hey ,Information Gathering,Information Understanding,Not specified,null
-Development Project,Another defect,true,Code would not compile rip,Implementation Plan,Problem Understanding,10 Documentation,null
-Business Project,HUH???,false,,Information Gathering,Information Gathering,10 Documentation,null
+Business Project,Defect,false,testing,Information Gathering,Information Understanding,Not specified,null
+Development Project,Another defect,true,Code would not compile,Implementation Plan,Problem Understanding,10 Documentation,null
+Business Project,defective,false,,Information Gathering,Information Gathering,10 Documentation,null
 Development Project,defcect1234,false,I messed up unfortunately,Detailed Design/Prototype,Implementation Plan,70 Data,null
 Business Project,businessDefect47,true,so fun,Information Understanding,Planning,20 Syntax,null
-Business Project,NEW DEFECT?????,true,pls work ,Information Understanding,Planning,10 Documentation,6. defect9
-Development Project,defectDevel1000,false,My own stupidity,Requirements,Problem Understanding,20 Syntax,null
-Business Project,Another one,false,yay!!,Information Understanding,Planning,20 Syntax,null
-Business Project,defect9,true,This is so cool,Verifying,Information Gathering,10 Documentation,null
-Business Project,Defect 10,false,Trying this again,Verifying,Planning,30 Build, Package,null
+Business Project,NEW DEFECT,true,work ,Information Understanding,Planning,10 Documentation,6. defect9
+Development Project,defectDevel1000,false,lack of knowledge,Requirements,Problem Understanding,20 Syntax,null
+Business Project,Another one,false,progress,Information Understanding,Planning,20 Syntax,null
+Business Project,defect9,true,This is cool,Verifying,Information Gathering,10 Documentation,null
+Business Project,Defect 10,true,Trying this again,Verifying,null,60 Checking,null
 Development Project,NewDefect11?,false,another test,Solution Review,Reflection,10 Documentation,null
-Development Project,Cool defect 101,false,Overslept and now my program wont run,Requirements,Problem Understanding,100 Environment,null
-Development Project,6th defect,false,wow I fixed it!,Requirements,Problem Understanding,30 Build, Package,3. defectDevel1000
-Development Project,7th Defect log,true,So slay,Requirements,Conceptual Design Plan,30 Build, Package,4. NewDefect11?
+Development Project,Cool defect 101,false,my program wont run,Requirements,Problem Understanding,100 Environment,null
+Development Project,6th defect,false,fixed bug,Requirements,Problem Understanding,30 Build, Package,3. defectDevel1000
+Development Project,7th Defect log,true,these are my details,Requirements,Conceptual Design Plan,30 Build, Package,4. NewDefect11?
 Development Project,the 100th defect,true,another defect :( ,Requirements,Conceptual Design,Not specified,3. defectDevel1000
-Business Project,New one,false,yay wow so good,Information Understanding,Planning,10 Documentation,3. businessDefect47
+Business Project,New one,false,so good,Information Understanding,Planning,10 Documentation,3. businessDefect47
 Business Project,TestingDefect2,true,cause its a test,Information Understanding,Planning,20 Syntax,null

@@ -3,9 +3,7 @@
 776684, Business Project,29/11/2023,13:35:16,13:35:23,0:00:07,Verifying,Defects,20 Syntax
 259917, Business Project,29/11/2023,13:37:19,13:37:26,0:00:07,Information Understanding,Interruptions,Visitor
 867223,Development Project,30/11/2023,11:43:59,11:44:05,0:00:06,Requirements,Plans,Conceptual Design Plan
-789236,null,30/11/2023,19:01:03,19:01:05,0:00:02,null,null,null
-014934,null,30/11/2023,19:20:58,19:20:59,0:00:01,null,null,null
-520434,null,30/11/2023,21:04:15,21:04:16,0:00:01,null,null,null
-039061,null,30/11/2023,21:21:58,21:22:00,0:00:02,null,null,null
 110968,Business Project,30/11/2023,22:35:05,22:36:29,0:01:24,Finalizing,Interruptions,Teammate
 231426,Development Project,30/11/2023,22:39:23,22:39:43,0:00:20,null,Interruptions,Teammate
+069720,Business Project,01/12/2023,10:43:47,10:44:30,0:00:43,Team Meeting,Others,Design implementation planning
+717919,Development Project,01/12/2023,10:45:06,10:45:16,0:00:10,Conceptual Design,Deliverables,Solution
