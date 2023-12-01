@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import effortLoggerV2.EffortConsoleController;
+import EffortLogger.DefectLog;
 import EffortLogger.Definitions;
 import EffortLogger.EffortLog;
 import EffortLogger.EffortLogsRepository;
@@ -56,8 +57,14 @@ public class LogsController {
 	private Label numberDefectLogs = new Label();
 	@FXML
 	private ListView<String> userEffortLogs;
+	@FXML
+	private ListView<String> userDefectlogs;
+	
+	private ObservableList<String> displayedDefectLogs = FXCollections.observableArrayList();
 	
 	public EffortLog effortLog;
+	
+	public DefectLog defectLog;
 	
 	private EffortLogsRepository effortLogsRepository = new EffortLogsRepository();
 	
