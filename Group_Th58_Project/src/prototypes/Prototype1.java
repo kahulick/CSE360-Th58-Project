@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import userInterfaceJavaFX.UserInterface;
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "deprecation" })
 
 // Prototype 1 : Generated Story Points Verification
 // Kaelyn Hulick 

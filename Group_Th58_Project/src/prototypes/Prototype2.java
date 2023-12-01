@@ -5,7 +5,7 @@ import java.util.Scanner;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-
+@SuppressWarnings({ "unused" })
 public class Prototype2 extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
@@ -79,6 +79,8 @@ public class Prototype2 extends Application {
 		System.out.print("Removing name...\nRemoving user name...\nRemoving user ID...\n\n");
 		
 		System.out.println("Data being transferred:\nJob Title: " + user_title + "\nAffiliated Teams: " + user_team +"\n");
+		
+		scan.close();
 		
 	}
 }
