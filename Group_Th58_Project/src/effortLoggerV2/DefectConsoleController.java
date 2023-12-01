@@ -32,6 +32,9 @@ import javafx.stage.Stage;
 /**
  * @author Kaelyn Hulick 
  * 
+ * Defect Controller Class - A class that takes user input, stores the data, and allows the user to create/ update defect logs. Utilizes
+ * the DefectConsoleRepo
+ * 
  */
 
 
@@ -183,8 +186,6 @@ public class DefectConsoleController {
 	@FXML
 	public void existingLog(ActionEvent event) throws FileNotFoundException {
 		
-		// separate devel/ business first?? OH ADD IF NOT NULL THEN REMOVE LIKE THE EFFORT CONSOLE
-		
 		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
 			newLog = false;
 			System.out.println("Existing");
@@ -244,8 +245,6 @@ public class DefectConsoleController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		// initializeDefectLogs();
 
 	}
 	
