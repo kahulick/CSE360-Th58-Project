@@ -1,10 +1,10 @@
 Business Project,Defect,false,hey hey hey hey hey ,Information Gathering,Information Understanding,Not specified,null
 Development Project,Another defect,true,Code would not compile rip,Implementation Plan,Problem Understanding,10 Documentation,null
-Business Project,being an idiot,true,Sorry I was born with it :(,Planning,Information Understanding,20 Syntax,null
+Business Project,YOU ARE SMART,true,,Information Understanding,Information Understanding,10 Documentation,null
 Development Project,defcect1234,false,I messed up unfortunately,Detailed Design/Prototype,Implementation Plan,70 Data,null
 Business Project,businessDefect47,true,so fun,Information Understanding,Planning,20 Syntax,null
 Business Project,defect45,true,No clue what happened...my computer blew up,Information Gathering,Verifying,20 Syntax,null
-Development Project,YOU ARE SLAY,false,,null,null,null,null
+Development Project,defectDevel1000,false,My own stupidity,Requirements,Problem Understanding,20 Syntax,null
 Business Project,Another one,false,yay!!,Information Understanding,Planning,20 Syntax,null
 Business Project,defect9,true,This is so cool,Verifying,Information Gathering,10 Documentation,null
 Business Project,Defect 10,false,Trying this again,Verifying,Planning,30 Build, Package,null

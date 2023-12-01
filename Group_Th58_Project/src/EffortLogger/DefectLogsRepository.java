@@ -165,100 +165,41 @@ public class DefectLogsRepository {
 	}
 	
 	public void updateLog(String oldLog, String newLog, int index) throws IOException {
-		
-//		BufferedReader in = new BufferedReader(new FileReader("defect_logs.txt"));
-//		BufferedWriter out = new BufferedWriter(new FileWriter("defect_logs.txt"));
-//		
-//		
-//		
-//		String line;
-//		
-//		while((line=in.readLine()) !=null) {
-//			System.out.println(line);
-////			if (line.equalsIgnoreCase(oldLog)) {
-////				line = line.replaceFirst(oldLog, newLog);
-////				out.write(line + " \n");
-////				// out.newLine();
-////				break;
-////			}
-//		}
-//		in.close();
-//		out.close();
-    
-//		System.out.println(index);
-//		int line = 0;
-//		File file = new File("defect_logs.txt");
-//	    Scanner sc = new Scanner(file);
-//		StringBuffer input = new StringBuffer();
-//		
-//		while(sc.hasNextLine()) {
-//			input.append(sc.nextLine()+System.lineSeparator());
-//		}
-//		
-//		String contents = input.toString();
-//		
-//		sc.close();
-//		
-//		String old = oldLog;
-//		System.out.println(old);
+
 		String newIsh = newLog;
-//		System.out.println(newIsh);
-//		
-//		contents.replace
-//
-//		contents = contents.replaceAll(old, newIsh);
-		
-//		try (FileWriter writer = new FileWriter("defect_logs.txt")) {
-//			writer.append(contents);
-//			writer.flush();
-//		}
-		
 		int line = 0;
 		
-		File file = new File("defect_logs.txt");
-		// File tempFile = new File("temp.txt");
-		
-//		  try{
-//		        bufWriter =
-//		            Files.newBufferedWriter(
-//		                Paths.get("defect_logs.txt");}
-//		               
-		                
+		File fileIn = new File("defect_logs.txt");
+		File temp = new File("temp.txt"); 
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get("temp.txt"), Charset.forName("UTF8"));
-//		BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-		// BufferedReader reader = new BufferedReader(new FileReader(file));
 		StringBuffer input = new StringBuffer();
-	    Scanner sc = new Scanner(file);
+	    Scanner sc = new Scanner(fileIn);
 	    
 	    while(sc.hasNext()) {
 	    	if (line != index) {
 	    		writer.write(sc.nextLine() + "\n");
-	    		
-	    		// System.out.println(sc.nextLine());
 	    		line++;
 	    	} else if (line == index) {
 	    		line++;
 	    		System.out.println("FOUND " + line);
 	    		writer.write(newIsh + "\n");
-	    		// sc.sk
 	    		System.out.println(sc.nextLine());
 	    	}
-//	    		break;
-//	    	} else if (line == (index+1)) {
-//	    		line++;
-//	    		continue;
-//	    	}
 	    }
-	    
 	    writer.close();
 	    sc.close();
 	    
-	    // boolean successful = tempFile.renameTo(inputFile);
+	    File srcFile =new File("temp.txt");
+	    Scanner newScanner = new Scanner(srcFile);
+	    BufferedWriter out = new BufferedWriter(new FileWriter("defect_logs.txt"));
 	    
+	    while (newScanner.hasNext()) {
+	    	out.write(newScanner.nextLine());
+	    	out.newLine();
+	    }
 	    
-	    
-		
-
+	    newScanner.close();
+	    out.close();
 		
 	}
 	
