@@ -286,7 +286,6 @@ public class DefectConsoleController {
 			try {
 				defectLogsRepository.updateLog(currentStr, updateIndex);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			develDefectLogs.add(defectLog);
