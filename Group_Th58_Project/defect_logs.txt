@@ -13,3 +13,4 @@ Development Project,Cool defect 101,false,Overslept and now my program wont run,
 Development Project,6th defect,false,wow I fixed it!,Requirements,Problem Understanding,30 Build, Package,3. defectDevel1000
 Development Project,7th Defect log,true,So slay,Requirements,Conceptual Design Plan,30 Build, Package,4. NewDefect11?
 Development Project,the 100th defect,true,another defect :( ,Requirements,Conceptual Design,Not specified,3. defectDevel1000
+Business Project,New one,false,yay wow so good,Information Understanding,Planning,10 Documentation,3. businessDefect47
