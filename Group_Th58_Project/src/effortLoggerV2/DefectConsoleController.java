@@ -141,6 +141,15 @@ public class DefectConsoleController {
 	    		definitions.defectOptions2.add(String.format("%d. %s", definitions.defectOptions2.size(), arr[1]));
 	    	}
 		}
+		for (DefectLog defLog : defectLogs) {
+			if (defLog.getProject().equalsIgnoreCase("Business Project")) {
+				businessDefectLogs.add(defLog);
+			} else if (defLog.getProject().equalsIgnoreCase("Development Project")) {
+				develDefectLogs.add(defLog);
+			}
+		}
+		System.out.println(Integer.toString(businessDefectLogs.size()));
+		System.out.println(Integer.toString(develDefectLogs.size()));
 	}
 	
 	// public DefectLog
@@ -159,12 +168,14 @@ public class DefectConsoleController {
 			removedSteps.setItems(definitions.options1a1);
 			defectItems.setItems(definitions.defectOptions1);
 			defectItems.getSelectionModel().select(definitions.defectOptions1.get(0));
+			fixItems.setItems(definitions.defectOptions1);
 		} 
 		if (projectItems.getValue() == "Development Project") {
 			injectedSteps.setItems(definitions.options1a2);
 			removedSteps.setItems(definitions.options1a2);
 			defectItems.setItems(definitions.defectOptions2);
 			defectItems.getSelectionModel().select(definitions.defectOptions2.get(0));
+			fixItems.setItems(definitions.defectOptions2);
 		}
 	}
 	
@@ -172,34 +183,25 @@ public class DefectConsoleController {
 	public void existingLog(ActionEvent event) throws FileNotFoundException {
 		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
 			System.out.println("Existing");
+			numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
 //			defectLogs = defectLogsRepository.getDefectLogs();
 			// System.out.println(defin)
 		} else {
 			System.out.println("New");
+			numLabel.setText("0");
 		}
-		numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
 	}
 	
 	
-	// returns the correct number of defect logs by category
-//	public int initializeCurrentDefect(String projectType) throws IOException {
-//		int num = 0;
-//		int defectLogs[] = defectLogsRepository.getDefectLogCount();
-//		if (projectType.equalsIgnoreCase("Business Project")) {
-//			num = defectLogs[1];
-//		} else if (projectType.equalsIgnoreCase("Development Project")) {
-//			num = defectLogs[2];
-//		}
-//		return num;
-//	}
-
-	
 	public void clearDefectLog(ActionEvent event) throws IOException {
 		System.out.println("Clear");
+		
 	}
 	
 	public void createNewDefect(ActionEvent event) {
 		System.out.println("Create");
+		int test = defectItems.getItems().size();
+		numLabel.setText(Integer.toString(test));
 	}
 	
 	public void closeStatus(ActionEvent event) {
@@ -224,25 +226,22 @@ public class DefectConsoleController {
 		try {
 			defectLogStrings = defectLogsRepository.getDefectLogStrings();
 			defectLogs = defectLogsRepository.getDefectLogs();
-			// numLabel.setText(Integer.toString(initializeCurrentDefect(projectItems.getValue())));
-//			for (String log : defectLogStrings) {
-//				System.out.println(log);
-//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		if (defectLog.getProject().equalsIgnoreCase("Business Project")) {
+			businessDefectLogs.add(defectLog);
+		} else if (defectLog.getProject().equalsIgnoreCase("Development Project")) {
+			develDefectLogs.add(defectLog);
+		}
+		System.out.println(Integer.toString(businessDefectLogs.size()));
+		System.out.println(Integer.toString(develDefectLogs.size()));
 	}
-	
 	
 	public void deleteCurrentDefect(ActionEvent event) {
 		System.out.println("Delete");
 	}
 	
-	// NOT USEFUL LOL 
-	public void testSave(ActionEvent event) throws IOException {
-		System.out.println("Saving");
-		defectLogsRepository.retrieveTxtData();
-	}
 	
 	
 	

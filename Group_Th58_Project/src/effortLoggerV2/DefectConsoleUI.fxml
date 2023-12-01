@@ -28,7 +28,6 @@
             <Font name="Verdana" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="640.0" layoutY="16.0" mnemonicParsing="false" onAction="#testSave" text="Test Save" />
       <Label layoutX="53.0" layoutY="74.0" text="1. Select the Project">
          <font>
             <Font name="Verdana Bold" size="12.0" />
