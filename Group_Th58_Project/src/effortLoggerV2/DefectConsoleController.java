@@ -167,6 +167,8 @@ public class DefectConsoleController {
 	@FXML // initializes the rest of the categories based on business versus development project
 	public void initializeLifeCycleSteps() {
 		defectItems.getItems().removeAll();
+		detailInput.clear();
+		defectNameInput.clear();
 		if (projectItems.getValue() == "Business Project") {
 			injectedSteps.setItems(definitions.options1a1);
 			removedSteps.setItems(definitions.options1a1);
@@ -185,25 +187,31 @@ public class DefectConsoleController {
 	
 	@FXML
 	public void existingLog(ActionEvent event) throws FileNotFoundException {
-		
-		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
-			newLog = false;
-			System.out.println("Existing");
-			numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
-			if (projectItems.getValue().equalsIgnoreCase("Business Project")) {
-				defectLog = defectLogs.get(defectLogStrings.indexOf(businessLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
-				System.out.println(defectLog.getDefectName() + " \n");
-			} 
-			if (projectItems.getValue().equalsIgnoreCase("Development Project")) {	///// 	WHYYYYYYYYyyyyyyy
-				defectLog = defectLogs.get(defectLogStrings.indexOf(develLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
-				System.out.println(defectLog.getDefectName() + " \n");
+		if (!defectItems.getSelectionModel().isEmpty()) {
+			if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
+				newLog = false;
+				System.out.println("Existing");
+				numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
+				if (projectItems.getValue().equalsIgnoreCase("Business Project")) {
+					defectLog = defectLogs.get(defectLogStrings.indexOf(businessLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
+					defectNameInput.setText(defectLog.getDefectName());
+					detailInput.setText(defectLog.getDetail());
+					System.out.println(defectLog.getDefectName() + " \n");
+				} 
+				if (projectItems.getValue().equalsIgnoreCase("Development Project")) {	
+					defectLog = defectLogs.get(defectLogStrings.indexOf(develLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
+					defectNameInput.setText(defectLog.getDefectName());
+					detailInput.setText(defectLog.getDetail());
+					System.out.println(defectLog.getDefectName() + " \n");
+				}
+				
+				// defectNameInput
+			} else {
+				System.out.println("New");
+				numLabel.setText("0");
 			}
-			
-			// defectNameInput
-		} else {
-			System.out.println("New");
-			numLabel.setText("0");
 		}
+
 	}
 	
 	
@@ -278,7 +286,6 @@ public class DefectConsoleController {
 			try {
 				defectLogsRepository.updateLog(currentStr, updateIndex);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			develDefectLogs.add(defectLog);

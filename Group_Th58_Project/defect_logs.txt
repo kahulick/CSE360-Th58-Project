@@ -3,7 +3,7 @@ Development Project,Another defect,true,Code would not compile rip,Implementatio
 Business Project,HUH???,false,,Information Gathering,Information Gathering,10 Documentation,null
 Development Project,defcect1234,false,I messed up unfortunately,Detailed Design/Prototype,Implementation Plan,70 Data,null
 Business Project,businessDefect47,true,so fun,Information Understanding,Planning,20 Syntax,null
-Business Project,defect45,true,No clue what happened...my computer blew up,Information Gathering,Verifying,20 Syntax,null
+Business Project,NEW DEFECT?????,true,pls work ,Information Understanding,Planning,10 Documentation,6. defect9
 Development Project,defectDevel1000,false,My own stupidity,Requirements,Problem Understanding,20 Syntax,null
 Business Project,Another one,false,yay!!,Information Understanding,Planning,20 Syntax,null
 Business Project,defect9,true,This is so cool,Verifying,Information Gathering,10 Documentation,null
