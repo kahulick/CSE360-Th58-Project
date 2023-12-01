@@ -108,13 +108,6 @@ public class EffortConsoleController {
 		stage.setScene(scene);
 		stage.show();
 		
-		
-		
-//		Parent root = FXMLLoader.load(getClass().getResource("DefectConsoleUI.fxml")); 
-//		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//		scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.show();
 	}
 	
 	// launches the logs UI --> exports data between controllers 

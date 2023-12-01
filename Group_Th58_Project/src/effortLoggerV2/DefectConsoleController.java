@@ -163,6 +163,7 @@ public class DefectConsoleController {
 	
 	@FXML // initializes the rest of the categories based on business versus development project
 	public void initializeLifeCycleSteps() {
+		defectItems.getItems().removeAll();
 		if (projectItems.getValue() == "Business Project") {
 			injectedSteps.setItems(definitions.options1a1);
 			removedSteps.setItems(definitions.options1a1);
@@ -181,10 +182,23 @@ public class DefectConsoleController {
 	
 	@FXML
 	public void existingLog(ActionEvent event) throws FileNotFoundException {
+		
+		// separate devel/ business first?? OH ADD IF NOT NULL THEN REMOVE LIKE THE EFFORT CONSOLE
+		
 		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
 			newLog = false;
 			System.out.println("Existing");
 			numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
+			if (projectItems.getValue().equalsIgnoreCase("Business Project")) {
+				defectLog = defectLogs.get(defectLogStrings.indexOf(businessLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
+				System.out.println(defectLog.getDefectName() + " \n");
+			} 
+			if (projectItems.getValue().equalsIgnoreCase("Development Project")) {	///// 	WHYYYYYYYYyyyyyyy
+				defectLog = defectLogs.get(defectLogStrings.indexOf(develLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
+				System.out.println(defectLog.getDefectName() + " \n");
+			}
+			
+			// defectNameInput
 		} else {
 			System.out.println("New");
 			numLabel.setText("0");
@@ -230,6 +244,8 @@ public class DefectConsoleController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// initializeDefectLogs();
 
 	}
 	
@@ -248,11 +264,12 @@ public class DefectConsoleController {
 			defectLog = defectLogs.get(updateIndex);
 			System.out.println(defectLog.getDefectName() + " \n");
 			try {
-				defectLogsRepository.updateLog(strLog, currentStr, updateIndex);
+				defectLogsRepository.updateLog(currentStr, updateIndex);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			businessDefectLogs.add(defectLog);
 
 		} else if (projectItems.getValue().equalsIgnoreCase("Development Project")) {
 			String strLog = develLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1);
@@ -260,23 +277,15 @@ public class DefectConsoleController {
 			defectLog = defectLogs.get(updateIndex);
 			System.out.println(defectLog.getDefectName() + " \n");
 			try {
-				defectLogsRepository.updateLog(strLog, currentStr, updateIndex);
-//			} catch (FileNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
+				defectLogsRepository.updateLog(currentStr, updateIndex);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			develDefectLogs.add(defectLog);
 		}
 		
-		
-		
-//		int updateIndex = defectLogs.indexOf(defectLog);
-		
-//		currentDefectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, detailInput.getText(), 
-//				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
-//				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
+
 	}
 	
 	public void saveNewLog() {
@@ -284,12 +293,6 @@ public class DefectConsoleController {
 				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
 				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
 		defectLogsRepository.CreateDF(defectLog);
-//		try {
-//			defectLogStrings = defectLogsRepository.getDefectLogStrings();
-//			defectLogs = defectLogsRepository.getDefectLogs();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
 		if (defectLog.getProject().equalsIgnoreCase("Business Project")) {
 			businessDefectLogs.add(defectLog);
 		} else if (defectLog.getProject().equalsIgnoreCase("Development Project")) {
@@ -298,9 +301,6 @@ public class DefectConsoleController {
 		System.out.println(Integer.toString(businessDefectLogs.size()));
 		System.out.println(Integer.toString(develDefectLogs.size()));
 	}
-	
-	
-	
 	
 	
 	

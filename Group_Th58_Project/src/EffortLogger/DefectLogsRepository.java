@@ -164,7 +164,46 @@ public class DefectLogsRepository {
 		return defectRepo;
 	}
 	
-	public void updateLog(String oldLog, String newLog, int index) throws IOException {
+//	public void updateLog(String oldLog, String newLog, int index) throws IOException {
+//
+//		String newIsh = newLog;
+//		int line = 0;
+//		
+//		File fileIn = new File("defect_logs.txt");
+//		File temp = new File("temp.txt"); 
+//		BufferedWriter writer = Files.newBufferedWriter(Paths.get("temp.txt"), Charset.forName("UTF8"));
+//		StringBuffer input = new StringBuffer();
+//	    Scanner sc = new Scanner(fileIn);
+//	    
+//	    while(sc.hasNext()) {
+//	    	if (line != index) {
+//	    		writer.write(sc.nextLine() + "\n");
+//	    		line++;
+//	    	} else if (line == index) {
+//	    		line++;
+//	    		System.out.println("FOUND " + line);
+//	    		writer.write(newIsh + "\n");
+//	    		System.out.println(sc.nextLine());
+//	    	}
+//	    }
+//	    writer.close();
+//	    sc.close();
+//	    
+//	    File srcFile =new File("temp.txt");
+//	    Scanner newScanner = new Scanner(srcFile);
+//	    BufferedWriter out = new BufferedWriter(new FileWriter("defect_logs.txt"));
+//	    
+//	    while (newScanner.hasNext()) {
+//	    	out.write(newScanner.nextLine());
+//	    	out.newLine();
+//	    }
+//	    
+//	    newScanner.close();
+//	    out.close();
+//		
+//	}
+	
+	public void updateLog(String newLog, int index) throws IOException {
 
 		String newIsh = newLog;
 		int line = 0;
