@@ -75,6 +75,7 @@ public class DefectConsoleController {
 	private String selectedRemovedStep;
 	private String selectedDefectCategory;
 	private boolean open = false;
+	private boolean newLog = false;
 	
 	private List<String> defectLogStrings = FXCollections.observableArrayList();
 	private List<DefectLog> defectLogs = FXCollections.observableArrayList();
@@ -148,8 +149,7 @@ public class DefectConsoleController {
 				develDefectLogs.add(defLog);
 			}
 		}
-		System.out.println(Integer.toString(businessDefectLogs.size()));
-		System.out.println(Integer.toString(develDefectLogs.size()));
+
 	}
 	
 	// public DefectLog
@@ -182,10 +182,9 @@ public class DefectConsoleController {
 	@FXML
 	public void existingLog(ActionEvent event) throws FileNotFoundException {
 		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
+			newLog = false;
 			System.out.println("Existing");
 			numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
-//			defectLogs = defectLogsRepository.getDefectLogs();
-			// System.out.println(defin)
 		} else {
 			System.out.println("New");
 			numLabel.setText("0");
@@ -202,6 +201,7 @@ public class DefectConsoleController {
 		System.out.println("Create");
 		int test = defectItems.getItems().size();
 		numLabel.setText(Integer.toString(test));
+		newLog = true;
 	}
 	
 	public void closeStatus(ActionEvent event) {
@@ -219,16 +219,72 @@ public class DefectConsoleController {
 	// saves the new defect log or updates the current one
 	// public DefectLog(String project, String defectName, boolean status, String detail, String injectedStep, String removedStep, String defectCategory, String fix)
 	public void updateCurrentDefect(ActionEvent event) {
-		defectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, detailInput.getText(), 
-				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
-				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
-		defectLogsRepository.CreateDF(defectLog);
+		if (newLog == true) {
+			saveNewLog();
+		} else {
+			saveExistingLog();
+		}
 		try {
 			defectLogStrings = defectLogsRepository.getDefectLogStrings();
 			defectLogs = defectLogsRepository.getDefectLogs();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+	
+	public void saveExistingLog() {
+		System.out.println("Save Existing");
+		// String strLog = "";
+		currentDefectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, detailInput.getText(), 
+				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
+				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
+		
+		if (projectItems.getValue().equalsIgnoreCase("Business Project")) {
+			String strLog = businessLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1);
+			int updateIndex = defectLogStrings.indexOf(strLog);	// wrong index?
+			defectLog = defectLogs.get(updateIndex);
+			System.out.println(defectLog.getDefectName() + " \n");
+			try {
+				defectLogsRepository.updateLog(currentDefectLog, strLog, updateIndex);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} else if (projectItems.getValue().equalsIgnoreCase("Development Project")) {
+			String strLog = develLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1);
+			int updateIndex = defectLogStrings.indexOf(strLog);
+			defectLog = defectLogs.get(updateIndex);
+			System.out.println(defectLog.getDefectName() + " \n");
+			try {
+				defectLogsRepository.updateLog(currentDefectLog, strLog, updateIndex);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+//		int updateIndex = defectLogs.indexOf(defectLog);
+		
+//		currentDefectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, detailInput.getText(), 
+//				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
+//				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
+	}
+	
+	public void saveNewLog() {
+		defectLog = new DefectLog(projectItems.getValue(), defectNameInput.getText(), open, detailInput.getText(), 
+				injectedSteps.getSelectionModel().getSelectedItem(), removedSteps.getSelectionModel().getSelectedItem(), 
+				defectCategory.getSelectionModel().getSelectedItem(), fixItems.getValue());
+		defectLogsRepository.CreateDF(defectLog);
+//		try {
+//			defectLogStrings = defectLogsRepository.getDefectLogStrings();
+//			defectLogs = defectLogsRepository.getDefectLogs();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		if (defectLog.getProject().equalsIgnoreCase("Business Project")) {
 			businessDefectLogs.add(defectLog);
 		} else if (defectLog.getProject().equalsIgnoreCase("Development Project")) {
@@ -237,6 +293,11 @@ public class DefectConsoleController {
 		System.out.println(Integer.toString(businessDefectLogs.size()));
 		System.out.println(Integer.toString(develDefectLogs.size()));
 	}
+	
+	
+	
+	
+	
 	
 	public void deleteCurrentDefect(ActionEvent event) {
 		System.out.println("Delete");

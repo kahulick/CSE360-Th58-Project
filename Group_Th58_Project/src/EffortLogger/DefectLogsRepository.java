@@ -140,15 +140,8 @@ public class DefectLogsRepository {
 		List<DefectLog> defectRepo = new ArrayList<DefectLog>();
 		File file = new File("defect_logs.txt");
 	    Scanner sc = new Scanner(file);
-//	    
-//	    String projectType;
-//	    String name;
+
 	    boolean status;
-//	    String dt;
-//	    String inj;
-//	    String rem;
-//	    String defectCat;
-//	    String fx;
 	    
 	    while (sc.hasNextLine()) {
 	    	String data[] = sc.nextLine().split(",");
@@ -162,18 +155,58 @@ public class DefectLogsRepository {
 	    }
 	    
 	    sc.close();
-	    
-//		this.project = project;
-//		this.defectName = defectName;
-//		this.status = status;
-//		this.detail = detail;
-//		this.injectedStep = injectedStep;
-//		this.removedStep = removedStep;
-//		this.defectCategory = defectCategory;
-//		this.fix = fix;
 		
 	    System.out.println(defectRepo.size());
 		return defectRepo;
+	}
+	
+	public void updateLog(DefectLog log, String strLog, int index) throws FileNotFoundException {
+		System.out.println(index);
+		int line = 0;
+		File file = new File("defect_logs.txt");
+	    Scanner sc = new Scanner(file);
+	    
+	    while(sc.hasNext()) {
+	    	if (line != index) {
+	    		System.out.println(sc.nextLine());
+	    		line++;
+	    	} else if (line == index) {
+	    		line++;
+	    		System.out.println("FOUND " + line);
+	    		System.out.println(sc.nextLine());
+	    		break;
+	    	}
+//	    	{
+//	    		System.out.println("FOUND " + line);
+//	    		break;
+//	    	}
+	    }
+	    
+	    sc.close();
+	    
+	    
+	    
+	    
+		
+//		
+//		PrintWriter out = null;
+//	    BufferedWriter bufWriter;
+//
+//	    try{
+//	        bufWriter =
+//	            Files.newBufferedWriter(
+//	                Paths.get("defect_logs.txt"),
+//	                Charset.forName("UTF8"),
+//	                StandardOpenOption.WRITE, 
+//	                StandardOpenOption.APPEND,
+//	                StandardOpenOption.CREATE);
+//	        out = new PrintWriter(bufWriter, true);
+//	    }catch(IOException e){
+//	        //Oh, no! Failed to create PrintWriter'
+//	    	System.out.println("Could not create PrintWriter");
+//	    }
+	    
+		
 	}
 	
 

@@ -11,3 +11,5 @@ Business Project,Defect 10,false,Trying this again,Verifying,Planning,30 Build, 
 Development Project,NewDefect11?,false,another test,Solution Review,Reflection,10 Documentation,null
 Development Project,Cool defect 101,false,Overslept and now my program wont run,Requirements,Problem Understanding,100 Environment,null
 Development Project,6th defect,false,wow I fixed it!,Requirements,Problem Understanding,30 Build, Package,3. defectDevel1000
+Development Project,7th Defect log,true,So slay,Requirements,Conceptual Design Plan,30 Build, Package,4. NewDefect11?
+Development Project,the 100th defect,true,another defect :( ,Requirements,Conceptual Design,Not specified,3. defectDevel1000
