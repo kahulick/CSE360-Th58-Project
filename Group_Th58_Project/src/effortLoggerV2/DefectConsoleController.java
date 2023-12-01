@@ -185,25 +185,27 @@ public class DefectConsoleController {
 	
 	@FXML
 	public void existingLog(ActionEvent event) throws FileNotFoundException {
-		
-		if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
-			newLog = false;
-			System.out.println("Existing");
-			numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
-			if (projectItems.getValue().equalsIgnoreCase("Business Project")) {
-				defectLog = defectLogs.get(defectLogStrings.indexOf(businessLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
-				System.out.println(defectLog.getDefectName() + " \n");
-			} 
-			if (projectItems.getValue().equalsIgnoreCase("Development Project")) {	///// 	WHYYYYYYYYyyyyyyy
-				defectLog = defectLogs.get(defectLogStrings.indexOf(develLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
-				System.out.println(defectLog.getDefectName() + " \n");
+		if (defectItems.getSelectionModel().isSelected(0)) {
+			if (defectItems.getSelectionModel().getSelectedIndex() != 0) {
+				newLog = false;
+				System.out.println("Existing");
+				numLabel.setText(Integer.toString(defectItems.getSelectionModel().getSelectedIndex()));
+				if (projectItems.getValue().equalsIgnoreCase("Business Project")) {
+					defectLog = defectLogs.get(defectLogStrings.indexOf(businessLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
+					System.out.println(defectLog.getDefectName() + " \n");
+				} 
+				if (projectItems.getValue().equalsIgnoreCase("Development Project")) {	///// 	WHYYYYYYYYyyyyyyy
+					defectLog = defectLogs.get(defectLogStrings.indexOf(develLogStrings.get((defectItems.getSelectionModel().getSelectedIndex())-1)));
+					System.out.println(defectLog.getDefectName() + " \n");
+				}
+				
+				// defectNameInput
+			} else {
+				System.out.println("New");
+				numLabel.setText("0");
 			}
-			
-			// defectNameInput
-		} else {
-			System.out.println("New");
-			numLabel.setText("0");
 		}
+
 	}
 	
 	
